@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
 import 'package:home_ease/core/routing/routes.dart';
+import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
@@ -56,22 +57,6 @@ class LoginScreen extends StatelessWidget {
                     'Forget Password ?',
                     style: TextStyles.font16Black600,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 24.h,
-              ),
-              CustomButton(
-                text: 'Login',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 16.h,
               ),
               const LoginAndRegisterCardSocial(),
               const DontHaveAccountText(),

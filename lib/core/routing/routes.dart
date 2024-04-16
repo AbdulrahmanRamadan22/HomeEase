@@ -5,6 +5,8 @@ class Routes {
   static const String registerScreen = "/registerScreen";
   static const String otpScreen = "/otpScreen";
   static const String resetPasswordScreen = "/resetPasswordScreen";
+  static const String profileScreenScreen = "/profileScreenScreen";
+
   static const String homeScreen = "/homeScreen";
 
   static const String homeLayout = "/homeLayout";
@@ -12,7 +14,5 @@ class Routes {
 
   static const String selectLanguageScreen = "/SelectLanguageScreen";
 
-    static const String forgetPasswordScreen = "/forgetPasswordScreen";
-
-  
+  static const String forgetPasswordScreen = "/forgetPasswordScreen";
 }
