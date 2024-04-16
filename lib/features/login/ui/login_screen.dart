@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
@@ -15,45 +16,42 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     
       body: Padding(
-        padding: const EdgeInsets.only(top: 80, right: 19, left: 19),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Center(
-                child: Text(
-                  'Login',
-                  style: TextStyles.font28Black700,
-                ),
-              ),
               SizedBox(
-                height: 14.h,
+                height: 80.h,
+              ),
+              Text(
+                'Login',
+                style: TextStyles.font28Black700,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 55, right: 52),
-                child: Text(
-                  textAlign: TextAlign.center,
-                  'Please Enter your Phone and password to continue',
-                  style: TextStyles.font14Black500,
+                padding: EdgeInsets.symmetric(vertical: 18.h),
+                child: SizedBox(
+                  width: 321.w,
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    'Please Enter your Phone and password to continue',
+                    style: TextStyles.font14Black500,
+                  ),
                 ),
               ),
-              SizedBox(
-                height: 18.h,
-              ),
               const LoginForm(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      context.pushNamed(Routes.forgetPasswordScreen);
-                    },
-                    child: Text(
-                      'Forget Password ?',
-                      style: TextStyles.font16Black600,
-                    ),
-                  )
-                ],
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: TextButton(
+                  onPressed: () {
+                    context.pushNamed(Routes.forgetPasswordScreen);
+                  },
+                  child: Text(
+                    'Forget Password ?',
+                    style: TextStyles.font16Black600,
+                  ),
+                ),
               ),
               SizedBox(
                 height: 24.h,
