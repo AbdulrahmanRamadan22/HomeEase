@@ -2,15 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:pinput/pinput.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class OtpScreen extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final phoneNumber;
+  final countryCode;
 
-  OtpScreen({super.key, this.timeSend, required this.phoneNumber});
+  OtpScreen(
+      {super.key,
+      this.timeSend,
+      required this.phoneNumber,
+      required this.countryCode});
 
   int? timeSend;
   @override
@@ -56,7 +63,7 @@ class OtpScreen extends StatelessWidget {
                 height: 5.h,
               ),
               Text(
-                '$phoneNumber',
+                countryCode + phoneNumber,
                 style: const TextStyle(
                   letterSpacing: 2,
                   fontSize: 14,
@@ -68,7 +75,7 @@ class OtpScreen extends StatelessWidget {
                 height: 28.h,
               ),
               Pinput(
-                length: 4,
+                length: 6,
                 onCompleted: (value) {
                   print(value);
                 },

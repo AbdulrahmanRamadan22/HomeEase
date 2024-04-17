@@ -47,10 +47,11 @@ class AppRouter {
         );
       case Routes.otpScreen:
       final phoneNumber = settings.arguments as String;
+      final countryCode=settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => BlocProvider<RegisterCubit>.value(
             value: registerCubit!,
-            child: OtpScreen(phoneNumber:phoneNumber ,),
+            child: OtpScreen(phoneNumber:phoneNumber ,countryCode:countryCode,),
           ),
         );
 

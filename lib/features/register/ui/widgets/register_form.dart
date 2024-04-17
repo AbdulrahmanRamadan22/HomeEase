@@ -1,7 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({super.key});
@@ -9,6 +15,7 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: context.read<RegisterCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,12 +27,17 @@ class RegisterForm extends StatelessWidget {
             height: 8.h,
           ),
           AppTextFormField(
-            suffixIcon: const Icon(
+            suffixIcon: Icon(
               Icons.person_2_outlined,
-              color: Color(0xffB5B5B5),
+              color: ColorsApp.gray,
             ),
-            hintText: 'Enter your Name',
-            validator: (p0) {},
+            hintText: 'Enter your Full Name',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid Full Name';
+              }
+            },
+            controller: context.read<RegisterCubit>().fullNameController,
           ),
           SizedBox(
             height: 18.h,
@@ -37,17 +49,76 @@ class RegisterForm extends StatelessWidget {
           SizedBox(
             height: 8.h,
           ),
-          AppTextFormField(
-            suffixIcon: const Icon(
-              Icons.phone_outlined,
-              color: Color(0xffB5B5B5),
+          // AppTextFormField(
+          //   suffixIcon: const Icon(
+          //     Icons.phone_outlined,
+          //     color: Color(0xffB5B5B5),
+          //   ),
+          //   hintText: 'Enter your phone',
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       return 'Please enter a valid phone number';
+          //     }
+          //   },
+          //   controller: context.read<RegisterCubit>().phoneController,
+          // ),
+
+          IntlPhoneField(
+            controller: context.read<RegisterCubit>().phoneController,
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorsApp.mainGreen,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: ColorsApp.lightGray,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
+              ),
+              hintStyle: TextStyles.font16Gray500,
+              hintText: "Enter your phone",
+              suffixIcon: Icon(
+                Icons.phone_outlined,
+                color: ColorsApp.gray,
+              ),
+              fillColor: ColorsApp.lightGreen,
+              filled: true,
             ),
-            hintText: 'Enter your phone',
-            validator: (p0) {},
+            initialCountryCode: 'EG',
+            onSaved: (newValue) {
+              print("abooooooooooood");
+              print(newValue!.countryCode);
+            },
+            onChanged: (phone) {
+              context.read<RegisterCubit>().countryCode = phone.countryCode;
+              log(context.read<RegisterCubit>().countryCode);
+
+              print(phone.countryCode);
+            },
           ),
-          SizedBox(
-            height: 18.h,
-          ),
+
           Text(
             'Password',
             style: TextStyles.font16Black600,
@@ -56,12 +127,17 @@ class RegisterForm extends StatelessWidget {
             height: 8.h,
           ),
           AppTextFormField(
-            suffixIcon: const Icon(
+            suffixIcon: Icon(
               Icons.visibility,
-              color: Color(0xffB5B5B5),
+              color: ColorsApp.gray,
             ),
             hintText: 'Enter Your Password',
-            validator: (p0) {},
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid Password';
+              }
+            },
+            controller: context.read<RegisterCubit>().passwordController,
           ),
           SizedBox(
             height: 48.h,

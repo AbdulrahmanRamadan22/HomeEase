@@ -10,36 +10,36 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(const RegisterState.initial());
 
-  late String verificationId;
+  late String verificationId = '';
 
   final formKey = GlobalKey<FormState>();
   TextEditingController passwordController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  Duration timeout = const Duration(seconds: 14);
+  late String countryCode;
+
+  Duration timeout = const Duration(seconds: 30);
 
   // final fireStore = FirebaseFirestore.instance;
 
   // TextEditingController passwordConfirmationController =
   //     TextEditingController();
 
-  emitRegisterPhoneAuthStates() async {
+  Future<void> emitRegisterPhoneAuthStates() async {
     // emit(const PhoneAuthState.loading());
     // ignore: unused_element
-    Future<void> registerPhoneNumber(phoneController) async {
-      emit(const RegisterState.loading());
-      await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: '+2${phoneController.text}',
-        timeout: timeout,
-        verificationCompleted: verificationCompleted,
-        verificationFailed: verificationFailed,
-        codeSent: codeSent,
-        codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
-      );
 
-      saveUserInformation();
-    }
+    emit(const RegisterState.loading());
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+${countryCode + phoneController.text}',
+      timeout: timeout,
+      verificationCompleted: verificationCompleted,
+      verificationFailed: verificationFailed,
+      codeSent: codeSent,
+      codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+    );
+    // saveUserInformation();
   }
 
 //Automatic handling of the SMS code on Android devices.
@@ -50,15 +50,19 @@ class RegisterCubit extends Cubit<RegisterState> {
 
 //  Handle failure events such as invalid phone numbers or whether the SMS quota has been exceeded.
   void verificationFailed(FirebaseAuthException error) {
-    log('verificationFailed : ${error.toString()}');
-    emit(RegisterState.error(error: error.toString()));
+    log('verificationFailed : ${error.message.toString()}');
+    emit(RegisterState.error(error: error.message.toString()));
   }
 
 //Handle when a code has been sent to the device from Firebase, used to prompt users to enter the code.
   void codeSent(String verificationId, int? resendToken) {
-    log('codeSent');
-    this.verificationId = verificationId;
-    emit(const RegisterState.phoneNumberSubmited());
+    try {
+      log('codeSent');
+      this.verificationId = verificationId;
+      emit(const RegisterState.phoneNumberSubmited());
+    } on FirebaseAuthException catch (error) {
+      emit(RegisterState.error(error: error.message.toString()));
+    }
   }
 
 //Handle a timeout of when automatic SMS code handling fails.
@@ -91,24 +95,26 @@ class RegisterCubit extends Cubit<RegisterState> {
     return firebaseUser;
   }
 
-  Future<void> saveUserInformation() async {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-    await users
-        .add(
-      RegisterRequestBody(
-        fullName: fullNameController.text,
-        password: passwordController.text,
-        type: 'user',
-        uId: FirebaseAuth.instance.currentUser!.uid,
-        phone: '+2$phoneController',
-      ),
-    )
-        .then((value) {
-      emit(const RegisterState.createUser());
-    }).catchError((error) {
-      emit(RegisterState.error(error: error.toString()));
-    });
-  }
+  // Future<void> saveUserInformation() async {
+  //   CollectionReference users = FirebaseFirestore.instance.collection('users');
+  //   await users
+  //       .add(
+  //     RegisterRequestBody(
+  //       fullName: fullNameController.text,
+  //       password: passwordController.text,
+  //       type: 'user',
+  //       uId: "1",
+
+  //       // uId: FirebaseAuth.instance.currentUser!.uid,
+  //       phone: '+20${phoneController.text}',
+  //     ).toJson(),
+  //   )
+  //       .then((value) {
+  //     emit(const RegisterState.createUser());
+  //   }).catchError((error) {
+  //     emit(RegisterState.error(error: error.toString()));
+  //   });
+  // }
 }
 
 
