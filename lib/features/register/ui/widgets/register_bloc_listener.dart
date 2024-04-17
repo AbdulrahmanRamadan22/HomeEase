@@ -1,16 +1,16 @@
 // ignore: depend_on_referenced_packages
-import 'dart:developer';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
-import 'package:home_ease/core/widgets/show_alert_dialog_error.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/logic/register_state.dart';
 
+// ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterBlocListener extends StatelessWidget {
