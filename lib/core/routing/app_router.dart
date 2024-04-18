@@ -29,7 +29,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
         );
-      
+
       case Routes.selectLanguageScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectLanguageScreen(),
@@ -47,11 +47,12 @@ class AppRouter {
         );
       case Routes.otpScreen:
       final phoneNumber = settings.arguments as String;
-      final countryCode=settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => BlocProvider<RegisterCubit>.value(
             value: registerCubit!,
-            child: OtpScreen(phoneNumber:phoneNumber ,countryCode:countryCode,),
+            child: OtpScreen(
+              phoneNumber: phoneNumber,
+            ),
           ),
         );
 

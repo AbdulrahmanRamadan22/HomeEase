@@ -2,10 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:home_ease/features/register/data/models/register_request_body.dart';
 import 'package:home_ease/features/register/logic/register_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(const RegisterState.initial());
@@ -19,6 +17,8 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   late String countryCode;
 
+ late String phoneNumber = countryCode + phoneController.text;
+
   Duration timeout = const Duration(seconds: 30);
 
   // final fireStore = FirebaseFirestore.instance;
@@ -27,12 +27,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   //     TextEditingController();
 
   Future<void> emitRegisterPhoneAuthStates() async {
-    // emit(const PhoneAuthState.loading());
-    // ignore: unused_element
 
     emit(const RegisterState.loading());
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+${countryCode + phoneController.text}',
+      phoneNumber:phoneNumber,
       timeout: timeout,
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
@@ -56,13 +54,9 @@ class RegisterCubit extends Cubit<RegisterState> {
 
 //Handle when a code has been sent to the device from Firebase, used to prompt users to enter the code.
   void codeSent(String verificationId, int? resendToken) {
-    try {
-      log('codeSent');
-      this.verificationId = verificationId;
-      emit(const RegisterState.phoneNumberSubmited());
-    } on FirebaseAuthException catch (error) {
-      emit(RegisterState.error(error: error.message.toString()));
-    }
+    log('codeSent');
+    this.verificationId = verificationId;
+    emit(const RegisterState.phoneNumberSubmited());
   }
 
 //Handle a timeout of when automatic SMS code handling fails.

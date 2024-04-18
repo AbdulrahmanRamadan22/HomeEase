@@ -33,10 +33,10 @@ class RegisterBlocListener extends StatelessWidget {
           phoneNumberSubmited: () {
             context.pop();
 
-            context.pushNamed(Routes.otpScreen, arguments: {
-              context.read<RegisterCubit>().phoneController.text,
-              context.read<RegisterCubit>().countryCode,
-            });
+           context.pushNamed(Routes.otpScreen,
+                arguments: context.read<RegisterCubit>().phoneNumber.toString(),
+                
+                );
           },
           error: (error) {
             // log("aboooooooooooooooooooooooooooooood${error.toString()}");
@@ -45,14 +45,14 @@ class RegisterBlocListener extends StatelessWidget {
 
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                margin: EdgeInsets.symmetric(
-                  horizontal: 20.w,vertical: 20.h
-                ),
+                margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
                 behavior: SnackBarBehavior.floating,
-                content: Text(error.toString(),textAlign: TextAlign.center,),
-                
+                content: Text(
+                  error.toString(),
+                  textAlign: TextAlign.center,
+                ),
                 backgroundColor: Colors.red,
-                duration: const Duration(seconds: 20),
+                duration: const Duration(seconds: 5),
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(color: ColorsApp.white, width: 1),
                   borderRadius: BorderRadius.circular(16.0),
