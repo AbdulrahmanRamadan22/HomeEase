@@ -1,23 +1,26 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:home_ease/features/register/logic/register_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(const RegisterState.initial());
 
-  late String verificationId = '';
+  late String verificationId ;
 
   final formKey = GlobalKey<FormState>();
   TextEditingController passwordController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
+  TextEditingController codeSubmittedController = TextEditingController();
+
   late String countryCode;
 
- late String phoneNumber = countryCode + phoneController.text;
+  late String phoneNumber = countryCode + phoneController.text;
 
   Duration timeout = const Duration(seconds: 30);
 
@@ -27,10 +30,9 @@ class RegisterCubit extends Cubit<RegisterState> {
   //     TextEditingController();
 
   Future<void> emitRegisterPhoneAuthStates() async {
-
     emit(const RegisterState.loading());
     await FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber:phoneNumber,
+      phoneNumber: phoneNumber,
       timeout: timeout,
       verificationCompleted: verificationCompleted,
       verificationFailed: verificationFailed,
@@ -65,8 +67,16 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> submitOTP(String otpCode) async {
+    log('submitOTP : $otpCode');
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: verificationId, smsCode: otpCode);
+        // ignore: unnecessary_this
+        verificationId: this.verificationId, smsCode: otpCode);
+
+    log("providerId ${credential.providerId}");
+        log("credential.smsCode${credential.smsCode.toString()}");
+        log("credential.verificationId${credential.verificationId.toString()}");
+
+
 
     await login(credential);
   }

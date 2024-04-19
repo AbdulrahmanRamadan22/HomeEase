@@ -6,8 +6,10 @@ import 'package:home_ease/home_ease__app.dart';
 import 'package:easy_localization/easy_localization.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
 

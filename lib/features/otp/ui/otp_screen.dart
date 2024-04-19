@@ -1,21 +1,26 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
+import 'package:home_ease/features/otp/ui/widgets/otp_bloc_listener.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:pinput/pinput.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class OtpScreen extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final phoneNumber;
-  // final String? countryCode;
 
-  OtpScreen(
-      {super.key,
-      this.timeSend,
-      required this.phoneNumber,
-      });
+  OtpScreen({
+    super.key,
+    this.timeSend,
+    required this.phoneNumber,
+  });
 
   int? timeSend;
   @override
@@ -36,65 +41,67 @@ class OtpScreen extends StatelessWidget {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 19, right: 19),
+          padding: EdgeInsets.symmetric(horizontal: 20.h),
           child: Column(
             children: [
-              const Text(
-                'OTP',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontFamily: 'Quicksand',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
+              Text('OTP', style: TextStyles.font28Black700),
               SizedBox(
                 height: 18.h,
               ),
-              const Text(
-                'An Authentication code has been sent to',
-                style: TextStyle(
-                    fontFamily: 'Quicksand',
-                    fontSize: 14,
-                    color: Color.fromARGB(255, 196, 194, 194)),
-              ),
+              Text('An Authentication code has been sent to',
+                  style: TextStyles.font14gray700),
               SizedBox(
                 height: 5.h,
               ),
               Text(
-                " ${ phoneNumber}",
-                style: const TextStyle(
-                  letterSpacing: 2,
-                  fontSize: 14,
-                  color: Color(0xffF5DF99),
-                  fontWeight: FontWeight.w700,
-                ),
+                " $phoneNumber",
+                style: TextStyles.font14yallow700,
               ),
               SizedBox(
                 height: 28.h,
               ),
               Pinput(
-                length: 6,
-                onCompleted: (value) {
-                  print(value);
-                },
-                autofocus: true,
-                showCursor: true,
-                keyboardType: TextInputType.number,
-                defaultPinTheme: defaultPinTheme,
-                focusedPinTheme: defaultPinTheme.copyWith(
-                  decoration: defaultPinTheme.decoration!.copyWith(
-                    border: Border.all(color: const Color(0xff5FD068)),
+                  controller:
+                      context.read<RegisterCubit>().codeSubmittedController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a valid code';
+                    }
+                    return null;
+                  },
+                  length: 6,
+                  onCompleted: (value) {
+                    context.read<RegisterCubit>().codeSubmittedController.text =
+                        value;
+                    log("value: $value");
+                    log("abod ${context.read<RegisterCubit>().codeSubmittedController.text}");
+                  },
+                  autofocus: true,
+                  showCursor: true,
+                  keyboardType: TextInputType.number,
+                  defaultPinTheme: defaultPinTheme,
+                  focusedPinTheme: defaultPinTheme.copyWith(
+                    decoration: defaultPinTheme.decoration!.copyWith(
+                      border: Border.all(color: ColorsApp.mainGreen),
+                    ),
                   ),
-                ),
-                pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                onSubmitted: (pin) => print(pin),
-              ),
+                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                  onSubmitted: (pin) {
+                    // context.read<RegisterCubit>().codeSubmittedController.text = pin;
+                    print(pin);
+                  }),
               SizedBox(
                 height: 48.h,
               ),
               CustomButton(
                 text: 'Submit',
-                onPressed: () {},
+                onPressed: () {
+                
+                  context.read<RegisterCubit>().submitOTP(context
+                      .read<RegisterCubit>()
+                      .codeSubmittedController
+                      .text);
+                },
               ),
               SizedBox(
                 height: 32.h,
@@ -112,7 +119,8 @@ class OtpScreen extends StatelessWidget {
                     style: TextStyles.font14yallow500,
                   )
                 ],
-              )
+              ),
+              const OtpBlocListener(),
             ],
           ),
         ),

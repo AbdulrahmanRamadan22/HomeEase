@@ -68,6 +68,17 @@ class TextStyles {
     fontWeight: FontWeight.w700,
     color: ColorsApp.black,
   );
+
+   static TextStyle font14gray700 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+    color: ColorsApp.gray,
+  );
+    static TextStyle font14yallow700 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+    color: ColorsApp.yallow,
+  );
   static TextStyle font14Black500 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
