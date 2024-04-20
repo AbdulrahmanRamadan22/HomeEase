@@ -117,7 +117,7 @@ class EditProfileSreen extends StatelessWidget {
                       elevation: 0,
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.delete_outlined,
                             color: ColorsApp.darkGreen,
                           ),

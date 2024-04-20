@@ -37,6 +37,22 @@ class TextStyles {
     fontWeight: FontWeight.w700,
     color: ColorsApp.black,
   );
+  static TextStyle font14Black600 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsApp.black,
+  );
+  static TextStyle font14Bgray500 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorsApp.gray,
+  );
+
+  static TextStyle font14Bgreengray500 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsApp.mainGreen,
+  );
 
   static TextStyle font16Black400 = TextStyle(
     fontSize: 16.sp,
