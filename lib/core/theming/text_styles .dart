@@ -127,4 +127,14 @@ class TextStyles {
     fontWeight: FontWeight.w500,
     color: ColorsApp.white.withOpacity(0.4),
   );
+  static TextStyle font14white700 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+    color: ColorsApp.white,
+  );
+    static TextStyle font10white500 = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+    color: ColorsApp.white,
+  );
 }

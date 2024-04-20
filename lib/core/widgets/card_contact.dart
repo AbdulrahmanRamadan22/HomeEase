@@ -16,7 +16,7 @@ class CardSocial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 74,
       child: Card(
         shape: RoundedRectangleBorder(
