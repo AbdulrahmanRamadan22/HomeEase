@@ -13,6 +13,7 @@ import 'package:home_ease/features/payment/ui/payment_screen.dart';
 import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/register_screen.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
+import 'package:home_ease/features/sddress/ui/address_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screan.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -68,11 +69,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const NotificationScreen(),
         );
-         case Routes.paymentScreenScreen:
+      case Routes.paymentScreenScreen:
         return MaterialPageRoute(
           builder: (context) => const PaymentScreen(),
         );
-
+      case Routes.addressScreenScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressScreen(),
+        );
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
