@@ -8,17 +8,17 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/logic/register_state.dart';
+import 'package:home_ease/features/register/logic/auth_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_state.dart';
 
 // ignore: depend_on_referenced_packages
 
-class RegisterBlocListener extends StatelessWidget {
-  const RegisterBlocListener({super.key});
+class AuthBlocListener extends StatelessWidget {
+  const AuthBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RegisterCubit, RegisterState>(
+    return BlocListener<AuthCubit, AuthState>(
       listenWhen: (previous, current) =>
           current is Loading ||
           current is PhoneNumberSubmited ||
@@ -33,12 +33,22 @@ class RegisterBlocListener extends StatelessWidget {
           phoneNumberSubmited: () {
             context.pop();
 
-           context.pushNamed(Routes.otpScreen,
-                arguments: context.read<RegisterCubit>().phoneNumber.toString(),
-                
-                );
+            context.pushNamed(
+              Routes.otpScreen,
+              arguments: context.read<AuthCubit>().phoneNumber.toString(),
+            );
+          },
+          createUser: (data) {
+            context.pop();
+            showSnackBar(
+              context,
+              content: "Account created successfully go to home screen",
+              backgroundColor: ColorsApp.mainGreen,
+            );
+            context.pushReplacementNamed(Routes.homeLayout);
           },
           error: (error) {
+            
             // log("aboooooooooooooooooooooooooooooood${error.toString()}");
 
             context.pop();

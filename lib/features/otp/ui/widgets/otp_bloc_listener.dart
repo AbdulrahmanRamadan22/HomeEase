@@ -8,17 +8,17 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/logic/register_state.dart';
+import 'package:home_ease/features/register/logic/auth_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_state.dart';
 
 // ignore: depend_on_referenced_packages
 
-class   OtpBlocListener extends StatelessWidget {
+class OtpBlocListener extends StatelessWidget {
   const OtpBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RegisterCubit, RegisterState>(
+    return BlocListener<AuthCubit, AuthState>(
       listenWhen: (previous, current) =>
           current is Loading ||
           current is PhoneNumberSubmited ||
@@ -31,7 +31,7 @@ class   OtpBlocListener extends StatelessWidget {
             showProgressIndicator(context);
           },
           phoneOtpVerified: () {
-                showSnackBar(
+            showSnackBar(
               context,
               content: "OTP verified successfully go to home screen",
               backgroundColor: ColorsApp.mainGreen,

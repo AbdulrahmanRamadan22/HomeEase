@@ -1,28 +1,29 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:home_ease/features/register/logic/register_state.dart';
+import 'package:home_ease/core/models/users/user_request_body.dart';
+import 'package:home_ease/core/networking/auth_social_services.dart';
+import 'package:home_ease/core/networking/firestore_services.dart';
+import 'package:home_ease/features/register/logic/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit() : super(const AuthState.initial());
 
-class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(const RegisterState.initial());
-
-  late String verificationId ;
+  late String verificationId;
 
   final formKey = GlobalKey<FormState>();
   TextEditingController passwordController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-
   TextEditingController codeSubmittedController = TextEditingController();
-
   late String countryCode;
-
   late String phoneNumber = countryCode + phoneController.text;
-
   Duration timeout = const Duration(seconds: 30);
+  AuthSocial authSocial = AuthSocial();
+
+  final service = FirestoreServices.instance;
 
   // final fireStore = FirebaseFirestore.instance;
 
@@ -30,7 +31,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   //     TextEditingController();
 
   Future<void> emitRegisterPhoneAuthStates() async {
-    emit(const RegisterState.loading());
+    emit(const AuthState.loading());
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       timeout: timeout,
@@ -51,14 +52,14 @@ class RegisterCubit extends Cubit<RegisterState> {
 //  Handle failure events such as invalid phone numbers or whether the SMS quota has been exceeded.
   void verificationFailed(FirebaseAuthException error) {
     log('verificationFailed : ${error.message.toString()}');
-    emit(RegisterState.error(error: error.message.toString()));
+    emit(AuthState.error(error: error.message.toString()));
   }
 
 //Handle when a code has been sent to the device from Firebase, used to prompt users to enter the code.
   void codeSent(String verificationId, int? resendToken) {
     log('codeSent');
     this.verificationId = verificationId;
-    emit(const RegisterState.phoneNumberSubmited());
+    emit(const AuthState.phoneNumberSubmited());
   }
 
 //Handle a timeout of when automatic SMS code handling fails.
@@ -70,13 +71,12 @@ class RegisterCubit extends Cubit<RegisterState> {
     log('submitOTP : $otpCode');
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         // ignore: unnecessary_this
-        verificationId: this.verificationId, smsCode: otpCode);
+        verificationId: this.verificationId,
+        smsCode: otpCode);
 
     log("providerId ${credential.providerId}");
-        log("credential.smsCode${credential.smsCode.toString()}");
-        log("credential.verificationId${credential.verificationId.toString()}");
-
-
+    log("credential.smsCode${credential.smsCode.toString()}");
+    log("credential.verificationId${credential.verificationId.toString()}");
 
     await login(credential);
   }
@@ -84,9 +84,9 @@ class RegisterCubit extends Cubit<RegisterState> {
   Future<void> login(PhoneAuthCredential credential) async {
     try {
       await FirebaseAuth.instance.signInWithCredential(credential);
-      emit(const RegisterState.phoneOtpVerified());
+      emit(const AuthState.phoneOtpVerified());
     } catch (error) {
-      emit(RegisterState.error(error: error.toString()));
+      emit(AuthState.error(error: error.toString()));
     }
   }
 
@@ -97,6 +97,30 @@ class RegisterCubit extends Cubit<RegisterState> {
   User getLoggedInUser() {
     User firebaseUser = FirebaseAuth.instance.currentUser!;
     return firebaseUser;
+  }
+  Future<void> emitSignInWithGoogleAuthStates() async {
+    emit(const AuthState.loading());
+    authSocial.signInWithGoogle().then((value) {
+      service.setData(
+        path: 'users/${value.user!.uid}',
+        data: UserRequestBody(
+          fullName: value.user!.displayName.toString(),
+          email: value.user!.email.toString(),
+          profilePhotoURL: value.user!.photoURL.toString(),
+          type: 'user',
+          uId: value.user!.uid.toString(),
+          phone: value.user!.phoneNumber.toString(),
+        ).toJson(),
+      );
+
+      emit(AuthState.createUser(value));
+    }).catchError((error) {
+      emit(AuthState.error(error: error.toString()));
+    });
+  }
+
+  Future<void> emitRegisterFacebookAuthStates() async {
+    
   }
 
   // Future<void> saveUserInformation() async {

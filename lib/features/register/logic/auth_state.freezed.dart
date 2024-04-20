@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'register_state.dart';
+part of 'auth_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,14 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PhoneAuthState<T> {
+mixin _$AuthState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$PhoneAuthState<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$PhoneAuthState<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -81,16 +81,16 @@ mixin _$PhoneAuthState<T> {
 }
 
 /// @nodoc
-abstract class $PhoneAuthStateCopyWith<T, $Res> {
-  factory $PhoneAuthStateCopyWith(
-          RegisterState<T> value, $Res Function(RegisterState<T>) then) =
-      _$PhoneAuthStateCopyWithImpl<T, $Res, RegisterState<T>>;
+abstract class $AuthStateCopyWith<T, $Res> {
+  factory $AuthStateCopyWith(
+          AuthState<T> value, $Res Function(AuthState<T>) then) =
+      _$AuthStateCopyWithImpl<T, $Res, AuthState<T>>;
 }
 
 /// @nodoc
-class _$PhoneAuthStateCopyWithImpl<T, $Res, $Val extends RegisterState<T>>
-    implements $PhoneAuthStateCopyWith<T, $Res> {
-  _$PhoneAuthStateCopyWithImpl(this._value, this._then);
+class _$AuthStateCopyWithImpl<T, $Res, $Val extends AuthState<T>>
+    implements $AuthStateCopyWith<T, $Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -107,7 +107,7 @@ abstract class _$$InitialImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
     implements _$$InitialImplCopyWith<T, $Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
@@ -121,7 +121,7 @@ class _$InitialImpl<T> implements _Initial<T> {
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.initial()';
+    return 'AuthState<$T>.initial()';
   }
 
   @override
@@ -140,7 +140,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -153,7 +153,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
     return initial?.call();
@@ -166,7 +166,7 @@ class _$InitialImpl<T> implements _Initial<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -220,7 +220,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements RegisterState<T> {
+abstract class _Initial<T> implements AuthState<T> {
   const factory _Initial() = _$InitialImpl<T>;
 }
 
@@ -233,7 +233,7 @@ abstract class _$$LoadingImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
     implements _$$LoadingImplCopyWith<T, $Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
@@ -247,7 +247,7 @@ class _$LoadingImpl<T> implements Loading<T> {
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.loading()';
+    return 'AuthState<$T>.loading()';
   }
 
   @override
@@ -266,7 +266,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -279,7 +279,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -292,7 +292,7 @@ class _$LoadingImpl<T> implements Loading<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -346,7 +346,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements RegisterState<T> {
+abstract class Loading<T> implements AuthState<T> {
   const factory Loading() = _$LoadingImpl<T>;
 }
 
@@ -359,7 +359,7 @@ abstract class _$$PhoneNumberSubmitedImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$PhoneNumberSubmitedImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$PhoneNumberSubmitedImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$PhoneNumberSubmitedImpl<T>>
     implements _$$PhoneNumberSubmitedImplCopyWith<T, $Res> {
   __$$PhoneNumberSubmitedImplCopyWithImpl(_$PhoneNumberSubmitedImpl<T> _value,
       $Res Function(_$PhoneNumberSubmitedImpl<T>) _then)
@@ -373,7 +373,7 @@ class _$PhoneNumberSubmitedImpl<T> implements PhoneNumberSubmited<T> {
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.phoneNumberSubmited()';
+    return 'AuthState<$T>.phoneNumberSubmited()';
   }
 
   @override
@@ -393,7 +393,7 @@ class _$PhoneNumberSubmitedImpl<T> implements PhoneNumberSubmited<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
     return phoneNumberSubmited();
@@ -406,7 +406,7 @@ class _$PhoneNumberSubmitedImpl<T> implements PhoneNumberSubmited<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
     return phoneNumberSubmited?.call();
@@ -419,7 +419,7 @@ class _$PhoneNumberSubmitedImpl<T> implements PhoneNumberSubmited<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -473,7 +473,7 @@ class _$PhoneNumberSubmitedImpl<T> implements PhoneNumberSubmited<T> {
   }
 }
 
-abstract class PhoneNumberSubmited<T> implements RegisterState<T> {
+abstract class PhoneNumberSubmited<T> implements AuthState<T> {
   const factory PhoneNumberSubmited() = _$PhoneNumberSubmitedImpl<T>;
 }
 
@@ -486,7 +486,7 @@ abstract class _$$PhoneOtpVerifiedImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$PhoneOtpVerifiedImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$PhoneOtpVerifiedImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$PhoneOtpVerifiedImpl<T>>
     implements _$$PhoneOtpVerifiedImplCopyWith<T, $Res> {
   __$$PhoneOtpVerifiedImplCopyWithImpl(_$PhoneOtpVerifiedImpl<T> _value,
       $Res Function(_$PhoneOtpVerifiedImpl<T>) _then)
@@ -500,7 +500,7 @@ class _$PhoneOtpVerifiedImpl<T> implements PhoneOtpVerified<T> {
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.phoneOtpVerified()';
+    return 'AuthState<$T>.phoneOtpVerified()';
   }
 
   @override
@@ -520,7 +520,7 @@ class _$PhoneOtpVerifiedImpl<T> implements PhoneOtpVerified<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
     return phoneOtpVerified();
@@ -533,7 +533,7 @@ class _$PhoneOtpVerifiedImpl<T> implements PhoneOtpVerified<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
     return phoneOtpVerified?.call();
@@ -546,7 +546,7 @@ class _$PhoneOtpVerifiedImpl<T> implements PhoneOtpVerified<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -600,7 +600,7 @@ class _$PhoneOtpVerifiedImpl<T> implements PhoneOtpVerified<T> {
   }
 }
 
-abstract class PhoneOtpVerified<T> implements RegisterState<T> {
+abstract class PhoneOtpVerified<T> implements AuthState<T> {
   const factory PhoneOtpVerified() = _$PhoneOtpVerifiedImpl<T>;
 }
 
@@ -609,35 +609,62 @@ abstract class _$$CreateUserImplCopyWith<T, $Res> {
   factory _$$CreateUserImplCopyWith(
           _$CreateUserImpl<T> value, $Res Function(_$CreateUserImpl<T>) then) =
       __$$CreateUserImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
 }
 
 /// @nodoc
 class __$$CreateUserImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$CreateUserImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$CreateUserImpl<T>>
     implements _$$CreateUserImplCopyWith<T, $Res> {
   __$$CreateUserImplCopyWithImpl(
       _$CreateUserImpl<T> _value, $Res Function(_$CreateUserImpl<T>) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$CreateUserImpl<T>(
+      freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as T,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$CreateUserImpl<T> implements CreateUser<T> {
-  const _$CreateUserImpl();
+  const _$CreateUserImpl(this.data);
+
+  @override
+  final T data;
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.createUser()';
+    return 'AuthState<$T>.createUser(data: $data)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$CreateUserImpl<T>);
+        (other.runtimeType == runtimeType &&
+            other is _$CreateUserImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateUserImplCopyWith<T, _$CreateUserImpl<T>> get copyWith =>
+      __$$CreateUserImplCopyWithImpl<T, _$CreateUserImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -646,10 +673,10 @@ class _$CreateUserImpl<T> implements CreateUser<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
-    return createUser();
+    return createUser(data);
   }
 
   @override
@@ -659,10 +686,10 @@ class _$CreateUserImpl<T> implements CreateUser<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
-    return createUser?.call();
+    return createUser?.call(data);
   }
 
   @override
@@ -672,12 +699,12 @@ class _$CreateUserImpl<T> implements CreateUser<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (createUser != null) {
-      return createUser();
+      return createUser(data);
     }
     return orElse();
   }
@@ -726,8 +753,13 @@ class _$CreateUserImpl<T> implements CreateUser<T> {
   }
 }
 
-abstract class CreateUser<T> implements RegisterState<T> {
-  const factory CreateUser() = _$CreateUserImpl<T>;
+abstract class CreateUser<T> implements AuthState<T> {
+  const factory CreateUser(final T data) = _$CreateUserImpl<T>;
+
+  T get data;
+  @JsonKey(ignore: true)
+  _$$CreateUserImplCopyWith<T, _$CreateUserImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -741,7 +773,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<T, $Res>
-    extends _$PhoneAuthStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
+    extends _$AuthStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
     implements _$$ErrorImplCopyWith<T, $Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
@@ -771,7 +803,7 @@ class _$ErrorImpl<T> implements Error<T> {
 
   @override
   String toString() {
-    return 'PhoneAuthState<$T>.error(error: $error)';
+    return 'AuthState<$T>.error(error: $error)';
   }
 
   @override
@@ -798,7 +830,7 @@ class _$ErrorImpl<T> implements Error<T> {
     required TResult Function() loading,
     required TResult Function() phoneNumberSubmited,
     required TResult Function() phoneOtpVerified,
-    required TResult Function() createUser,
+    required TResult Function(T data) createUser,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -811,7 +843,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult? Function()? loading,
     TResult? Function()? phoneNumberSubmited,
     TResult? Function()? phoneOtpVerified,
-    TResult? Function()? createUser,
+    TResult? Function(T data)? createUser,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -824,7 +856,7 @@ class _$ErrorImpl<T> implements Error<T> {
     TResult Function()? loading,
     TResult Function()? phoneNumberSubmited,
     TResult Function()? phoneOtpVerified,
-    TResult Function()? createUser,
+    TResult Function(T data)? createUser,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -878,7 +910,7 @@ class _$ErrorImpl<T> implements Error<T> {
   }
 }
 
-abstract class Error<T> implements RegisterState<T> {
+abstract class Error<T> implements AuthState<T> {
   const factory Error({required final String error}) = _$ErrorImpl<T>;
 
   String get error;

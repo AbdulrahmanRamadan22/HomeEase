@@ -6,7 +6,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/otp/ui/widgets/otp_bloc_listener.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_cubit.dart';
 import 'package:pinput/pinput.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,8 +61,7 @@ class OtpScreen extends StatelessWidget {
                 height: 28.h,
               ),
               Pinput(
-                  controller:
-                      context.read<RegisterCubit>().codeSubmittedController,
+                  controller: context.read<AuthCubit>().codeSubmittedController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a valid code';
@@ -71,10 +70,10 @@ class OtpScreen extends StatelessWidget {
                   },
                   length: 6,
                   onCompleted: (value) {
-                    context.read<RegisterCubit>().codeSubmittedController.text =
+                    context.read<AuthCubit>().codeSubmittedController.text =
                         value;
                     log("value: $value");
-                    log("abod ${context.read<RegisterCubit>().codeSubmittedController.text}");
+                    log("abod ${context.read<AuthCubit>().codeSubmittedController.text}");
                   },
                   autofocus: true,
                   showCursor: true,
@@ -96,11 +95,8 @@ class OtpScreen extends StatelessWidget {
               CustomButton(
                 text: 'Submit',
                 onPressed: () {
-                
-                  context.read<RegisterCubit>().submitOTP(context
-                      .read<RegisterCubit>()
-                      .codeSubmittedController
-                      .text);
+                  context.read<AuthCubit>().submitOTP(
+                      context.read<AuthCubit>().codeSubmittedController.text);
                 },
               ),
               SizedBox(

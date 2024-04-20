@@ -5,7 +5,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -15,7 +15,7 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<RegisterCubit>().formKey,
+      key: context.read<AuthCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,7 +37,7 @@ class RegisterForm extends StatelessWidget {
                 return 'Please enter a valid Full Name';
               }
             },
-            controller: context.read<RegisterCubit>().fullNameController,
+            controller: context.read<AuthCubit>().fullNameController,
           ),
           SizedBox(
             height: 18.h,
@@ -64,7 +64,7 @@ class RegisterForm extends StatelessWidget {
           // ),
 
           IntlPhoneField(
-            controller: context.read<RegisterCubit>().phoneController,
+            controller: context.read<AuthCubit>().phoneController,
             decoration: InputDecoration(
               isDense: true,
               contentPadding:
@@ -112,8 +112,8 @@ class RegisterForm extends StatelessWidget {
               print(newValue!.countryCode);
             },
             onChanged: (phone) {
-              context.read<RegisterCubit>().countryCode = phone.countryCode;
-              log(context.read<RegisterCubit>().countryCode);
+              context.read<AuthCubit>().countryCode = phone.countryCode;
+              log(context.read<AuthCubit>().countryCode);
 
               print(phone.countryCode);
             },
@@ -137,7 +137,7 @@ class RegisterForm extends StatelessWidget {
                 return 'Please enter a valid Password';
               }
             },
-            controller: context.read<RegisterCubit>().passwordController,
+            controller: context.read<AuthCubit>().passwordController,
           ),
           SizedBox(
             height: 48.h,

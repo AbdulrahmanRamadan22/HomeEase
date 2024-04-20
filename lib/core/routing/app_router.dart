@@ -8,17 +8,17 @@ import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
 import 'package:home_ease/features/otp/ui/otp_screen.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_cubit.dart';
 import 'package:home_ease/features/register/ui/register_screen.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screan.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
-  RegisterCubit? registerCubit;
+  AuthCubit? authCubit;
 
   AppRouter() {
-    registerCubit = RegisterCubit();
+    authCubit = AuthCubit();
   }
 
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -40,16 +40,16 @@ class AppRouter {
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<RegisterCubit>.value(
-            value: registerCubit!,
+          builder: (context) => BlocProvider<AuthCubit>.value(
+            value: authCubit!,
             child: const RegisterScreen(),
           ),
         );
       case Routes.otpScreen:
       final phoneNumber = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<RegisterCubit>.value(
-            value: registerCubit!,
+          builder: (context) => BlocProvider<AuthCubit>.value(
+            value: authCubit!,
             child: OtpScreen(
               phoneNumber: phoneNumber,
             ),
