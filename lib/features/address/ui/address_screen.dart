@@ -24,83 +24,85 @@ class AddressScreen extends StatelessWidget {
           horizontal: 22,
           vertical: 38,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CardAddressLocation(
-              imagebackground: 'assets/images/Ellipse 117.png',
-              foregroundImage: 'assets/images/Pin_duotone_line.png',
-              title: 'your location',
-              subtitle: 'Please add address',
-            ),
-            SizedBox(height: 32.h),
-            Text(
-              'City',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              hintText: 'Enter your city',
-              validator: (p0) => () {},
-              suffixIcon: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_downward_outlined,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CardAddressLocation(
+                imagebackground: 'assets/images/Ellipse 117.png',
+                foregroundImage: 'assets/images/Pin_duotone_line.png',
+                title: 'your location',
+                subtitle: 'Please add address',
+              ),
+              SizedBox(height: 32.h),
+              Text(
+                'City',
+                style: TextStyles.font16Black600,
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              AppTextFormField(
+                hintText: 'Enter your city',
+                validator: (p0) => () {},
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.arrow_downward_outlined,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            Text(
-              'Region',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              hintText: 'Enter your city',
-              validator: (p0) => () {},
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            Text(
-              'street',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              hintText: 'Add Your Street',
-              validator: (p0) => () {},
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            Text(
-              'Building',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              hintText: 'Add Number of Buliding',
-              validator: (p0) => () {},
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            CustomButton(
-              onPressed: () {},
-              text: 'Add',
-            )
-          ],
+              SizedBox(
+                height: 18.h,
+              ),
+              Text(
+                'Region',
+                style: TextStyles.font16Black600,
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              AppTextFormField(
+                hintText: 'Enter your city',
+                validator: (p0) => () {},
+              ),
+              SizedBox(
+                height: 18.h,
+              ),
+              Text(
+                'street',
+                style: TextStyles.font16Black600,
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              AppTextFormField(
+                hintText: 'Add Your Street',
+                validator: (p0) => () {},
+              ),
+              SizedBox(
+                height: 18.h,
+              ),
+              Text(
+                'Building',
+                style: TextStyles.font16Black600,
+              ),
+              SizedBox(
+                height: 8.h,
+              ),
+              AppTextFormField(
+                hintText: 'Add Number of Buliding',
+                validator: (p0) => () {},
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              CustomButton(
+                onPressed: () {},
+                text: 'Add',
+              )
+            ],
+          ),
         ),
       ),
     );
