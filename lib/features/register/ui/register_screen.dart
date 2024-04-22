@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
@@ -49,6 +51,10 @@ class RegisterScreen extends StatelessWidget {
                 text: 'Register',
                 onPressed: () {
                   // showProgressIndicator(context);
+
+                  
+
+                  log(context.read<AuthCubit>().phoneNumber);
 
                   validateThenDoSignUp(context);
 

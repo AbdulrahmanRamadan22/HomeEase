@@ -1,23 +1,28 @@
 import 'dart:developer';
 
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:home_ease/core/models/users/user_request_body.dart';
 import 'package:home_ease/core/networking/auth_social_services.dart';
 import 'package:home_ease/core/networking/firestore_services.dart';
 import 'package:home_ease/features/register/logic/auth_state.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(const AuthState.initial());
 
-  late String verificationId;
+  String verificationId = '';
+  
 
   final formKey = GlobalKey<FormState>();
   TextEditingController passwordController = TextEditingController();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+
   TextEditingController codeSubmittedController = TextEditingController();
+
   late String countryCode;
   late String phoneNumber = countryCode + phoneController.text;
   Duration timeout = const Duration(seconds: 30);
@@ -57,26 +62,28 @@ class AuthCubit extends Cubit<AuthState> {
 
 //Handle when a code has been sent to the device from Firebase, used to prompt users to enter the code.
   void codeSent(String verificationId, int? resendToken) {
-    log('codeSent');
+    print('codeSent');
+
+
     this.verificationId = verificationId;
+
+    print("this.verificationId ${this.verificationId}");
     emit(const AuthState.phoneNumberSubmited());
   }
 
 //Handle a timeout of when automatic SMS code handling fails.
   void codeAutoRetrievalTimeout(String verificationId) {
-    log('codeAutoRetrievalTimeout');
+    print('codeAutoRetrievalTimeout');
   }
 
   Future<void> submitOTP(String otpCode) async {
-    log('submitOTP : $otpCode');
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        // ignore: unnecessary_this
-        verificationId: this.verificationId,
-        smsCode: otpCode);
+    print("submitOTP");
 
-    log("providerId ${credential.providerId}");
-    log("credential.smsCode${credential.smsCode.toString()}");
-    log("credential.verificationId${credential.verificationId.toString()}");
+    print("submitOTP aaaaaaaaaaaaaaaaaa$otpCode");
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: verificationId, smsCode: otpCode);
+
+    print("submitOTP aaaaaaaaaaaaaaaaaa$otpCode");
 
     await login(credential);
   }
@@ -98,6 +105,7 @@ class AuthCubit extends Cubit<AuthState> {
     User firebaseUser = FirebaseAuth.instance.currentUser!;
     return firebaseUser;
   }
+
   Future<void> emitSignInWithGoogleAuthStates() async {
     emit(const AuthState.loading());
     authSocial.signInWithGoogle().then((value) {
@@ -119,9 +127,28 @@ class AuthCubit extends Cubit<AuthState> {
     });
   }
 
-  Future<void> emitRegisterFacebookAuthStates() async {
-    
+  Future<void> emitSignInWithFacebookAuthStates() async {
+    emit(const AuthState.loading());
+
+    authSocial.signInWithFacebook2().then((value) {
+      service.setData(
+        path: 'users/${value.user!.uid.toString()}',
+        data: UserRequestBody(
+          fullName: value.user!.displayName.toString(),
+          email: value.user!.email.toString(),
+          profilePhotoURL: value.user!.photoURL.toString(),
+          type: 'user',
+          uId: value.user!.uid.toString(),
+          phone: value.user!.phoneNumber.toString(),
+        ).toJson(),
+      );
+
+      emit(AuthState.createUser(value));
+    }).catchError((error) {
+      emit(AuthState.error(error: error.toString()));
+    });
   }
+}
 
   // Future<void> saveUserInformation() async {
   //   CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -143,7 +170,7 @@ class AuthCubit extends Cubit<AuthState> {
   //     emit(RegisterState.error(error: error.toString()));
   //   });
   // }
-}
+//}
 
 
 

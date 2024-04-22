@@ -16,13 +16,15 @@ class OtpScreen extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final phoneNumber;
 
+  String otpCode = "";
+
   OtpScreen({
     super.key,
-    this.timeSend,
+    // this.timeSend,
     required this.phoneNumber,
   });
 
-  int? timeSend;
+  // int? timeSend;
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -61,7 +63,7 @@ class OtpScreen extends StatelessWidget {
                 height: 28.h,
               ),
               Pinput(
-                  controller: context.read<AuthCubit>().codeSubmittedController,
+                  // controller: context.read<AuthCubit>().codeSubmittedController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a valid code';
@@ -70,10 +72,14 @@ class OtpScreen extends StatelessWidget {
                   },
                   length: 6,
                   onCompleted: (value) {
-                    context.read<AuthCubit>().codeSubmittedController.text =
-                        value;
-                    log("value: $value");
-                    log("abod ${context.read<AuthCubit>().codeSubmittedController.text}");
+                    log(value);
+
+                    // context.read<AuthCubit>().codeSubmittedController.text =
+                    otpCode = value;
+
+                    log("OtpCode +++++++++++++   $otpCode");
+                    // log("value: $value");
+                    // log("abod ${context.read<AuthCubit>().codeSubmittedController.text}");
                   },
                   autofocus: true,
                   showCursor: true,
@@ -86,8 +92,11 @@ class OtpScreen extends StatelessWidget {
                   ),
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                   onSubmitted: (pin) {
+                    otpCode = pin;
+                    log("OtpCode$otpCode");
+
                     // context.read<RegisterCubit>().codeSubmittedController.text = pin;
-                    print(pin);
+                    log(pin);
                   }),
               SizedBox(
                 height: 48.h,
@@ -95,8 +104,9 @@ class OtpScreen extends StatelessWidget {
               CustomButton(
                 text: 'Submit',
                 onPressed: () {
-                  context.read<AuthCubit>().submitOTP(
-                      context.read<AuthCubit>().codeSubmittedController.text);
+                  log(otpCode);
+
+                  context.read<AuthCubit>().submitOTP(otpCode);
                 },
               ),
               SizedBox(
@@ -111,9 +121,9 @@ class OtpScreen extends StatelessWidget {
                     width: 5.w,
                   ),
                   Text(
-                    '$timeSend 00.50',
+                    'timeSend 00.50',
                     style: TextStyles.font14yallow500,
-                  )
+                  ),
                 ],
               ),
               const OtpBlocListener(),

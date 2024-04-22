@@ -45,6 +45,7 @@ class AppRouter {
             child: const RegisterScreen(),
           ),
         );
+        
       case Routes.otpScreen:
       final phoneNumber = settings.arguments as String;
         return MaterialPageRoute(

@@ -9,8 +9,15 @@ import 'package:home_ease/features/register/logic/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class RegisterForm extends StatelessWidget {
+class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
+
+  @override
+  State<RegisterForm> createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  bool isPasswordObscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +71,12 @@ class RegisterForm extends StatelessWidget {
           // ),
 
           IntlPhoneField(
+            validator: (value) {
+              if (value == null || value.completeNumber.isEmpty) {
+                return 'Please enter a valid phone number';
+              }
+              return null;
+            },
             controller: context.read<AuthCubit>().phoneController,
             decoration: InputDecoration(
               isDense: true,
@@ -127,9 +140,16 @@ class RegisterForm extends StatelessWidget {
             height: 8.h,
           ),
           AppTextFormField(
-            suffixIcon: Icon(
-              Icons.visibility,
-              color: ColorsApp.gray,
+            isObscureText: isPasswordObscureText,
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isPasswordObscureText = !isPasswordObscureText;
+                });
+              },
+              child: Icon(
+                isPasswordObscureText ? Icons.visibility_off : Icons.visibility,
+              ),
             ),
             hintText: 'Enter Your Password',
             validator: (value) {

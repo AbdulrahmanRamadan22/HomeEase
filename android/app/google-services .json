@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "962821068285",
+    "project_id": "home-ease-distribute",
+    "storage_bucket": "home-ease-distribute.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962821068285:android:6b9c368869bc6cb2503594",
+        "android_client_info": {
+          "package_name": "com.example.home_ease"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962821068285-dl6j2ug348e03khcnkt5p33nd63rgu6e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.home_ease",
+            "certificate_hash": "84561f4dc3801dba9459ed2735475c2656eb6b83"
+          }
+        },
+        {
+          "client_id": "962821068285-8644c6defrfoiiavsbnconacd5lpddu0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbkJ9vmbaQHDFBdXUJdCrnS8qIm3yxSt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962821068285-8644c6defrfoiiavsbnconacd5lpddu0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "962821068285-1mus9moech0jc7v5h66reacp8s0fidl0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.homeEase.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

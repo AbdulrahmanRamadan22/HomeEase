@@ -1,6 +1,8 @@
 // ignore: depend_on_referenced_packages
 
 // ignore: depend_on_referenced_packages
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
@@ -21,8 +23,8 @@ class OtpBlocListener extends StatelessWidget {
     return BlocListener<AuthCubit, AuthState>(
       listenWhen: (previous, current) =>
           current is Loading ||
-          current is PhoneNumberSubmited ||
           current is PhoneOtpVerified ||
+          current is PhoneNumberSubmited ||
           current is CreateUser ||
           current is Error,
       listener: (context, state) {
@@ -31,6 +33,8 @@ class OtpBlocListener extends StatelessWidget {
             showProgressIndicator(context);
           },
           phoneOtpVerified: () {
+
+            // context.pop();
             showSnackBar(
               context,
               content: "OTP verified successfully go to home screen",
@@ -42,7 +46,7 @@ class OtpBlocListener extends StatelessWidget {
             );
           },
           error: (error) {
-            // log("aboooooooooooooooooooooooooooooood${error.toString()}");
+            log("aboooooooooooooooooooooooooooooood${error.toString()}");
 
             showSnackBar(
               context,

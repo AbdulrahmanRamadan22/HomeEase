@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">home-ease</string>
+    <string name="facebook_app_id">445260077871510</string>
+    <string name="fb_login_protocol_scheme">fb445260077871510</string>
+    <string name="facebook_client_token">39d33861303c0d975b889adae57f832a</string>
+</resources>
+

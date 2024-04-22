@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
+        "abod",
+        "ARGB",
+        "autofocus",
+        "Autovalidate",
         "Categorie",
         "Dont",
         "Firestore",
@@ -8,5 +12,6 @@
         "Submited",
         "svgs",
         "yallow"
-    ]
+    ],
+    "cmake.sourceDirectory": "D:/my work projects/my work projects in flutter/home_ease/linux"
 }

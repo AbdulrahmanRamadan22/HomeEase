@@ -21,7 +21,9 @@ class LoginAndRegisterCardSocial extends StatelessWidget {
         CardSocial(
           text: 'Facebook',
           image: 'assets/images/facebook.png',
-          onTap: () {},
+          onTap: () {
+            context.read<AuthCubit>().emitSignInWithFacebookAuthStates();
+          },
         ),
         SizedBox(
           height: 14.h,
