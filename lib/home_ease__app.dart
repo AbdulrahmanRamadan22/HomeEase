@@ -30,7 +30,7 @@ class HomeEase extends StatelessWidget {
           primarySwatch: mainGreen,
           fontFamily: 'Quicksand',
         ),
-        initialRoute: Routes.addressScreenScreen,
+        initialRoute: Routes.editProfileScreen,
       ),
     );
   }

@@ -5,10 +5,11 @@ class Routes {
   static const String registerScreen = "/registerScreen";
   static const String otpScreen = "/otpScreen";
   static const String resetPasswordScreen = "/resetPasswordScreen";
-  static const String profileScreenScreen = "/profileScreenScreen";
-  static const String notificationScreenScreen = "/notificationScreenScreen";
+  static const String profileScreen = "/profileScreen";
+  static const String notificationScreen = "/notificationScreen";
   static const String paymentScreenScreen = "/paymentScreenScreen";
   static const String addressScreenScreen = "/addressScreenScreen";
+  static const String editProfileScreen = "/editProfileScreen";
 
   static const String homeScreen = "/homeScreen";
 

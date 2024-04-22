@@ -1,17 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:home_ease/core/helpers/navigation_extensions.dart';
-import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class EditProfileSreen extends StatelessWidget {
-  const EditProfileSreen({super.key});
+class EditProfileScreen extends StatelessWidget {
+  const EditProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,11 +29,7 @@ class EditProfileSreen extends StatelessWidget {
               Align(
                 child: Card(
                   elevation: 4,
-                  child: SvgPicture.asset(
-                    'assets/svgs/Group 4.svg',
-                    width: 100.w,
-                    height: 100.h,
-                  ),
+                  child: Image.asset("assets/images/profile.png"),
                 ),
               ),
               SizedBox(
@@ -106,33 +99,26 @@ class EditProfileSreen extends StatelessWidget {
               SizedBox(
                 height: 89.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 180.w,
-                    height: 60.h,
-                    child: Card(
-                      color: ColorsApp.black,
-                      elevation: 0,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.delete_outlined,
-                            color: ColorsApp.darkGreen,
-                          ),
-                          TextButton(
-                            child: Text(
-                              'Delete Account',
-                              style: TextStyles.font14Black500,
-                            ),
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
+              Align(
+                alignment: Alignment.center,
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red[100],
+                    minimumSize: Size(220.w, 60.h),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.r),
                     ),
                   ),
-                ],
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.delete_outlined,
+                    color: ColorsApp.red,
+                  ),
+                  label: Text(
+                    'Delete Account',
+                    style: TextStyles.font16Black700,
+                  ),
+                ),
               ),
             ],
           ),
