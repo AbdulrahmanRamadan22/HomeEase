@@ -8,7 +8,6 @@ class ColorsApp {
   static const Color darkGreen = Color(0xFF4B8673);
 
   static const Color lightGreen = Color(0xFFF9FFF6);
-  
 
   static const Color white = Color(0xFFFFFFFF);
 
@@ -19,6 +18,9 @@ class ColorsApp {
   static Color gray = const Color(0xFFB5B5B5);
 
   static Color yallow = const Color(0xFFF5DF99);
+  static Color mintgreendark = const Color(0xFF66C8CE);
+
+  static Color mintgreenlight = const Color(0xFF50E3C2);
 
   static Color blackOpacity = const Color(0xFF000000).withOpacity(0.5);
 
