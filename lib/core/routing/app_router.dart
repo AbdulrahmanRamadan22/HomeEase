@@ -6,6 +6,7 @@ import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
+import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
 import 'package:home_ease/features/otp/ui/otp_screen.dart';
 import 'package:home_ease/features/register/logic/auth_cubit.dart';
@@ -34,6 +35,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const SelectLanguageScreen(),
         );
+
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (context) => const LoginScreen(),
@@ -47,7 +49,7 @@ class AppRouter {
         );
         
       case Routes.otpScreen:
-      final phoneNumber = settings.arguments as String;
+        final phoneNumber = settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => BlocProvider<AuthCubit>.value(
             value: authCubit!,
@@ -60,6 +62,11 @@ class AppRouter {
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ResetPasswordScreen(),
+        );
+
+      case Routes.notificationScreenScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NotificationScreen(),
         );
 
       case Routes.forgetPasswordScreen:
