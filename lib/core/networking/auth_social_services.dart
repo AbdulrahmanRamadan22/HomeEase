@@ -47,7 +47,6 @@ class AuthSocial implements AuthSocialServices {
 
     return userCredential;
 
-    // Once signed in, return the UserCredential
   }
 
   Future<UserCredential> signInWithFacebook2() async {
@@ -87,6 +86,19 @@ class AuthSocial implements AuthSocialServices {
     return userCredential;
   }
 
+    @override
+  Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
+
+  @override
+  User? get currentUser => _firebaseAuth.currentUser;
+
+  @override
+  Future<void> logout() async {
+    await _firebaseAuth.signOut();
+    await _googleSignIn.signOut();
+    await FacebookAuth.instance.logOut();
+  }
+
   // @override
   // Future<User?> loginWithEmailAndPassword(String email, String password) async {
   //   final userAuth = await _firebaseAuth.signInWithEmailAndPassword(
@@ -102,80 +114,8 @@ class AuthSocial implements AuthSocialServices {
   //   return userAuth.user;
   // }
 
-  // @override
-  // Future<UserCredential?> signInWithGoogle() async {
-  //   final googleUser = await _googleSignIn.signIn();
-  //   if (googleUser != null) {
-  //     final googleAuth = await googleUser.authentication;
-  //     if (googleAuth.idToken != null) {
-  //       final userCredential = await _firebaseAuth.signInWithCredential(
-  //         GoogleAuthProvider.credential(
-  //           idToken: googleAuth.idToken,
-  //           accessToken: googleAuth.accessToken,
-  //         ),
-  //       ).then((value){
-  //          _service.setData(
-  //         path: 'users/${value.user!.uid}',
-  //         data: UserRequestBody(
-  //           fullName: value.user!.displayName.toString(),
-  //           email: value.user!.email.toString(),
-  //           profilePhotoURL: value.user!.photoURL.toString(),
-  //           type: 'user',
-  //           uId: value.user!.uid.toString(),
-  //           phone: value.user!.phoneNumber.toString(),
-  //         ).toJson(),
-  //       ).catchError((error){
 
-  //       });
 
-  //       });
-
-  //       //   {
-  //       //     'fullName': userCredential.user!.displayName,
-  //       //     'email': userCredential.user!.email,
-  //       //     'profilePic': userCredential.user!.photoURL,
-  //       //     'uid': userCredential.user!.uid,
-  //       //     'type': 'user',
-  //       //     'phone': '',
-  //       //   },
-  //       // );
-
-  //       return userCredential;
-  //     }
-  //   }
-  //   return null;
-  // }
-
-  // @override
-  // Future<UserCredential?> signInWithGoogle() async {
-  //   final googleUser = await _googleSignIn.signIn();
-  //   if (googleUser != null) {
-  //     final googleAuth = await googleUser.authentication;
-  //     if (googleAuth.idToken != null) {
-  //       final userCredential = await _firebaseAuth.signInWithCredential(
-  //         GoogleAuthProvider.credential(
-  //           idToken: googleAuth.idToken,
-  //           accessToken: googleAuth.accessToken,
-  //         ),
-  //       );
-  //       return userCredential;
-  //     }
-  //   }
-  //   return null;
-  // }
-
-  @override
-  Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
-
-  @override
-  User? get currentUser => _firebaseAuth.currentUser;
-
-  @override
-  Future<void> logout() async {
-    await _firebaseAuth.signOut();
-    await _googleSignIn.signOut();
-    await FacebookAuth.instance.logOut();
-  }
 }
 
 

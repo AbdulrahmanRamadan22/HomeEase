@@ -16,9 +16,7 @@ class OtpScreen extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final phoneNumber;
 
-  String otpCode = "";
-
-  OtpScreen({
+  const OtpScreen({
     super.key,
     // this.timeSend,
     required this.phoneNumber,
@@ -27,18 +25,18 @@ class OtpScreen extends StatelessWidget {
   // int? timeSend;
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 58.w,
-      height: 60.h,
-      textStyle: const TextStyle(
-        fontSize: 30,
-      ),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 235, 244, 238),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.transparent),
-      ),
-    );
+    defaultPinTheme([Color color = Colors.transparent]) => PinTheme(
+          width: 58.w,
+          height: 60.h,
+          textStyle: const TextStyle(
+            fontSize: 30,
+          ),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 235, 244, 238),
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(color: color),
+          ),
+        );
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -63,50 +61,51 @@ class OtpScreen extends StatelessWidget {
                 height: 28.h,
               ),
               Pinput(
-                  // controller: context.read<AuthCubit>().codeSubmittedController,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a valid code';
-                    }
-                    return null;
-                  },
-                  length: 6,
-                  onCompleted: (value) {
-                    log(value);
+                controller: context.read<AuthCubit>().otpController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter a valid code';
+                  }
+                  return null;
+                },
+                length: 6,
+                // onCompleted: (value) {
+                //   log(value);
 
-                    // context.read<AuthCubit>().codeSubmittedController.text =
-                    otpCode = value;
+                //   // context.read<AuthCubit>().codeSubmittedController.text =
+                //   otpCode = value;
 
-                    log("OtpCode +++++++++++++   $otpCode");
-                    // log("value: $value");
-                    // log("abod ${context.read<AuthCubit>().codeSubmittedController.text}");
-                  },
-                  autofocus: true,
-                  showCursor: true,
-                  keyboardType: TextInputType.number,
-                  defaultPinTheme: defaultPinTheme,
-                  focusedPinTheme: defaultPinTheme.copyWith(
-                    decoration: defaultPinTheme.decoration!.copyWith(
-                      border: Border.all(color: ColorsApp.mainGreen),
-                    ),
-                  ),
-                  pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                  onSubmitted: (pin) {
-                    otpCode = pin;
-                    log("OtpCode$otpCode");
+                //   log("OtpCode +++++++++++++   $otpCode");
+                //   // log("value: $value");
+                //   // log("abod ${context.read<AuthCubit>().codeSubmittedController.text}");
+                // },
+                autofocus: true,
+                showCursor: true,
+                keyboardType: TextInputType.number,
+                defaultPinTheme: defaultPinTheme(),
+                focusedPinTheme: defaultPinTheme(ColorsApp.mainGreen),
+                followingPinTheme: defaultPinTheme(ColorsApp.mainGreen),
+                pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                // onSubmitted: (pin) {
+                //   otpCode = pin;
+                //   log("OtpCode$otpCode");
 
-                    // context.read<RegisterCubit>().codeSubmittedController.text = pin;
-                    log(pin);
-                  }),
+                //   // context.read<RegisterCubit>().codeSubmittedController.text = pin;
+                //   log(pin);
+                // }
+                onChanged: (value) {
+                  context.read<AuthCubit>().otpController.text = value;
+                },
+              ),
               SizedBox(
                 height: 48.h,
               ),
               CustomButton(
                 text: 'Submit',
                 onPressed: () {
-                  log(otpCode);
+                  log( context.read<AuthCubit>().otpController.text );
 
-                  context.read<AuthCubit>().submitOTP(otpCode);
+                  context.read<AuthCubit>().submitOTP1(context.read<AuthCubit>().otpController.text,context.read<AuthCubit>().verificationId );
                 },
               ),
               SizedBox(

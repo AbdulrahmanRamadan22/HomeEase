@@ -12,32 +12,25 @@ import 'firebase_options.dart';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
-
-
-
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   WidgetsFlutterBinding.ensureInitialized();
-    Bloc.observer = MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
 
-  
-await Firebase.initializeApp(
+  await Firebase.initializeApp(
+    // options: DefaultFirebaseOptions.currentPlatform,
 
-      options: DefaultFirebaseOptions.currentPlatform,
-
-    // options: const FirebaseOptions(
-    //   apiKey: "AIzaSyBbkJ9vmbaQHDFBdXUJdCrnS8qIm3yxSt0",
-    //   appId: "1:962821068285:android:6b9c368869bc6cb2503594",
-    //   messagingSenderId: "962821068285",
-    //   projectId: "home-ease-distribute",
-    // ),
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyBbkJ9vmbaQHDFBdXUJdCrnS8qIm3yxSt0",
+      appId: "1:962821068285:android:6b9c368869bc6cb2503594",
+      messagingSenderId: "962821068285",
+      projectId: "home-ease-distribute",
+      storageBucket: "home-ease-distribute.appspot.com",
+    ),
   );
- 
-
-
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.white,

@@ -120,15 +120,14 @@ class _RegisterFormState extends State<RegisterForm> {
               filled: true,
             ),
             initialCountryCode: 'EG',
-            onSaved: (newValue) {
-              print("abooooooooooood");
-              print(newValue!.countryCode);
-            },
+            // onSaved: (newValue) {
+            //   print("abooooooooooood");
+            //   print(newValue!.countryCode);
+            // },
             onChanged: (phone) {
-              context.read<AuthCubit>().countryCode = phone.countryCode;
-              log(context.read<AuthCubit>().countryCode);
+              context.read<AuthCubit>().phoneNumber = phone.completeNumber;
 
-              print(phone.countryCode);
+              log(context.read<AuthCubit>().phoneNumber);
             },
           ),
 

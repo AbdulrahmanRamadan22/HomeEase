@@ -46,6 +46,7 @@ class OtpBlocListener extends StatelessWidget {
             );
           },
           error: (error) {
+
             log("aboooooooooooooooooooooooooooooood${error.toString()}");
 
             showSnackBar(

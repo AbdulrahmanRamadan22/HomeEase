@@ -52,8 +52,6 @@ class RegisterScreen extends StatelessWidget {
                 onPressed: () {
                   // showProgressIndicator(context);
 
-                  
-
                   log(context.read<AuthCubit>().phoneNumber);
 
                   validateThenDoSignUp(context);
@@ -83,8 +81,10 @@ class RegisterScreen extends StatelessWidget {
 
   void validateThenDoSignUp(BuildContext context) {
     if (context.read<AuthCubit>().formKey.currentState!.validate()) {
-      context.read<AuthCubit>().emitRegisterPhoneAuthStates();
+      context.read<AuthCubit>().sendOTPCode(context.read<AuthCubit>().phoneNumber);
       // context.read<RegisterCubit>().saveUserInformation();
     }
   }
 }
+
+
