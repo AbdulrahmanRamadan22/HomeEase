@@ -13,7 +13,7 @@ import 'package:home_ease/features/payment/ui/payment_screen.dart';
 import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/register_screen.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
-import 'package:home_ease/features/sddress/ui/address_screen.dart';
+import 'package:home_ease/features/address/ui/address_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screan.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
