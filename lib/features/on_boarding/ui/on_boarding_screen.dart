@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
@@ -55,6 +56,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   bool isLast = false;
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +78,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   Routes.homeLayout,
                   predicate: (route) => false,
                 );
+
+                CacheHelper.saveData(key: "onBoarding", value: true);
               },
             ),
           )
@@ -90,6 +96,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 if (index == boarding.length - 1) {
                   setState(() {
                     isLast = true;
+                    // CacheHelper.saveData(key: "onBoarding", value: isLast);
                   });
                 } else {
                   setState(() {
@@ -129,6 +136,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     Routes.homeLayout,
                     predicate: (route) => false,
                   );
+                  CacheHelper.saveData(key: "onBoarding", value: true);
                 } else {
                   _pageController.nextPage(
                     curve: Curves.fastLinearToSlowEaseIn,

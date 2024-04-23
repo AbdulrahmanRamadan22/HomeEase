@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
@@ -109,6 +110,8 @@ class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
                 text: LocaleKeys.Enter.tr(),
                 onPressed: () {
                   context.pushNamed(Routes.onBoardingScreen);
+                  CacheHelper.saveData(key: "selectLanguageScreen", value: true);
+
                 },
               ),
             ],

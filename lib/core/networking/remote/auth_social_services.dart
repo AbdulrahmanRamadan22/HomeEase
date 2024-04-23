@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
-abstract class AuthSocialServices {
+abstract class AuthFirebaseServices {
   User? get currentUser;
 
   Stream<User?> authStateChanges();
@@ -21,7 +21,7 @@ abstract class AuthSocialServices {
   Future<void> logout();
 }
 
-class AuthSocial implements AuthSocialServices {
+class AuthFirebase implements AuthFirebaseServices {
   final _firebaseAuth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn();
 

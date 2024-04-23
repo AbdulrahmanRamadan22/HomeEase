@@ -5,7 +5,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/register/logic/auth_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -22,7 +22,7 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<AuthCubit>().formKey,
+      key: context.read<AuthPhoneCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,7 +44,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Please enter a valid Full Name';
               }
             },
-            controller: context.read<AuthCubit>().fullNameController,
+            controller: context.read<AuthPhoneCubit>().fullNameController,
           ),
           SizedBox(
             height: 18.h,
@@ -77,7 +77,7 @@ class _RegisterFormState extends State<RegisterForm> {
               }
               return null;
             },
-            controller: context.read<AuthCubit>().phoneController,
+            controller: context.read<AuthPhoneCubit>().phoneController,
             decoration: InputDecoration(
               isDense: true,
               contentPadding:
@@ -125,9 +125,9 @@ class _RegisterFormState extends State<RegisterForm> {
             //   print(newValue!.countryCode);
             // },
             onChanged: (phone) {
-              context.read<AuthCubit>().phoneNumber = phone.completeNumber;
+              context.read<AuthPhoneCubit>().phoneNumber = phone.completeNumber;
 
-              log(context.read<AuthCubit>().phoneNumber);
+              log(context.read<AuthPhoneCubit>().phoneNumber);
             },
           ),
 
@@ -156,7 +156,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Please enter a valid Password';
               }
             },
-            controller: context.read<AuthCubit>().passwordController,
+            controller: context.read<AuthPhoneCubit>().passwordController,
           ),
           SizedBox(
             height: 48.h,

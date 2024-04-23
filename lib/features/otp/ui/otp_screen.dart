@@ -6,7 +6,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/otp/ui/widgets/otp_bloc_listener.dart';
-import 'package:home_ease/features/register/logic/auth_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:pinput/pinput.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,7 +61,7 @@ class OtpScreen extends StatelessWidget {
                 height: 28.h,
               ),
               Pinput(
-                controller: context.read<AuthCubit>().otpController,
+                controller: context.read<AuthPhoneCubit>().otpController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a valid code';
@@ -94,7 +94,7 @@ class OtpScreen extends StatelessWidget {
                 //   log(pin);
                 // }
                 onChanged: (value) {
-                  context.read<AuthCubit>().otpController.text = value;
+                  context.read<AuthPhoneCubit>().otpController.text = value;
                 },
               ),
               SizedBox(
@@ -103,9 +103,9 @@ class OtpScreen extends StatelessWidget {
               CustomButton(
                 text: 'Submit',
                 onPressed: () {
-                  log( context.read<AuthCubit>().otpController.text );
+                  log( context.read<AuthPhoneCubit>().otpController.text );
 
-                  context.read<AuthCubit>().submitOTP1(context.read<AuthCubit>().otpController.text,context.read<AuthCubit>().verificationId );
+                  context.read<AuthPhoneCubit>().submitOTP1(context.read<AuthPhoneCubit>().otpController.text,context.read<AuthPhoneCubit>().verificationId );
                 },
               ),
               SizedBox(

@@ -10,8 +10,8 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/register/logic/auth_cubit.dart';
-import 'package:home_ease/features/register/logic/auth_state.dart';
+import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_phone_state.dart';
 
 // ignore: depend_on_referenced_packages
 
@@ -20,7 +20,7 @@ class OtpBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocListener<AuthPhoneCubit, AuthPhoneState>(
       listenWhen: (previous, current) =>
           current is Loading ||
           current is PhoneOtpVerified ||

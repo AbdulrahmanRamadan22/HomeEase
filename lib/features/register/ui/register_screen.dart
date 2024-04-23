@@ -6,7 +6,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
-import 'package:home_ease/features/register/logic/auth_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:home_ease/features/register/ui/widgets/already_have_account_text.dart';
 import 'package:home_ease/features/register/ui/widgets/auth_bloc_listener.dart';
 import 'package:home_ease/features/register/ui/widgets/register_form.dart';
@@ -52,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                 onPressed: () {
                   // showProgressIndicator(context);
 
-                  log(context.read<AuthCubit>().phoneNumber);
+                  log(context.read<AuthPhoneCubit>().phoneNumber);
 
                   validateThenDoSignUp(context);
 
@@ -80,8 +80,8 @@ class RegisterScreen extends StatelessWidget {
   }
 
   void validateThenDoSignUp(BuildContext context) {
-    if (context.read<AuthCubit>().formKey.currentState!.validate()) {
-      context.read<AuthCubit>().sendOTPCode(context.read<AuthCubit>().phoneNumber);
+    if (context.read<AuthPhoneCubit>().formKey.currentState!.validate()) {
+      context.read<AuthPhoneCubit>().sendOTPCode(context.read<AuthPhoneCubit>().phoneNumber);
       // context.read<RegisterCubit>().saveUserInformation();
     }
   }

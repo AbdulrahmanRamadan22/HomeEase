@@ -8,8 +8,8 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/register/logic/auth_cubit.dart';
-import 'package:home_ease/features/register/logic/auth_state.dart';
+import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
+import 'package:home_ease/features/register/logic/auth_phone_state.dart';
 
 // ignore: depend_on_referenced_packages
 
@@ -18,7 +18,7 @@ class AuthBlocListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit, AuthState>(
+    return BlocListener<AuthPhoneCubit, AuthPhoneState>(
       listenWhen: (previous, current) =>
           current is Loading ||
           current is PhoneNumberSubmited ||
@@ -35,7 +35,7 @@ class AuthBlocListener extends StatelessWidget {
 
             context.pushNamed(
               Routes.otpScreen,
-              arguments: context.read<AuthCubit>().phoneNumber.toString(),
+              arguments: context.read<AuthPhoneCubit>().phoneNumber.toString(),
             );
           },
           createUser: (data) {

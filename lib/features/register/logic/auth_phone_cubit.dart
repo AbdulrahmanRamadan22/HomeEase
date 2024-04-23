@@ -3,15 +3,15 @@ import 'dart:developer';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:home_ease/core/models/users/user_request_body.dart';
-import 'package:home_ease/core/networking/auth_social_services.dart';
-import 'package:home_ease/core/networking/firestore_services.dart';
-import 'package:home_ease/features/register/logic/auth_state.dart';
+import 'package:home_ease/core/networking/remote/auth_social_services.dart';
+import 'package:home_ease/core/networking/remote/firestore_services.dart';
+import 'package:home_ease/features/register/logic/auth_phone_state.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(const AuthState.initial());
+class AuthPhoneCubit extends Cubit<AuthPhoneState> {
+  AuthPhoneCubit() : super(const AuthPhoneState.initial());
 
   late String verificationId="";
 
@@ -26,7 +26,7 @@ class AuthCubit extends Cubit<AuthState> {
   late String countryCode = "";
   late String phoneNumber = countryCode + phoneController.text;
   Duration timeout = const Duration(seconds: 30);
-  AuthSocial authSocial = AuthSocial();
+  AuthFirebase authSocial = AuthFirebase();
 
   final service = FirestoreServices.instance;
 
@@ -38,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
   //     TextEditingController();
 
   Future<void> emitRegisterPhoneAuthStates() async {
-    emit(const AuthState.loading());
+    emit(const AuthPhoneState.loading());
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       timeout: timeout,
@@ -59,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
 //  Handle failure events such as invalid phone numbers or whether the SMS quota has been exceeded.
   void verificationFailed(FirebaseAuthException error) {
     log('verificationFailed : ${error.message.toString()}');
-    emit(AuthState.error(error: error.message.toString()));
+    emit(AuthPhoneState.error(error: error.message.toString()));
   }
 
 //Handle when a code has been sent to the device from Firebase, used to prompt users to enter the code.
@@ -69,7 +69,7 @@ class AuthCubit extends Cubit<AuthState> {
     this.verificationId = verificationId;
 
     print("this.verificationId ${this.verificationId}");
-    emit(const AuthState.phoneNumberSubmited());
+    emit(const AuthPhoneState.phoneNumberSubmited());
   }
 
 //Handle a timeout of when automatic SMS code handling fails.
@@ -92,9 +92,9 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> login(PhoneAuthCredential credential) async {
     try {
       await FirebaseAuth.instance.signInWithCredential(credential);
-      emit(const AuthState.phoneOtpVerified());
+      emit(const AuthPhoneState.phoneOtpVerified());
     } catch (error) {
-      emit(AuthState.error(error: error.toString()));
+      emit(AuthPhoneState.error(error: error.toString()));
     }
   }
 
@@ -108,7 +108,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> emitSignInWithGoogleAuthStates() async {
-    emit(const AuthState.loading());
+    emit(const AuthPhoneState.loading());
     authSocial.signInWithGoogle().then((value) {
       service.setData(
         path: 'users/${value.user!.uid}',
@@ -122,14 +122,14 @@ class AuthCubit extends Cubit<AuthState> {
         ).toJson(),
       );
 
-      emit(AuthState.createUser(value));
+      emit(AuthPhoneState.createUser(value));
     }).catchError((error) {
-      emit(AuthState.error(error: error.toString()));
+      emit(AuthPhoneState.error(error: error.toString()));
     });
   }
 
   Future<void> emitSignInWithFacebookAuthStates() async {
-    emit(const AuthState.loading());
+    emit(const AuthPhoneState.loading());
 
     authSocial.signInWithFacebook2().then((value) {
       service.setData(
@@ -144,9 +144,9 @@ class AuthCubit extends Cubit<AuthState> {
         ).toJson(),
       );
 
-      emit(AuthState.createUser(value));
+      emit(AuthPhoneState.createUser(value));
     }).catchError((error) {
-      emit(AuthState.error(error: error.toString()));
+      emit(AuthPhoneState.error(error: error.toString()));
     });
   }
 
@@ -170,7 +170,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void verificationFailed1(FirebaseAuthException error) {
     log('verificationFailed : ${error.message.toString()}');
-    emit(AuthState.error(error: error.message.toString()));
+    emit(AuthPhoneState.error(error: error.message.toString()));
   }
 
   void codeSent1(String verificationId, int? resendToken) {
@@ -179,7 +179,7 @@ class AuthCubit extends Cubit<AuthState> {
     this.verificationId = verificationId;
 
     log("this.verificationId ${this.verificationId}");
-    emit(const AuthState.phoneNumberSubmited());
+    emit(const AuthPhoneState.phoneNumberSubmited());
   }
 
   void codeAutoRetrievalTimeout1(String verificationId) {
@@ -217,9 +217,9 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      emit(const AuthState.phoneOtpVerified());
+      emit(const AuthPhoneState.phoneOtpVerified());
     } catch (error) {
-      emit(AuthState.error(error: error.toString()));
+      emit(AuthPhoneState.error(error: error.toString()));
     }
   }
 

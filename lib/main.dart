@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:home_ease/core/helpers/my_bloc_observer.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/home_ease__app.dart';
 // ignore: depend_on_referenced_packages
 import 'package:easy_localization/easy_localization.dart';
@@ -8,7 +10,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
@@ -20,9 +21,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
+  await CacheHelper.init();
+
   await Firebase.initializeApp(
     // options: DefaultFirebaseOptions.currentPlatform,
-
     options: const FirebaseOptions(
       apiKey: "AIzaSyBbkJ9vmbaQHDFBdXUJdCrnS8qIm3yxSt0",
       appId: "1:962821068285:android:6b9c368869bc6cb2503594",
@@ -42,6 +44,22 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
 
+  var onBoarding = CacheHelper.getData(key: 'onBoarding');
+
+  var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
+
+  String initialRoute;
+
+  if (selectLanguageScreen != null) {
+    if (onBoarding != null) {
+      initialRoute = Routes.loginScreen;
+    } else {
+      initialRoute = Routes.onBoardingScreen;
+    }
+  } else {
+    initialRoute = Routes.selectLanguageScreen;
+  }
+
   runApp(
     EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
@@ -50,6 +68,8 @@ void main() async {
         fallbackLocale: const Locale('ar', 'EG'),
         // assetLoader: const CodegenLoader(),
         // saveLocale: true,
-        child: const HomeEase()),
+        child: HomeEase(
+          initialRoute: initialRoute,
+        )),
   );
 }
