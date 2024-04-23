@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
+import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
+import 'package:home_ease/features/hourly_clean/ui/hourly_clean_screen.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
@@ -13,7 +15,8 @@ import 'package:home_ease/features/payment/ui/payment_screen.dart';
 import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/register_screen.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
-import 'package:home_ease/features/sddress/ui/address_screen.dart';
+import 'package:home_ease/features/address/ui/address_screen.dart';
+import 'package:home_ease/features/select_address/ui/select_address_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screan.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,6 +79,18 @@ class AppRouter {
       case Routes.addressScreenScreen:
         return MaterialPageRoute(
           builder: (context) => const AddressScreen(),
+        );
+      case Routes.selectaddressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SelectAddress(),
+        );
+      case Routes.addaddressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddAddressScrean(),
+        );
+      case Routes.hourlycleanScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HourlyCleanScreen(),
         );
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
