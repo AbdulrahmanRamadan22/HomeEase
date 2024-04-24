@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
+import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/select_address/ui/widget/card_select_address.dart';
 
 class SelectAddress extends StatelessWidget {
@@ -33,15 +34,53 @@ class SelectAddress extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const CardSelectAddress(),
+            const CardSelectAddress(
+              imagebackground: 'assets/images/Ellipse 117.png',
+              imageforground: 'assets/images/Pin_duotone_line.png',
+              text_City: 'City',
+              text_Name_city: 'Riyadh',
+              text_city_region: 'region',
+              text_Name_region: 'Alexander Language School',
+              text_street: 'Street',
+              text_address_street: 'Non',
+              text_Building: 'Building',
+              text_name_Building: '2 Floor',
+            ),
             SizedBox(
               height: 24.h,
             ),
-            const CardSelectAddress(),
+            const CardSelectAddress(
+              imagebackground: 'assets/images/Ellipse 117.png',
+              imageforground: 'assets/images/Pin_duotone_line.png',
+              text_City: 'City',
+              text_Name_city: 'Riyadh',
+              text_city_region: 'region',
+              text_Name_region: 'Alexander Language School',
+              text_street: 'Street',
+              text_address_street: 'Non',
+              text_Building: 'Building',
+              text_name_Building: '2 Floor',
+            ),
             SizedBox(
               height: 24.h,
             ),
-            const CardSelectAddress(),
+            const CardSelectAddress(
+              imagebackground: 'assets/images/Ellipse 117.png',
+              imageforground: 'assets/images/Pin_duotone_line.png',
+              text_City: 'City',
+              text_Name_city: 'Riyadh',
+              text_city_region: 'region',
+              text_Name_region: 'Alexander Language School',
+              text_street: 'Street',
+              text_address_street: 'Non',
+              text_Building: 'Building',
+              text_name_Building: '2 Floor',
+            ),
+            const Spacer(),
+            CustomButton(
+              onPressed: () {},
+              text: 'Select',
+            ),
           ],
         ),
       ),
