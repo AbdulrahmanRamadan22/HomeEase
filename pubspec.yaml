@@ -32,12 +32,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-<<<<<<< HEAD
   flutter_facebook_auth: ^6.0.4
   google_sign_in: ^6.2.1
-=======
-  google_maps_flutter: ^2.6.1
->>>>>>> feature/select_address
   intl_phone_field: ^3.2.0
   pinput: ^4.0.0
   shared_preferences: ^2.2.3
