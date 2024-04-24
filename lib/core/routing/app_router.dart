@@ -6,7 +6,6 @@ import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
-import 'package:home_ease/features/hourly_clean/ui/hourly_clean_screen.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
@@ -88,10 +87,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const AddAddressScrean(),
         );
-      case Routes.hourlycleanScreen:
-        return MaterialPageRoute(
-          builder: (context) => const HourlyCleanScreen(),
-        );
+      // case Routes.hourlycleanScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const HourlyCleanScreen(),
+      //   );
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
