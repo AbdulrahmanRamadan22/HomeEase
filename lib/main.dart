@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:home_ease/core/di/dependency_injection.dart';
 import 'package:home_ease/core/helpers/my_bloc_observer.dart';
 import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/routes.dart';
@@ -13,15 +14,20 @@ import 'package:firebase_core/firebase_core.dart';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
+
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
+
+    setupGetIt();
+
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
   await CacheHelper.init();
+
 
   await Firebase.initializeApp(
     // options: DefaultFirebaseOptions.currentPlatform,
@@ -69,7 +75,7 @@ void main() async {
         // assetLoader: const CodegenLoader(),
         // saveLocale: true,
         child: HomeEase(
-          initialRoute: initialRoute,
+          // initialRoute: initialRoute,
         )),
   );
 }

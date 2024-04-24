@@ -1,28 +1,24 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/di/dependency_injection.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
 import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
-import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
-import 'package:home_ease/features/otp/ui/otp_screen.dart';
 import 'package:home_ease/features/payment/ui/payment_screen.dart';
-import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/register_screen.dart';
 import 'package:home_ease/features/address/ui/address_screen.dart';
-
-import 'package:home_ease/features/select_address/ui/select_address_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppRouter {
-  AuthPhoneCubit? authPhoneCubit;
 
-  AppRouter() {
-    authPhoneCubit = AuthPhoneCubit();
-  }
+class AppRouter {
+  AppRouter();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     // ignore: non_constant_identifier_names
@@ -44,22 +40,22 @@ class AppRouter {
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<AuthPhoneCubit>.value(
-            value: authPhoneCubit!,
+          builder: (context) => BlocProvider(
+            create: (context) =>getIt<RegisterCubit>(),
             child: const RegisterScreen(),
           ),
         );
 
-      case Routes.otpScreen:
-        final phoneNumber = settings.arguments as String;
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider<AuthPhoneCubit>.value(
-            value: authPhoneCubit!,
-            child: OtpScreen(
-              phoneNumber: phoneNumber,
-            ),
-          ),
-        );
+      // case Routes.otpScreen:
+      //   final phoneNumber = settings.arguments as String;
+      //   return MaterialPageRoute(
+      //     builder: (context) => BlocProvider<AuthPhoneCubit>.value(
+      //       value: authPhoneCubit!,
+      //       child: OtpScreen(
+      //         phoneNumber: phoneNumber,
+      //       ),
+      //     ),
+      //   );
 
       // case Routes.resetPasswordScreen:
       //   return MaterialPageRoute(
@@ -78,10 +74,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const AddressScreen(),
         );
-      case Routes.selectAddressScreen:
-        return MaterialPageRoute(
-          builder: (context) => const SelectAddress(),
-        );
+      // case Routes.selectAddressScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const SelectAddress(),
+      //   );
       case Routes.addAddressScreen:
         return MaterialPageRoute(
           builder: (context) => const AddAddressScreen(),

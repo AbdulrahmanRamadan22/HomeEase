@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class FirestoreServices {
-  FirestoreServices._();
 
-  static final instance = FirestoreServices._();
+  
+  FirestoreServices();
+
+  static final instance = FirestoreServices();
 
   final _fireStore = FirebaseFirestore.instance;
 
@@ -23,6 +25,7 @@ class FirestoreServices {
     await reference.delete();
   }
 
+
   Stream<T> documentsStream<T>({
     required String path,
     required T Function(Map<String, dynamic>? data, String documentId) builder,
@@ -31,6 +34,8 @@ class FirestoreServices {
     final snapshots = reference.snapshots();
     return snapshots.map((snapshot) => builder(snapshot.data(), snapshot.id));
   }
+
+
 
   Stream<List<T>> collectionsStream<T>({
     required String path,

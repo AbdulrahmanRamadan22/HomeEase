@@ -5,8 +5,8 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -22,16 +22,13 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<AuthPhoneCubit>().formKey,
+      key: context.read<RegisterCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Full Name',
             style: TextStyles.font16Black600,
-          ),
-          SizedBox(
-            height: 8.h,
           ),
           AppTextFormField(
             suffixIcon: Icon(
@@ -44,7 +41,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Please enter a valid Full Name';
               }
             },
-            controller: context.read<AuthPhoneCubit>().fullNameController,
+            controller: context.read<RegisterCubit>().fullNameController,
           ),
           SizedBox(
             height: 18.h,
@@ -53,23 +50,6 @@ class _RegisterFormState extends State<RegisterForm> {
             'Phone',
             style: TextStyles.font16Black600,
           ),
-          SizedBox(
-            height: 8.h,
-          ),
-          // AppTextFormField(
-          //   suffixIcon: const Icon(
-          //     Icons.phone_outlined,
-          //     color: Color(0xffB5B5B5),
-          //   ),
-          //   hintText: 'Enter your phone',
-          //   validator: (value) {
-          //     if (value == null || value.isEmpty) {
-          //       return 'Please enter a valid phone number';
-          //     }
-          //   },
-          //   controller: context.read<RegisterCubit>().phoneController,
-          // ),
-
           IntlPhoneField(
             validator: (value) {
               if (value == null || value.completeNumber.isEmpty) {
@@ -77,7 +57,7 @@ class _RegisterFormState extends State<RegisterForm> {
               }
               return null;
             },
-            controller: context.read<AuthPhoneCubit>().phoneController,
+            controller: context.read<RegisterCubit>().phoneController,
             decoration: InputDecoration(
               isDense: true,
               contentPadding:
@@ -120,25 +100,43 @@ class _RegisterFormState extends State<RegisterForm> {
               filled: true,
             ),
             initialCountryCode: 'EG',
-            // onSaved: (newValue) {
-            //   print("abooooooooooood");
-            //   print(newValue!.countryCode);
-            // },
             onChanged: (phone) {
-              context.read<AuthPhoneCubit>().phoneNumber = phone.completeNumber;
 
-              log(context.read<AuthPhoneCubit>().phoneNumber);
+              context.read<RegisterCubit>().countryCode=
+                  phone.countryCode;
+            },
+            onSubmitted: (phone) {
+              
             },
           ),
-
+          Text(
+            'Email',
+            style: TextStyles.font16Black600,
+          ),
+          AppTextFormField(
+            controller: context.read<RegisterCubit>().emailController,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: Icon(
+              Icons.email_outlined,
+              color: ColorsApp.gray,
+            ),
+            hintText: 'Enter your Email',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter a valid Email';
+              }
+            },
+            // controller: context.read<AuthPhoneCubit>().fullNameController,
+          ),
+          SizedBox(
+            height: 18.h,
+          ),
           Text(
             'Password',
             style: TextStyles.font16Black600,
           ),
-          SizedBox(
-            height: 8.h,
-          ),
           AppTextFormField(
+            keyboardType: TextInputType.visiblePassword,
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
@@ -156,7 +154,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Please enter a valid Password';
               }
             },
-            controller: context.read<AuthPhoneCubit>().passwordController,
+            controller: context.read<RegisterCubit>().passwordController,
           ),
           SizedBox(
             height: 48.h,

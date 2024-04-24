@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import, depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
@@ -16,7 +18,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
@@ -32,10 +33,10 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.h),
                 child: SizedBox(
-                  width: 321.w,
+                  width: 340.w,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'Please Enter your Phone and password to continue',
+                    'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
                     style: TextStyles.font14Black500,
                   ),
                 ),

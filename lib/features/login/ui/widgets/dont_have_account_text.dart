@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
@@ -21,7 +23,7 @@ class DontHaveAccountText extends StatelessWidget {
               style: TextStyles.font16Black400,
             ),
             TextSpan(
-              text: ' Sign Up',
+              text: ' Register',
               style: TextStyles.font16Black700,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {

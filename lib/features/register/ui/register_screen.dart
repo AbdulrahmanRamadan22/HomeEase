@@ -7,8 +7,10 @@ import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
 import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
+import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/widgets/already_have_account_text.dart';
 import 'package:home_ease/features/register/ui/widgets/auth_bloc_listener.dart';
+import 'package:home_ease/features/register/ui/widgets/register_bloc_listener.dart';
 import 'package:home_ease/features/register/ui/widgets/register_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,10 +40,10 @@ class RegisterScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 18.h),
                 child: SizedBox(
-                  width: 321.w,
+                  width: 340.w,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'Please Enter your Phone and password to continue',
+                    'Register now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
                     style: TextStyles.font14Black500,
                   ),
                 ),
@@ -52,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                 onPressed: () {
                   // showProgressIndicator(context);
 
-                  log(context.read<AuthPhoneCubit>().phoneNumber);
+                  // log(context.read<AuthPhoneCubit>().phoneNumber);
 
                   validateThenDoSignUp(context);
 
@@ -71,7 +73,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               const LoginAndRegisterCardSocial(),
               const AlreadyHaveAccountText(),
-              const AuthBlocListener(),
+              const RegisterBlocListener(),
             ],
           ),
         ),
@@ -80,11 +82,9 @@ class RegisterScreen extends StatelessWidget {
   }
 
   void validateThenDoSignUp(BuildContext context) {
-    if (context.read<AuthPhoneCubit>().formKey.currentState!.validate()) {
-      context.read<AuthPhoneCubit>().sendOTPCode(context.read<AuthPhoneCubit>().phoneNumber);
+    if (context.read<RegisterCubit>().formKey.currentState!.validate()) {
+      context.read<RegisterCubit>().emitRegisterAuthStates();
       // context.read<RegisterCubit>().saveUserInformation();
     }
   }
 }
-
-

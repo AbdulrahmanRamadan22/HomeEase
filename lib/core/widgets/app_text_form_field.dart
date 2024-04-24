@@ -16,6 +16,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   Function(String?) validator;
+  TextInputType? keyboardType=TextInputType.text;
 
   TextEditingController? controller;
 
@@ -31,55 +32,61 @@ class AppTextFormField extends StatelessWidget {
       this.suffixIcon,
       this.backgroundColor,
       required this.validator,
-      this.controller});
+      this.controller,
+      this.keyboardType
+      });
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (value) => validator(value),
-      controller: controller,
-      decoration: InputDecoration(
-        isDense: true,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-        focusedBorder: focusedBorder ??
-            OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: ColorsApp.mainGreen,
-                width: 1.3,
+    return Padding(
+      padding:  EdgeInsets.only(top: 8.0.h),
+      child: TextFormField(
+      keyboardType: keyboardType,
+        validator: (value) => validator(value),
+        controller: controller,
+        decoration: InputDecoration(
+          isDense: true,
+          contentPadding: contentPadding ??
+              EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+          focusedBorder: focusedBorder ??
+              OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: ColorsApp.mainGreen,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
               ),
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-        enabledBorder: enabledBorder ??
-            OutlineInputBorder(
-              borderSide: BorderSide(
-                color: ColorsApp.lightGray,
-                width: 1.3,
+          enabledBorder: enabledBorder ??
+              OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: ColorsApp.lightGray,
+                  width: 1.3,
+                ),
+                borderRadius: BorderRadius.circular(16.0),
               ),
-              borderRadius: BorderRadius.circular(16.0),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 1.3,
             ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
+            borderRadius: BorderRadius.circular(16.0),
           ),
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.red,
-            width: 1.3,
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 1.3,
+            ),
+            borderRadius: BorderRadius.circular(16.0),
           ),
-          borderRadius: BorderRadius.circular(16.0),
+          hintStyle: hintStyle ?? TextStyles.font16Gray500,
+          hintText: hintText,
+          suffixIcon: suffixIcon,
+          fillColor: backgroundColor ?? ColorsApp.lightGreen,
+          filled: true,
         ),
-        hintStyle: hintStyle ?? TextStyles.font16Gray500,
-        hintText: hintText,
-        suffixIcon: suffixIcon,
-        fillColor: backgroundColor ?? ColorsApp.lightGreen,
-        filled: true,
+        obscureText: isObscureText ?? false,
+        style: TextStyles.font16Black600,
       ),
-      obscureText: isObscureText ?? false,
-      style: TextStyles.font16Black600,
     );
   }
 }
