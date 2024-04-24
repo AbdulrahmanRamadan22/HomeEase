@@ -7,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:home_ease/core/networking/remote/firestore_services.dart';
 
 abstract class AuthFirebaseServices {
   User? get currentUser;
@@ -16,7 +15,7 @@ abstract class AuthFirebaseServices {
 
   Future<UserCredential?> loginWithEmailAndPassword(String email, String password);
 
-  Future<UserCredential?> registerWithEmailAndPassword(String email, String password);
+  Future<UserCredential?> signUpWithEmailAndPassword(String email, String password);
 
   Future<UserCredential?> signInWithGoogle();
 
@@ -29,7 +28,7 @@ class AuthFirebase implements AuthFirebaseServices {
   final _firebaseAuth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn();
 
-  final _authService = FirebaseAuth.instance;
+  // final _service = FirestoreServices.instance;
 
 
 @override
@@ -113,9 +112,9 @@ class AuthFirebase implements AuthFirebaseServices {
   }
 
   @override
-  Future<UserCredential?> registerWithEmailAndPassword(
+  Future<UserCredential?> signUpWithEmailAndPassword(
       String email, String password) async {
-    final userAuth = await _authService.createUserWithEmailAndPassword(
+    final userAuth = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
     return userAuth;
   }
