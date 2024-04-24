@@ -1,15 +1,11 @@
-import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
-import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:home_ease/features/register/logic/register_cubit.dart';
 import 'package:home_ease/features/register/ui/widgets/already_have_account_text.dart';
-import 'package:home_ease/features/register/ui/widgets/auth_bloc_listener.dart';
 import 'package:home_ease/features/register/ui/widgets/register_bloc_listener.dart';
 import 'package:home_ease/features/register/ui/widgets/register_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
