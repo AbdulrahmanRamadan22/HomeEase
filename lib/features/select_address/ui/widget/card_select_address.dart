@@ -10,25 +10,25 @@ class CardSelectAddress extends StatelessWidget {
     Key? key,
     this.imagebackground,
     this.imageforground,
-    required this.text_City,
-    required this.text_Name_city,
-    required this.text_Name_region,
-    required this.text_city_region,
-    required this.text_street,
-    required this.text_address_street,
-    required this.text_Building,
-    required this.text_name_Building,
+    required this.textCity,
+    required this.textNameCity,
+    required this.textNameRegion,
+    required this.textCityRegion,
+    required this.textStreet,
+    required this.textAddressStreet,
+    required this.textBuilding,
+    required this.textNameBuilding,
   }) : super(key: key);
   final String? imagebackground;
   final String? imageforground;
-  final String text_City;
-  final String text_Name_city;
-  final String text_Name_region;
-  final String text_city_region;
-  final String text_street;
-  final String text_address_street;
-  final String text_Building;
-  final String text_name_Building;
+  final String textCity;
+  final String textNameCity;
+  final String textNameRegion;
+  final String textCityRegion;
+  final String textStreet;
+  final String textAddressStreet;
+  final String textBuilding;
+  final String textNameBuilding;
 
   @override
   @override
@@ -50,10 +50,8 @@ class CardSelectAddress extends StatelessWidget {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  Container(
-                    child: Image.asset(
-                      imagebackground!,
-                    ),
+                  Image.asset(
+                    imagebackground!,
                   ),
                   Image.asset(imageforground!)
                 ],
@@ -64,32 +62,32 @@ class CardSelectAddress extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(text_City, style: TextStyles.font10white500),
+                  Text(textCity, style: TextStyles.font10white500),
                   SizedBox(
                     height: 3.h,
                   ),
-                  Text(text_city_region, style: TextStyles.font12white700),
+                  Text(textCityRegion, style: TextStyles.font12white700),
                   SizedBox(
                     height: 11.h,
                   ),
-                  Text(text_city_region, style: TextStyles.font10white500),
+                  Text(textCityRegion, style: TextStyles.font10white500),
                   const SizedBox(),
-                  Text(text_Name_region, style: TextStyles.font12white700),
+                  Text(textNameRegion, style: TextStyles.font12white700),
                 ],
               ),
               const Spacer(),
               Column(
                 children: [
-                  Text(text_street, style: TextStyles.font10white500),
+                  Text(textStreet, style: TextStyles.font10white500),
                   SizedBox(
                     height: 3.h,
                   ),
-                  Text(text_address_street, style: TextStyles.font12white700),
+                  Text(textAddressStreet, style: TextStyles.font12white700),
                   SizedBox(
                     height: 11.h,
                   ),
-                  Text(text_Building, style: TextStyles.font10white500),
-                  Text(text_name_Building, style: TextStyles.font12white700),
+                  Text(textBuilding, style: TextStyles.font10white500),
+                  Text(textNameBuilding, style: TextStyles.font12white700),
                   SizedBox(
                     height: 15.h,
                   ),

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,14 +35,14 @@ class SelectAddress extends StatelessWidget {
             const CardSelectAddress(
               imagebackground: 'assets/images/Ellipse 117.png',
               imageforground: 'assets/images/Pin_duotone_line.png',
-              text_City: 'City',
-              text_Name_city: 'Riyadh',
-              text_city_region: 'region',
-              text_Name_region: 'Alexander Language School',
-              text_street: 'Street',
-              text_address_street: 'Non',
-              text_Building: 'Building',
-              text_name_Building: '2 Floor',
+              textCity: 'City',
+              textNameCity: 'Riyadh',
+              textCityRegion: 'region',
+              textNameRegion: 'Alexander Language School',
+              textStreet: 'Street',
+              textAddressStreet: 'Non',
+              textBuilding: 'Building',
+              textNameBuilding: '2 Floor',
             ),
             SizedBox(
               height: 24.h,
@@ -52,14 +50,14 @@ class SelectAddress extends StatelessWidget {
             const CardSelectAddress(
               imagebackground: 'assets/images/Ellipse 117.png',
               imageforground: 'assets/images/Pin_duotone_line.png',
-              text_City: 'City',
-              text_Name_city: 'Riyadh',
-              text_city_region: 'region',
-              text_Name_region: 'Alexander Language School',
-              text_street: 'Street',
-              text_address_street: 'Non',
-              text_Building: 'Building',
-              text_name_Building: '2 Floor',
+              textCity: 'City',
+              textNameCity: 'Riyadh',
+              textCityRegion: 'region',
+              textNameRegion: 'Alexander Language School',
+              textStreet: 'Street',
+              textAddressStreet: 'Non',
+              textBuilding: 'Building',
+              textNameBuilding: '2 Floor',
             ),
             SizedBox(
               height: 24.h,
@@ -67,14 +65,14 @@ class SelectAddress extends StatelessWidget {
             const CardSelectAddress(
               imagebackground: 'assets/images/Ellipse 117.png',
               imageforground: 'assets/images/Pin_duotone_line.png',
-              text_City: 'City',
-              text_Name_city: 'Riyadh',
-              text_city_region: 'region',
-              text_Name_region: 'Alexander Language School',
-              text_street: 'Street',
-              text_address_street: 'Non',
-              text_Building: 'Building',
-              text_name_Building: '2 Floor',
+              textCity: 'City',
+              textNameCity: 'Riyadh',
+              textCityRegion: 'region',
+              textNameRegion: 'Alexander Language School',
+              textStreet: 'Street',
+              textAddressStreet: 'Non',
+              textBuilding: 'Building',
+              textNameBuilding: '2 Floor',
             ),
             const Spacer(),
             CustomButton(
