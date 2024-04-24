@@ -4,15 +4,14 @@ import 'package:easy_localization/easy_localization.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/routing/app_router.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 
 class HomeEase extends StatelessWidget {
+  final String? initialRoute;
 
-
- final String initialRoute;
-
-  const HomeEase({super.key,required this.initialRoute});
+  const HomeEase({super.key, this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +32,7 @@ class HomeEase extends StatelessWidget {
           primarySwatch: mainGreen,
           fontFamily: 'Quicksand',
         ),
-        initialRoute: initialRoute,
+        initialRoute: Routes.registerScreen,
       ),
     );
   }

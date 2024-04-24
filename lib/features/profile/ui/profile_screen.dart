@@ -35,7 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
 
-            ImageAndNameEditCard(),
+            const ImageAndNameEditCard(),
+
+            
            
             Card_profilescreen(
               title: Text('Payment Methods', style: TextStyles.font16Black700),
