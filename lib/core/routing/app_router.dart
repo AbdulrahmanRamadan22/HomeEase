@@ -10,6 +10,7 @@ import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
+import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
@@ -21,7 +22,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
 import 'package:home_ease/features/select_address/ui/select_address_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screen.dart';
-
 
 class AppRouter {
   AppRouter();
@@ -47,7 +47,7 @@ class AppRouter {
       case Routes.registerScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) =>getIt<RegisterCubit>(),
+            create: (context) => getIt<RegisterCubit>(),
             child: const RegisterScreen(),
           ),
         );
@@ -88,10 +88,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const AddAddressScreen(),
         );
-      // case Routes.hourlycleanScreen:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const HourlyCleanScreen(),
-      //   );
+      case Routes.hourlyCleanScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HourlyCleaningScreen(),
+        );
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
