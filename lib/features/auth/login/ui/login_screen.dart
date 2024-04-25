@@ -13,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/dont_have_account_text.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/login_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -29,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                 height: 80.h,
               ),
               Text(
-                'Login',
+                'Login'.tr(),
                 style: TextStyles.font28Black700,
               ),
               Padding(
@@ -38,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                   width: 340.w,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.',
+                    'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in.'.tr(),
                     style: TextStyles.font14Black500,
                   ),
                 ),
@@ -51,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                     context.pushNamed(Routes.forgetPasswordScreen);
                   },
                   child: Text(
-                    'Forget Password ?',
+                    'Forget Password ?'.tr(),
                     style: TextStyles.font16Black600,
                   ),
                 ),
@@ -60,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                 height: 24.h,
               ),
               CustomButton(
-                text: 'Login',
+                text: 'Login'.tr(),
                 onPressed: () {
                   validateThenDoLogin(context);
                 },

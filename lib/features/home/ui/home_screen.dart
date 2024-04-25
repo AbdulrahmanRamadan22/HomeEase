@@ -8,6 +8,7 @@ import 'package:home_ease/features/home/ui/widgets/good_morning_name.dart';
 import 'package:home_ease/features/home/ui/widgets/logo_and_text.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:home_ease/translations/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

@@ -7,6 +7,7 @@ import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
 import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 import 'package:home_ease/features/auth/register/logic/register_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RegisterBlocListener extends StatelessWidget {
   const RegisterBlocListener({super.key});
@@ -28,7 +29,7 @@ class RegisterBlocListener extends StatelessWidget {
             context.pop();
             showSnackBar(
               context,
-              content: "Account created successfully go to home screen",
+              content: "Account created successfully go to home screen".tr(),
               backgroundColor: ColorsApp.mainGreen,
             );
             context.pushReplacementNamed(Routes.homeLayout);
@@ -37,7 +38,7 @@ class RegisterBlocListener extends StatelessWidget {
             context.pop();
             showSnackBar(
               context,
-              content: "Account created successfully go to home screen",
+              content: "Account created successfully go to home screen".tr(),
               backgroundColor: ColorsApp.mainGreen,
             );
             context.pushReplacementNamed(Routes.homeLayout);

@@ -3,6 +3,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -18,7 +19,7 @@ class ResetPasswordScreen extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                "Reset Password",
+                "Reset Password".tr(),
                 style: TextStyles.font28Black700,
               ),
             ),
@@ -30,14 +31,14 @@ class ResetPasswordScreen extends StatelessWidget {
                   width: 321.w,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'Enter your Phone Number to reset password.',
+                    'Enter your Phone Number to reset password.'.tr(),
                     style: TextStyles.font14Black500,
                   ),
                 ),
               ),
             ),
             Text(
-              'Password',
+              'Password'.tr(),
               style: TextStyles.font16Black600,
             ),
             SizedBox(
@@ -48,14 +49,14 @@ class ResetPasswordScreen extends StatelessWidget {
                 Icons.visibility_outlined,
                 color: Color(0xffB5B5B5),
               ),
-              hintText: 'Enter Your Password',
+              hintText: 'Enter Your Password'.tr(),
               validator: (p0) {},
             ),
             SizedBox(
               height: 18.h,
             ),
             Text(
-              'Confirm Password',
+              'Confirm Password'.tr(),
               style: TextStyles.font16Black600,
             ),
             SizedBox(
@@ -66,7 +67,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 Icons.visibility_outlined,
                 color: Color(0xffB5B5B5),
               ),
-              hintText: 'Enter Your Confirm Password',
+              hintText: 'Enter Your Confirm Password'.tr(),
               validator: (p0) {},
             ),
             SizedBox(
@@ -74,7 +75,7 @@ class ResetPasswordScreen extends StatelessWidget {
             ),
             CustomButton(
               onPressed: () {},
-              text: "Save Password",
+              text: "Save Password".tr(),
             )
           ],
         ),

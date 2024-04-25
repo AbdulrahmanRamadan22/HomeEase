@@ -5,6 +5,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/payment/ui/widget/card_payment.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({super.key});
@@ -21,26 +22,26 @@ class PaymentScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 58.h, vertical: 43.h),
         child: Column(
           children: [
-            const CardPayment(
+            CardPayment(
               image_1: 'assets/images/Logo.png',
-              text_number: '8700 - XXXX - XXXX - 9830',
+              text_number: '8700 - XXXX - XXXX - 9830'.tr(),
               image_2: 'assets/images/Color=Gold.png',
-              text_name: 'Abdul Aziz Al-Qahtany',
-              text_day: 'Valid Thru  11/25',
+              text_name: 'Abdul Aziz Al-Qahtany'.tr(),
+              text_day: 'Valid Thru  11/25'.tr(),
             ),
             SizedBox(
               height: 30.h,
             ),
-            const CardPayment(
+            CardPayment(
               image_1: 'assets/images/visa.png',
-              text_number: '8700 - XXXX - XXXX - 9830',
+              text_number: '8700 - XXXX - XXXX - 9830'.tr(),
               image_2: 'assets/images/Color=Gold.png',
-              text_name: 'Abdul Aziz Al-Qahtany',
-              text_day: 'Valid Thru  11/25',
+              text_name: 'Abdul Aziz Al-Qahtany'.tr(),
+              text_day: 'Valid Thru  11/25'.tr(),
             ),
             const Spacer(),
             CustomButton(
-              text: ' + Add Card',
+              text: ' + Add Card'.tr(),
               onPressed: () {},
             ),
           ],
