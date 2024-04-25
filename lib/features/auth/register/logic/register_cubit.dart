@@ -1,17 +1,15 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:home_ease/core/helpers/app_regex.dart';
 import 'package:home_ease/core/models/users/user_request_body.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/networking/remote/auth_services.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
-import 'package:home_ease/features/register/data/repos/register_repo.dart';
-import 'package:home_ease/features/register/logic/register_state.dart';
+import 'package:home_ease/features/auth/register/data/repos/register_repo.dart';
+import 'package:home_ease/features/auth/register/logic/register_state.dart';
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerRepo) : super(const RegisterState.initial());
@@ -29,12 +27,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-    final emailStreamController = StreamController<String>();
+  final emailStreamController = StreamController<String>();
   final passwordStreamController = StreamController<String>();
   final fullNameStreamController = StreamController<String>();
 
-
-   
   late String countryCode = "";
   late String phoneNumber = countryCode + phoneController.text;
 
@@ -44,28 +40,25 @@ class RegisterCubit extends Cubit<RegisterState> {
       email: emailController.text,
       password: passwordController.text,
     );
-    response.when(
-      success: (value) {
-         service.setData(
-          path: 'users/${value!.user!.uid.toString()}',
-          data: UserRequestBody(
-            fullName: fullNameController.text,
-            email:emailController.text,
-            profilePhotoURL:"https://media.istockphoto.com/id/587805156/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=gkvLDCgsHH-8HeQe7JsjhlOY6vRBJk_sKW9lyaLgmLo=",
-            type: 'user',
-            uId: value.user!.uid.toString(),
-            phone: phoneNumber,
-          ).toJson(),
+    response.when(success: (value) {
+      service.setData(
+        path: 'users/${value!.user!.uid.toString()}',
+        data: UserRequestBody(
+          fullName: fullNameController.text,
+          email: emailController.text,
+          profilePhotoURL:
+              "https://media.istockphoto.com/id/587805156/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=gkvLDCgsHH-8HeQe7JsjhlOY6vRBJk_sKW9lyaLgmLo=",
+          type: 'user',
+          uId: value.user!.uid.toString(),
+          phone: phoneNumber,
+        ).toJson(),
+      );
 
-        );
-        
-        emit(RegisterState.registerSuccess(value));
-      },
-       failure: ( error) { 
-
-        emit(RegisterState.registerError(error: error.toString()));
-        }     
-    );
+      CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+      emit(RegisterState.registerSuccess(value));
+    }, failure: (error) {
+      emit(RegisterState.registerError(error: error.toString()));
+    });
   }
 
   Future<void> emitSignInWithFacebookAuthStates() async {
@@ -119,4 +112,3 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 }
-

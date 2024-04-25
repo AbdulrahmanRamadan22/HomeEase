@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/ui/widgets/already_have_account_text.dart';
-import 'package:home_ease/features/register/ui/widgets/register_bloc_listener.dart';
-import 'package:home_ease/features/register/ui/widgets/register_form.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_card_social.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/already_have_account_text.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_bloc_listener.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -48,26 +47,16 @@ class RegisterScreen extends StatelessWidget {
               CustomButton(
                 text: 'Register',
                 onPressed: () {
-                  // showProgressIndicator(context);
-
-                  // log(context.read<AuthPhoneCubit>().phoneNumber);
+               
 
                   validateThenDoSignUp(context);
 
-                  // context.read<RegisterCubit>().emitRegisterPhoneAuthStates();
-
-                  // context.pushNamed(Routes.otpScreen);
-
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => OtpScreen()),
-                  // );
                 },
               ),
               SizedBox(
                 height: 15.h,
               ),
-              const LoginAndRegisterCardSocial(),
+              const RegisterCardSocial(),
               const AlreadyHaveAccountText(),
               const RegisterBlocListener(),
             ],

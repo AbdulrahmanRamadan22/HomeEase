@@ -104,11 +104,13 @@ class AuthFirebase implements AuthFirebaseServices {
     await _firebaseAuth.signOut();
     await _googleSignIn.signOut();
     await FacebookAuth.instance.logOut();
+    await _authService.signOut();
+
   }
 
   @override
   Future<UserCredential?> loginWithEmailAndPassword(String email, String password) async {
-    final userAuth = await _firebaseAuth.signInWithEmailAndPassword(
+    final userAuth = await  _authService.signInWithEmailAndPassword(
         email: email, password: password);
     return userAuth;
   }

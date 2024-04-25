@@ -52,6 +52,8 @@ void main() async {
 
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
 
+  var uId=CacheHelper.getData(key: 'uId');
+
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 
   String initialRoute;

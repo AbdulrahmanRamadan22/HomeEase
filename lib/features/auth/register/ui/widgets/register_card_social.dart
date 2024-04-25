@@ -3,12 +3,11 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/card_contact.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 
-class LoginAndRegisterCardSocial extends StatelessWidget {
-  const LoginAndRegisterCardSocial({super.key});
+class RegisterCardSocial extends StatelessWidget {
+  const RegisterCardSocial({super.key});
 
   @override
   Widget build(BuildContext context) {

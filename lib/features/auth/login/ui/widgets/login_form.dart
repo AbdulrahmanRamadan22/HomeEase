@@ -1,69 +1,36 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/app_regex.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/core/widgets/phone_text_form_field.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<RegisterForm> createState() => _RegisterFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class _LoginFormState extends State<LoginForm> {
   bool isPasswordObscureText = true;
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<RegisterCubit>();
     return Form(
-      key: cubit.formKey,
+      key: context.read<LoginCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Full Name',
-            style: TextStyles.font16Black600,
-          ),
-          AppTextFormField(
-            suffixIcon: Icon(
-              Icons.person_2_outlined,
-              color: ColorsApp.gray,
-            ),
-            hintText: 'Enter your Full Name',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid Full Name';
-              } else if (value.length <= 3) {
-                return 'fullName must be at least 4 characters';
-              }
-            },
-            controller: cubit.fullNameController,
-          ),
-          SizedBox(
-            height: 18.h,
-          ),
-          Text(
-            'Phone',
-            style: TextStyles.font16Black600,
-          ),
-          PhoneTextFormField(
-            controller: cubit.phoneController,
-            onChanged: (phone) {
-              cubit.countryCode = phone.countryCode;
-            },
-          ),
           Text(
             'Email',
             style: TextStyles.font16Black600,
           ),
           AppTextFormField(
-            controller: cubit.emailController,
             keyboardType: TextInputType.emailAddress,
             suffixIcon: Icon(
               Icons.email_outlined,
@@ -77,6 +44,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Please enter a valid email';
               }
             },
+            controller: context.read<LoginCubit>().emailController,
           ),
           SizedBox(
             height: 18.h,
@@ -86,7 +54,6 @@ class _RegisterFormState extends State<RegisterForm> {
             style: TextStyles.font16Black600,
           ),
           AppTextFormField(
-            keyboardType: TextInputType.visiblePassword,
             isObscureText: isPasswordObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
@@ -99,6 +66,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 color: ColorsApp.gray,
               ),
             ),
+            controller: context.read<LoginCubit>().passwordController,
+
             hintText: 'Enter Your Password',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -107,10 +76,10 @@ class _RegisterFormState extends State<RegisterForm> {
                 return 'Password must be at least 8 characters';
               }
             },
-            controller: cubit.passwordController,
+            // controller: context.read<AuthCubit>().passwordController,
           ),
           SizedBox(
-            height: 48.h,
+            height: 16.h,
           ),
         ],
       ),

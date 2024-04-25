@@ -5,44 +5,36 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/logic/register_state.dart';
+import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
+import 'package:home_ease/features/auth/login/logic/login_state.dart';
 
-class RegisterBlocListener extends StatelessWidget {
-  const RegisterBlocListener({super.key});
+class LoginBlocListener extends StatelessWidget {
+  const LoginBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RegisterCubit, RegisterState>(
+    return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is RegisterLoading ||
-          current is RegisterSuccess ||
-          current is RegisterError ||
-          current is CreateUser,
+          current is Loading ||
+          current is LoginSuccess ||
+          current is Error ,
+       
       listener: (context, state) {
         state.whenOrNull(
-          registerLoading: () {
+          loading: () {
             showProgressIndicator(context);
           },
-          registerSuccess: (data) {
+          loginSuccess: (data) {
             context.pop();
             showSnackBar(
               context,
-              content: "Account created successfully go to home screen",
+              content: "Login successfully go to home screen",
               backgroundColor: ColorsApp.mainGreen,
             );
             context.pushReplacementNamed(Routes.homeLayout);
           },
-          createUser: (data) {
-            context.pop();
-            showSnackBar(
-              context,
-              content: "Account created successfully go to home screen",
-              backgroundColor: ColorsApp.mainGreen,
-            );
-            context.pushReplacementNamed(Routes.homeLayout);
-          },
-          registerError: (error) {
+     
+          error: (error) {
             context.pop();
          
             showSnackBar(
