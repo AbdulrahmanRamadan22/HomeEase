@@ -16,9 +16,13 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   Function(String?) validator;
+    Function(String?)? onChanged;
+
   TextInputType? keyboardType=TextInputType.text;
 
   TextEditingController? controller;
+
+
 
   AppTextFormField(
       {super.key,
@@ -33,7 +37,10 @@ class AppTextFormField extends StatelessWidget {
       this.backgroundColor,
       required this.validator,
       this.controller,
-      this.keyboardType
+      this.keyboardType,
+      this.onChanged,
+
+
       });
 
   @override
@@ -41,6 +48,7 @@ class AppTextFormField extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.only(top: 8.0.h),
       child: TextFormField(
+        onChanged:onChanged,
       keyboardType: keyboardType,
         validator: (value) => validator(value),
         controller: controller,

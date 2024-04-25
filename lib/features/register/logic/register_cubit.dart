@@ -2,11 +2,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:home_ease/core/helpers/app_regex.dart';
 import 'package:home_ease/core/models/users/user_request_body.dart';
 import 'package:home_ease/core/networking/remote/auth_services.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
 import 'package:home_ease/features/register/data/repos/register_repo.dart';
 import 'package:home_ease/features/register/logic/register_state.dart';
+import 'dart:async';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerRepo) : super(const RegisterState.initial());
@@ -24,6 +29,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
+    final emailStreamController = StreamController<String>();
+  final passwordStreamController = StreamController<String>();
+  final fullNameStreamController = StreamController<String>();
+
+
+   
   late String countryCode = "";
   late String phoneNumber = countryCode + phoneController.text;
 
@@ -50,9 +61,9 @@ class RegisterCubit extends Cubit<RegisterState> {
         
         emit(RegisterState.registerSuccess(value));
       },
-       failure: (String data) { 
+       failure: ( error) { 
 
-        emit(RegisterState.registerError(error: data));
+        emit(RegisterState.registerError(error: error.toString()));
         }     
     );
   }
@@ -108,3 +119,4 @@ class RegisterCubit extends Cubit<RegisterState> {
     });
   }
 }
+

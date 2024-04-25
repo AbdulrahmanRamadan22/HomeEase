@@ -44,6 +44,7 @@ class RegisterBlocListener extends StatelessWidget {
           },
           registerError: (error) {
             context.pop();
+         
             showSnackBar(
               context,
               content: error.toString(),

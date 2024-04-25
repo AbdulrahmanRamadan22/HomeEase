@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/helpers/app_regex.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
@@ -33,8 +34,10 @@ class _LoginFormState extends State<LoginForm> {
           ),
           hintText: 'Enter your Email',
           validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter a valid Email';
+            if (value == null ||
+                value.isEmpty ||
+                !AppRegex.isEmailValid(value)) {
+              return 'Please enter a valid email';
             }
           },
           // controller: context.read<AuthPhoneCubit>().fullNameController,
@@ -56,12 +59,15 @@ class _LoginFormState extends State<LoginForm> {
             },
             child: Icon(
               isPasswordObscureText ? Icons.visibility_off : Icons.visibility,
+              color: ColorsApp.gray,
             ),
           ),
           hintText: 'Enter Your Password',
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a valid Password';
+            } else if (!AppRegex.hasMinLength(value)) {
+              return 'Password must be at least 8 characters';
             }
           },
           // controller: context.read<AuthCubit>().passwordController,
