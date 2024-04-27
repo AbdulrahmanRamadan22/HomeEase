@@ -10,6 +10,7 @@ import 'package:home_ease/features/auth/register/data/repos/register_repo.dart';
 import 'package:home_ease/features/auth/register/logic/register_state.dart';
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerRepo) : super(const RegisterState.initial());
@@ -87,8 +88,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(RegisterState.registerError(error: error.toString()));
       });
     } else {
-      emit(const RegisterState.registerError(
-          error: 'Failed to log in with Facebook. Please try again.'));
+      emit(RegisterState.registerError(
+          error: 'Failed to log in with Facebook. Please try again.'.tr()));
     }
   }
 
@@ -111,7 +112,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
       emit(RegisterState.createUser(value));
     }).catchError((error) {
-      emit(const RegisterState.registerError(error: "Login failed, try again"));
+      emit(RegisterState.registerError(error: "Login failed, try again".tr()));
     });
   }
 }

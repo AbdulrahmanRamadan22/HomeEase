@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
 import 'package:home_ease/features/forgetpassword/ui/widgets/for_get_password_bloc_listener.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
