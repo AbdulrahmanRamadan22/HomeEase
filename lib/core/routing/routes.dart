@@ -14,6 +14,7 @@ class Routes {
   static const String selectAddressScreen = "/selectAddressScreen";
   static const String addAddressScreen = "/addAddressScreen";
   static const String hourlyCleanScreen = "/hourlyCleanScreen";
+  static const String companyscreen = "/companyscreen";
 
   static const String homeScreen = "/homeScreen";
 

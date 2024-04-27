@@ -322,7 +322,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             SizedBox(
               height: 32.h,
             ),
-            Text('Choose Time'.tr(), style: TextStyles.font18Black700),
+            Text('Choose Time'.tr(), style: TextStyles.font18Black700,),
             SizedBox(
               height: 24.h,
             ),

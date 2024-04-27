@@ -6,6 +6,7 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
 import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
+import 'package:home_ease/features/company/ui/company_screen.dart';
 import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
@@ -92,6 +93,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const HourlyCleaningScreen(),
         );
+
+      case Routes.companyscreen:
+        return MaterialPageRoute(
+          builder: (context) => const CompanyScreen(),
+        );
+
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordScreen(),
