@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CardNotificationScreen extends StatelessWidget {
   const CardNotificationScreen({
@@ -37,18 +38,18 @@ class CardNotificationScreen extends StatelessWidget {
       child: ListTile(
         leading: Image.asset(image!),
         title: Text(
-          title,
+          title.tr(),
         ),
         trailing: Text(trailing, style: TextStyles.font14Bgray500),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              subtitle_1,
+              subtitle_1.tr(),
               style: TextStyles.font14Bgray500,
             ),
             Text(
-              subtitle_2,
+              subtitle_2.tr(),
               style: TextStyles.font14Bgray500,
             ),
           ],

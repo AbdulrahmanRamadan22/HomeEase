@@ -5,6 +5,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ContactUS extends StatelessWidget {
   const ContactUS({super.key});
@@ -15,7 +16,7 @@ class ContactUS extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          ' Contact Us',
+          ' Contact Us'.tr(),
           style: TextStyles.font18Black700,
         ),
       ),
@@ -26,7 +27,7 @@ class ContactUS extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'We are pleased to contact you to hear your inquiries and opinions',
+                'We are pleased to contact you to hear your inquiries and opinions'.tr(),
                 style: TextStyles.font12black500,
               ),
               const SizedBox(
@@ -36,35 +37,35 @@ class ContactUS extends StatelessWidget {
                 height: 32.h,
               ),
               Text(
-                'Name',
+                'Name'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
                 height: 8.h,
               ),
               AppTextFormField(
-                hintText: 'Enter your Name',
+                hintText: 'Enter your Name'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 18.h,
               ),
               Text(
-                'Phone',
+                'Phone'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
                 height: 8.h,
               ),
               AppTextFormField(
-                hintText: 'Enter your phone',
+                hintText: 'Enter your phone'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 18.h,
               ),
               Text(
-                'Massage',
+                'Massage'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
@@ -73,14 +74,14 @@ class ContactUS extends StatelessWidget {
               AppTextFormField(
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 100, horizontal: 21),
-                hintText: 'Enter Your massage',
+                hintText: 'Enter Your massage'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 53.h,
               ),
               CustomButton(
-                text: 'Send',
+                text: 'Send'.tr(),
                 style: TextStyles.font18Black700,
                 onPressed: () {
                   //   context.pushNamed(Routes.);

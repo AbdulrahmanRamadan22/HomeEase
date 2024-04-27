@@ -2,8 +2,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:home_ease/core/networking/remote/auth_services.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
-import 'package:home_ease/features/register/data/repos/register_repo.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
+import 'package:home_ease/features/auth/login/repo/login_repo.dart';
+import 'package:home_ease/features/auth/register/data/repos/register_repo.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -23,8 +25,8 @@ Future <void> setupGetIt() async{
     getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo(getIt()));
     getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
 
- //signUP
-    // getIt.registerLazySingleton<SignUpRepo>(() => SignUpRepo(getIt()));
-    // getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
+ //login
+    getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
+    getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
 }

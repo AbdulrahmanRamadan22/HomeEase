@@ -6,6 +6,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/profile/ui/widget/card_profilescreen.dart';
 import 'package:home_ease/features/profile/ui/widget/image_and_name_edit_card.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({
@@ -26,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Profile',
+          'Profile'.tr(),
           style: TextStyles.font18Black700,
         ),
       ),
@@ -40,8 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             
            
             Card_profilescreen(
-              title: Text('Payment Methods', style: TextStyles.font16Black700),
-              subtitle: Text('Add your credit & debit cards',
+              title: Text('Payment Methods'.tr(), style: TextStyles.font16Black700),
+              subtitle: Text('Add your credit & debit cards'.tr(),
                   style: TextStyles.font14Black500),
               trailing: const Icon(Icons.chevron_right),
               leading: Icon(
@@ -50,8 +51,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Card_profilescreen(
-              title: Text('Location', style: TextStyles.font16Black700),
-              subtitle: Text('Add your Home Location ',
+              title: Text('Location'.tr(), style: TextStyles.font16Black700),
+              subtitle: Text('Add your Home Location '.tr(),
                   style: TextStyles.font14Black500),
               trailing: const Icon(Icons.chevron_right),
               leading: Icon(
@@ -61,8 +62,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             Card_profilescreen(
               title:
-                  Text('Push Notification', style: TextStyles.font16Black700),
-              subtitle: Text('For daily update and others ',
+                  Text('Push Notification'.tr(), style: TextStyles.font16Black700),
+              subtitle: Text('For daily update and others '.tr(),
                   style: TextStyles.font14Black500),
               trailing: Switch(
                   activeColor: ColorsApp.mainGreen,
@@ -79,8 +80,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Card_profilescreen(
-              title: Text('Contact Us', style: TextStyles.font16Black700),
-              subtitle: Text('For more information ',
+              title: Text('Contact Us'.tr(), style: TextStyles.font16Black700),
+              subtitle: Text('For more information '.tr(),
                   style: TextStyles.font14Black500),
               trailing: const Icon(Icons.chevron_right),
               leading: Icon(
@@ -89,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Card_profilescreen(
-              title: Text('Logout', style: TextStyles.font16Black700),
+              title: Text('Logout'.tr(), style: TextStyles.font16Black700),
               trailing: const Icon(Icons.chevron_right),
               leading: Icon(
                 Icons.logout,

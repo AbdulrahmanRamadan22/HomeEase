@@ -5,6 +5,7 @@ import 'package:home_ease/core/di/dependency_injection.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
 import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
+import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
@@ -12,11 +13,12 @@ import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
 import 'package:home_ease/features/login/ui/login_screen.dart';
+import 'package:home_ease/features/auth/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
 import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
 import 'package:home_ease/features/payment/ui/payment_screen.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/ui/register_screen.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/register/ui/register_screen.dart';
 import 'package:home_ease/features/address/ui/address_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
@@ -42,7 +44,10 @@ class AppRouter {
 
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
@@ -51,17 +56,6 @@ class AppRouter {
             child: const RegisterScreen(),
           ),
         );
-
-      // case Routes.otpScreen:
-      //   final phoneNumber = settings.arguments as String;
-      //   return MaterialPageRoute(
-      //     builder: (context) => BlocProvider<AuthPhoneCubit>.value(
-      //       value: authPhoneCubit!,
-      //       child: OtpScreen(
-      //         phoneNumber: phoneNumber,
-      //       ),
-      //     ),
-      //   );
 
       case Routes.resetPasswordScreen:
         return MaterialPageRoute(
