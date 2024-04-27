@@ -4,6 +4,7 @@ import 'package:home_ease/core/helpers/navigation_extensions.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AlreadyHaveAccountText extends StatelessWidget {
   const AlreadyHaveAccountText({super.key});
@@ -17,11 +18,11 @@ class AlreadyHaveAccountText extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text: 'Already have an account ? ',
+              text: 'Already have an account ? '.tr(),
               style: TextStyles.font16Black400,
             ),
             TextSpan(
-              text: ' Login',
+              text: ' Login'.tr(),
               style: TextStyles.font16Black700,
               recognizer: TapGestureRecognizer()
                 ..onTap = () {

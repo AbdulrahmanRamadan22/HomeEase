@@ -5,6 +5,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -20,7 +21,7 @@ class ForgetPasswordScreen extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                "Forget Password",
+                "Forget Password".tr(),
                 style: TextStyles.font28Black700,
               ),
             ),
@@ -29,13 +30,13 @@ class ForgetPasswordScreen extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Enter your Phone Number to reset password.',
+                  'Enter your Phone Number to reset password.'.tr(),
                   style: TextStyles.font14Black500,
                 ),
               ),
             ),
             Text(
-              'Phone',
+              'Phone'.tr(),
               style: TextStyles.font16Black600,
             ),
             SizedBox(
@@ -46,7 +47,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 Icons.phone_outlined,
                 color: Color(0xffB5B5B5),
               ),
-              hintText: 'Enter your phone',
+              hintText: 'Enter your phone'.tr(),
               validator: (p0) {},
             ),
             SizedBox(
@@ -61,7 +62,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 //       builder: (context) => const ResetPasswordScreen()),
                 // );
               },
-              text: "Reset Password",
+              text: "Reset Password".tr(),
             )
           ],
         ),

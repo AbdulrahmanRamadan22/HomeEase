@@ -7,6 +7,7 @@ import 'package:home_ease/core/networking/remote/auth_services.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
 import 'package:home_ease/features/auth/login/logic/login_state.dart';
 import 'package:home_ease/features/auth/login/repo/login_repo.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.loginRepo) : super(const LoginState.initial());
@@ -14,7 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthFirebase authSocial = AuthFirebase();
   final service = FirestoreServices.instance;
   final formKey = GlobalKey<FormState>();
-   TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   LoginRepo loginRepo;
@@ -57,8 +58,8 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.error(error: error.toString()));
       });
     } else {
-      emit(const LoginState.error(
-          error: 'Failed to log in with Facebook. Please try again.'));
+      emit(LoginState.error(
+          error: 'Failed to log in with Facebook. Please try again.'.tr()));
     }
   }
 

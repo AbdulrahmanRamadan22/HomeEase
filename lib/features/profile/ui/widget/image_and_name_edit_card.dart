@@ -3,6 +3,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ImageAndNameEditCard extends StatelessWidget {
   const ImageAndNameEditCard({super.key});
@@ -30,7 +31,7 @@ class ImageAndNameEditCard extends StatelessWidget {
             height: 12.h,
           ),
           Text(
-            'Abdul Aziz Al-Qahtany ',
+            'Abdul Aziz Al-Qahtany '.tr(),
             style: TextStyles.font16Black700,
           ),
           SizedBox(
@@ -41,7 +42,7 @@ class ImageAndNameEditCard extends StatelessWidget {
             height: 55.h,
             radius: 60.r,
             onPressed: () {},
-            text: 'Edit',
+            text: 'Edit'.tr(),
             style: TextStyles.font14Black700,
           ),
         ],
