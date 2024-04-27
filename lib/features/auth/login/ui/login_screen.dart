@@ -8,7 +8,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/login_card_social.dart';
-import 'package:home_ease/features/auth/login/ui/widgets/register_bloc_listener.dart';
+import 'package:home_ease/features/auth/login/ui/widgets/login_bloc_listener.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/dont_have_account_text.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/login_form.dart';

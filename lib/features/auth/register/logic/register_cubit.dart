@@ -79,6 +79,8 @@ class RegisterCubit extends Cubit<RegisterState> {
             phone: value.user!.phoneNumber.toString(),
           ).toJson(),
         );
+        CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+
         emit(RegisterState.createUser(value));
         // ignore: argument_type_not_assignable_to_error_handler
       }).catchError((error) {
@@ -105,6 +107,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           phone: value.user!.phoneNumber.toString(),
         ).toJson(),
       );
+      CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
 
       emit(RegisterState.createUser(value));
     }).catchError((error) {

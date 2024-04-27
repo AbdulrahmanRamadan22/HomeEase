@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
   final String text;
   final Color backGround;
   final dynamic style;
-
+  final Color textColor;
   // bool isUppercase=true,
   final Function() onPressed;
 
@@ -22,6 +22,7 @@ class CustomButton extends StatelessWidget {
     this.backGround = ColorsApp.mainGreen,
     this.style,
     required this.onPressed,
+    this.textColor = ColorsApp.white,
   });
 
   @override
@@ -38,7 +39,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            color: ColorsApp.white,
+            color: textColor,
             fontSize: 18.sp,
             fontWeight: FontWeight.w700,
           ),

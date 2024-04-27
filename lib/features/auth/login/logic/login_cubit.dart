@@ -14,7 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
   final AuthFirebase authSocial = AuthFirebase();
   final service = FirestoreServices.instance;
   final formKey = GlobalKey<FormState>();
-   TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   LoginRepo loginRepo;
@@ -51,6 +51,8 @@ class LoginCubit extends Cubit<LoginState> {
             phone: value.user!.phoneNumber.toString(),
           ).toJson(),
         );
+        CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+
         emit(LoginState.loginSuccess(value));
         // ignore: argument_type_not_assignable_to_error_handler
       }).catchError((error) {
@@ -77,6 +79,8 @@ class LoginCubit extends Cubit<LoginState> {
           phone: value.user!.phoneNumber.toString(),
         ).toJson(),
       );
+
+      CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
 
       emit(LoginState.loginSuccess(value));
     }).catchError((error) {
