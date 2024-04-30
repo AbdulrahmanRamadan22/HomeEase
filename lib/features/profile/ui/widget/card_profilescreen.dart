@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/theming/colors.dart';
 
 class Card_profilescreen extends StatelessWidget {
   final dynamic leading;
@@ -17,6 +18,11 @@ class Card_profilescreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(color: ColorsApp.gray, width: 0.3),
+      ),
+      color: ColorsApp.white,
       child: ListTile(
         leading: leading,
         title: title,

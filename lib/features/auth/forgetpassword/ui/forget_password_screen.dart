@@ -8,8 +8,8 @@ import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
-import 'package:home_ease/features/forgetpassword/ui/widgets/for_get_password_bloc_listener.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
+import 'package:home_ease/features/auth/forgetpassword/ui/widgets/for_get_password_bloc_listener.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {

@@ -1,10 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/translations/locale_keys.g.dart';
 
 RichText goodMorningName() {
+            // var fullName= CacheHelper.getData(key: 'fullName');
+
   return RichText(
     text: TextSpan(
 
@@ -13,6 +16,9 @@ RichText goodMorningName() {
         style: TextStyles.font14Black400,
         children: [
           TextSpan(
+
+            // text: fullName,
+            
             
             text:LocaleKeys.Abdelrahman.tr(),
             

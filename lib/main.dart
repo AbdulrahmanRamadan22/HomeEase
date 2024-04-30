@@ -52,9 +52,17 @@ void main() async {
 
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
 
+<<<<<<< HEAD
   //uId = CacheHelper.getData(key: 'uId');
 
   log(uId);
+=======
+uId!=null?uId=CacheHelper.getData(key: 'uId'):uId=null;
+    
+
+
+   log(uId.toString());
+>>>>>>> profile_logic
 
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 

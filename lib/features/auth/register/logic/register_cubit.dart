@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:home_ease/core/helpers/app_regex.dart';
-import 'package:home_ease/core/models/users/user_request_body.dart';
+import 'package:home_ease/core/helpers/constants.dart';
+import 'package:home_ease/core/models/users/user_model.dart';
 import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/networking/remote/auth_services.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
@@ -44,18 +44,20 @@ class RegisterCubit extends Cubit<RegisterState> {
     response.when(success: (value) {
       service.setData(
         path: 'users/${value!.user!.uid.toString()}',
-        data: UserRequestBody(
+        data: UserModel(
           fullName: fullNameController.text,
           email: emailController.text,
-          profilePhotoURL:
-              "https://media.istockphoto.com/id/587805156/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=gkvLDCgsHH-8HeQe7JsjhlOY6vRBJk_sKW9lyaLgmLo=",
+          profilePhotoURL: profilePhotoURL,
           type: 'user',
+          cover: cover,
           uId: value.user!.uid.toString(),
           phone: phoneNumber,
         ).toJson(),
       );
 
       CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+      CacheHelper.saveData(key: 'fullName', value: fullNameController.text);
+
       emit(RegisterState.registerSuccess(value));
     }, failure: (error) {
       emit(RegisterState.registerError(error: error.toString()));
@@ -71,16 +73,19 @@ class RegisterCubit extends Cubit<RegisterState> {
       authSocial.signInWithFacebook().then((value) {
         service.setData(
           path: 'users/${value.user!.uid.toString()}',
-          data: UserRequestBody(
+          data: UserModel(
             fullName: value.user!.displayName.toString(),
             email: value.user!.email.toString(),
-            profilePhotoURL: value.user!.photoURL.toString(),
+            profilePhotoURL: value.user!.photoURL.toString() ?? profilePhotoURL,
+            cover: cover,
             type: 'user',
             uId: value.user!.uid.toString(),
             phone: value.user!.phoneNumber.toString(),
           ).toJson(),
         );
         CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+        CacheHelper.saveData(
+            key: 'fullName', value: value.user!.displayName.toString());
 
         emit(RegisterState.createUser(value));
         // ignore: argument_type_not_assignable_to_error_handler
@@ -99,16 +104,19 @@ class RegisterCubit extends Cubit<RegisterState> {
     authSocial.signInWithGoogle().then((value) {
       service.setData(
         path: 'users/${value!.user!.uid}',
-        data: UserRequestBody(
+        data: UserModel(
           fullName: value.user!.displayName.toString(),
           email: value.user!.email.toString(),
-          profilePhotoURL: value.user!.photoURL.toString(),
+          profilePhotoURL: value.user!.photoURL.toString() ?? profilePhotoURL,
+          cover: cover,
           type: 'user',
           uId: value.user!.uid.toString(),
           phone: value.user!.phoneNumber.toString(),
         ).toJson(),
       );
       CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
+      CacheHelper.saveData(
+          key: 'fullName', value: value.user!.displayName.toString());
 
       emit(RegisterState.createUser(value));
     }).catchError((error) {

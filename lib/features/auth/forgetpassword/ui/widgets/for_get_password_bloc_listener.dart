@@ -5,8 +5,8 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_state.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_state.dart';
 
 class ForgetPasswordBlocListener extends StatelessWidget {
   const ForgetPasswordBlocListener({super.key});
