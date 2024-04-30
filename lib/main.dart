@@ -1,4 +1,3 @@
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -18,20 +17,17 @@ import 'package:firebase_core/firebase_core.dart';
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
-
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-
-    setupGetIt();
+  setupGetIt();
 
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
   await CacheHelper.init();
-
 
   await Firebase.initializeApp(
     // options: DefaultFirebaseOptions.currentPlatform,
@@ -56,10 +52,9 @@ void main() async {
 
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
 
-   uId=CacheHelper.getData(key: 'uId');
+  //uId = CacheHelper.getData(key: 'uId');
 
-
-   log(uId);
+  log(uId);
 
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 
@@ -83,8 +78,8 @@ void main() async {
         fallbackLocale: const Locale('ar', 'EG'),
         // assetLoader: const CodegenLoader(),
         // saveLocale: true,
-        child: HomeEase(
-          // initialRoute: initialRoute,
-        )),
+        child: const HomeEase(
+            // initialRoute: initialRoute,
+            )),
   );
 }
