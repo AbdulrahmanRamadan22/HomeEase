@@ -15,7 +15,7 @@ class CompanyScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorsApp.lightGreen,
       appBar: AppBar(
-          title: Text('Company', style: TextStyles.font18Black700),
+          title: Text('Company'.tr(), style: TextStyles.font18Black700),
           centerTitle: true),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 41.w, vertical: 20.h),
@@ -46,7 +46,7 @@ class CompanyScreen extends StatelessWidget {
                           SizedBox(
                             width: 5.w,
                           ),
-                          Text('4.5', style: TextStyles.font18Black700),
+                          Text('4.5'.tr(), style: TextStyles.font18Black700),
                         ],
                       ),
                       SizedBox(
