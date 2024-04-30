@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CardSelectAddress extends StatelessWidget {
   const CardSelectAddress({
@@ -62,32 +63,32 @@ class CardSelectAddress extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(textCity, style: TextStyles.font10white500),
+                  Text(textCity.tr(), style: TextStyles.font10white500),
                   SizedBox(
                     height: 3.h,
                   ),
-                  Text(textCityRegion, style: TextStyles.font12white700),
+                  Text(textCityRegion.tr(), style: TextStyles.font12white700),
                   SizedBox(
                     height: 11.h,
                   ),
-                  Text(textCityRegion, style: TextStyles.font10white500),
+                  Text(textCityRegion.tr(), style: TextStyles.font10white500),
                   const SizedBox(),
-                  Text(textNameRegion, style: TextStyles.font12white700),
+                  Text(textNameRegion.tr(), style: TextStyles.font12white700),
                 ],
               ),
               const Spacer(),
               Column(
                 children: [
-                  Text(textStreet, style: TextStyles.font10white500),
+                  Text(textStreet.tr(), style: TextStyles.font10white500),
                   SizedBox(
                     height: 3.h,
                   ),
-                  Text(textAddressStreet, style: TextStyles.font12white700),
+                  Text(textAddressStreet.tr(), style: TextStyles.font12white700),
                   SizedBox(
                     height: 11.h,
                   ),
-                  Text(textBuilding, style: TextStyles.font10white500),
-                  Text(textNameBuilding, style: TextStyles.font12white700),
+                  Text(textBuilding.tr(), style: TextStyles.font10white500),
+                  Text(textNameBuilding.tr(), style: TextStyles.font12white700),
                   SizedBox(
                     height: 15.h,
                   ),

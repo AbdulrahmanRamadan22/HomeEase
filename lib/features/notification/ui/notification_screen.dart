@@ -5,6 +5,7 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/notification/ui/widget/cart_notification_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key, this.textnotification});
@@ -16,7 +17,7 @@ class NotificationScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Notification',
+          'Notification'.tr(),
           style: TextStyles.font18Black700,
         ),
       ),
@@ -38,7 +39,7 @@ class NotificationScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text('Order Confirmed',
+                    title: Text('Order Confirmed'.tr(),
                         style: TextStyles.font14Black600),
                     leading: Image.asset(
                       'assets/images/check_right.png',
@@ -48,9 +49,9 @@ class NotificationScreen extends StatelessWidget {
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Your order is Done',
+                        Text('Your order is Done'.tr(),
                             style: TextStyles.font14Bgray500),
-                        Text('register payment methods',
+                        Text('register payment methods'.tr(),
                             style: TextStyles.font14Bgray500),
                         SizedBox(
                           height: 18.h,
@@ -70,7 +71,7 @@ class NotificationScreen extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: () {},
-                        child: Text('Complete payment methods',
+                        child: Text('Complete payment methods'.tr(),
                             style: TextStyles.font14Bgreengray500),
                       ),
                       const Spacer(),
@@ -87,10 +88,10 @@ class NotificationScreen extends StatelessWidget {
             CardNotificationScreen(
               textnotification: textnotification,
               image: 'assets/images/svgexport-5(61) 1.png',
-              title: 'Reminder',
-              subtitle_1: 'House Shifting - #2F33J',
-              trailing: '2 hr',
-              subtitle_2: 'Scheduled Tomorrow',
+              title: 'Reminder'.tr(),
+              subtitle_1: 'House Shifting - #2F33J'.tr(),
+              trailing: '2 hr'.tr(),
+              subtitle_2: 'Scheduled Tomorrow'.tr(),
             ),
             const SizedBox(
               height: 18,
@@ -98,10 +99,10 @@ class NotificationScreen extends StatelessWidget {
             CardNotificationScreen(
               textnotification: textnotification,
               image: 'assets/images/close_icone.png',
-              title: 'Order Canceled',
-              subtitle_1: 'Your order is Canceled',
-              trailing: 'Yesterday',
-              subtitle_2: 'Try agin',
+              title: 'Order Canceled'.tr(),
+              subtitle_1: 'Your order is Canceled'.tr(),
+              trailing: 'Yesterday'.tr(),
+              subtitle_2: 'Try agin'.tr(),
             )
           ],
         ),

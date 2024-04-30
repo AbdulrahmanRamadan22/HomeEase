@@ -33,6 +33,12 @@ class HomeEase extends StatelessWidget {
           fontFamily: 'Quicksand',
         ),
         initialRoute: Routes.hourlyCleanScreen,
+
+
+        initialRoute: Routes.companyscreen,
+
+        initialRoute: Routes.loginScreen,
+
       ),
     );
   }

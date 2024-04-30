@@ -6,6 +6,7 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -16,7 +17,7 @@ class EditProfileScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Edit Profile',
+          'Edit Profile'.tr(),
           style: TextStyles.font18Black700,
         ),
       ),
@@ -36,7 +37,7 @@ class EditProfileScreen extends StatelessWidget {
                 height: 32.h,
               ),
               Text(
-                'Full Name',
+                'Full Name'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
@@ -47,14 +48,14 @@ class EditProfileScreen extends StatelessWidget {
                   Icons.person_2_outlined,
                   color: Color(0xffB5B5B5),
                 ),
-                hintText: 'Enter your Name',
+                hintText: 'Enter your Name'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 18.h,
               ),
               Text(
-                'Phone',
+                'Phone'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
@@ -65,14 +66,14 @@ class EditProfileScreen extends StatelessWidget {
                   Icons.phone_outlined,
                   color: Color(0xffB5B5B5),
                 ),
-                hintText: 'Enter your phone',
+                hintText: 'Enter your phone'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 18.h,
               ),
               Text(
-                'Password',
+                'Password'.tr(),
                 style: TextStyles.font16Black600,
               ),
               SizedBox(
@@ -83,14 +84,14 @@ class EditProfileScreen extends StatelessWidget {
                   Icons.visibility,
                   color: Color(0xffB5B5B5),
                 ),
-                hintText: 'Enter Your Password',
+                hintText: 'Enter Your Password'.tr(),
                 validator: (p0) {},
               ),
               SizedBox(
                 height: 70.h,
               ),
               CustomButton(
-                text: 'Save Changes',
+                text: 'Save Changes'.tr(),
                 style: TextStyles.font18Black700,
                 onPressed: () {
                   //   context.pushNamed(Routes.);
@@ -115,7 +116,7 @@ class EditProfileScreen extends StatelessWidget {
                     color: ColorsApp.red,
                   ),
                   label: Text(
-                    'Delete Account',
+                    'Delete Account'.tr(),
                     style: TextStyles.font16Black700,
                   ),
                 ),

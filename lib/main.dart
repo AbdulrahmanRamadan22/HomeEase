@@ -1,6 +1,10 @@
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:home_ease/core/di/dependency_injection.dart';
+import 'package:home_ease/core/helpers/constants.dart';
 import 'package:home_ease/core/helpers/my_bloc_observer.dart';
 import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/routes.dart';
@@ -51,6 +55,11 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
 
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
+
+   uId=CacheHelper.getData(key: 'uId');
+
+
+   log(uId);
 
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 
