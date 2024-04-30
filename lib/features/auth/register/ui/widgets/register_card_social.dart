@@ -3,12 +3,12 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/card_contact.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/register/logic/auth_phone_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-class LoginAndRegisterCardSocial extends StatelessWidget {
-  const LoginAndRegisterCardSocial({super.key});
+class RegisterCardSocial extends StatelessWidget {
+  const RegisterCardSocial({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LoginAndRegisterCardSocial extends StatelessWidget {
           style: TextStyles.font12black500,
         ),
         CardSocial(
-          text: 'Facebook',
+          text: 'Facebook'.tr(),
           image: 'assets/images/facebook.png',
           onTap: () {
             context.read<RegisterCubit>().emitSignInWithFacebookAuthStates();
@@ -30,7 +30,7 @@ class LoginAndRegisterCardSocial extends StatelessWidget {
           height: 14.h,
         ),
         CardSocial(
-          text: 'Google',
+          text: 'Google'.tr(),
           image: 'assets/images/Vector.png',
           onTap: () {
             context.read<RegisterCubit>().emitSignInWithGoogleAuthStates();

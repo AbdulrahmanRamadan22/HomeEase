@@ -1,14 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/core/widgets/login_and_register_card_social.dart';
-import 'package:home_ease/features/register/logic/register_cubit.dart';
-import 'package:home_ease/features/register/ui/widgets/already_have_account_text.dart';
-import 'package:home_ease/features/register/ui/widgets/register_bloc_listener.dart';
-import 'package:home_ease/features/register/ui/widgets/register_form.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_card_social.dart';
+import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/already_have_account_text.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_bloc_listener.dart';
+import 'package:home_ease/features/auth/register/ui/widgets/register_form.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  'Register',
+                  'Register'.tr(),
                   style: TextStyles.font28Black700,
                 ),
               ),
@@ -39,35 +39,23 @@ class RegisterScreen extends StatelessWidget {
                   width: 340.w,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'Register now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
+                    'Register now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!'
+                        .tr(),
                     style: TextStyles.font14Black500,
                   ),
                 ),
               ),
               const RegisterForm(),
               CustomButton(
-                text: 'Register',
+                text: 'Register'.tr(),
                 onPressed: () {
-                  // showProgressIndicator(context);
-
-                  // log(context.read<AuthPhoneCubit>().phoneNumber);
-
                   validateThenDoSignUp(context);
-
-                  // context.read<RegisterCubit>().emitRegisterPhoneAuthStates();
-
-                  // context.pushNamed(Routes.otpScreen);
-
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => OtpScreen()),
-                  // );
                 },
               ),
               SizedBox(
                 height: 15.h,
               ),
-              const LoginAndRegisterCardSocial(),
+              const RegisterCardSocial(),
               const AlreadyHaveAccountText(),
               const RegisterBlocListener(),
             ],

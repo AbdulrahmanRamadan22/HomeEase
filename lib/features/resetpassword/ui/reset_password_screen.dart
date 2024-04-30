@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
+import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
-import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
@@ -10,72 +15,53 @@ class ResetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
+            SizedBox(
+                height: 250.h,
+                width: double.infinity,
+                child: SvgPicture.asset("assets/svgs/Sent_email.svg")),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Text(
-                "Reset Password",
-                style: TextStyles.font28Black700,
+                'abod@gmail.cpm',
+                style: TextStyles.font16Black600,
+              ),
+            ),
+            Text(
+              "Password Reset Email Sent",
+              style: TextStyles.font24Black700,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 24.h),
+              child: Text(
+                'Your Account Security is Our Priority! We\'ve Sent You a Secure Link to safely Change Your Password and Keep Your Account Protected.',
+                style: TextStyles.font14Black500,
+                textAlign: TextAlign.center,
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 24.h),
-              child: Align(
-                alignment: Alignment.center,
-                child: SizedBox(
-                  width: 321.w,
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    'Enter your Phone Number to reset password.',
-                    style: TextStyles.font14Black500,
-                  ),
-                ),
+              child: CustomButton(
+                radius: 12.r,
+                onPressed: () {
+                  context.pushNamedAndRemoveUntil(Routes.loginScreen, predicate: (route) => false);
+                },
+                text: "Done",
               ),
-            ),
-            Text(
-              'Password',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              suffixIcon: const Icon(
-                Icons.visibility_outlined,
-                color: Color(0xffB5B5B5),
-              ),
-              hintText: 'Enter Your Password',
-              validator: (p0) {},
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            Text(
-              'Confirm Password',
-              style: TextStyles.font16Black600,
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            AppTextFormField(
-              suffixIcon: const Icon(
-                Icons.visibility_outlined,
-                color: Color(0xffB5B5B5),
-              ),
-              hintText: 'Enter Your Confirm Password',
-              validator: (p0) {},
-            ),
-            SizedBox(
-              height: 48.h,
             ),
             CustomButton(
-              onPressed: () {},
-              text: "Save Password",
-            )
+              backGround: ColorsApp.white,
+              onPressed: () {
+                context.pop();
+              },
+              text: "Resend Email",
+              textColor: ColorsApp.mainGreen,
+            ),
           ],
         ),
       ),
