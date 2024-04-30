@@ -8,13 +8,14 @@ import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/company/ui/company_screen.dart';
+import 'package:home_ease/features/dashbord/ui/screens/Home_screen.dart';
+import 'package:home_ease/features/dashbord/ui/screens/add_categories.dart';
 import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
 import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
-import 'package:home_ease/features/login/ui/login_screen.dart';
 import 'package:home_ease/features/mywallet/ui/my_wallet_screen.dart';
 import 'package:home_ease/features/auth/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
@@ -97,6 +98,16 @@ class AppRouter {
       case Routes.mywalletscreen:
         return MaterialPageRoute(
           builder: (context) => const MyWalletScreen(),
+        );
+
+      case Routes.dashbordscreen:
+        return MaterialPageRoute(
+          builder: (context) => const DashBordScreen(),
+        );
+        
+      case Routes.addcategoriesdashbordscreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddCategores(),
         );
 
       case Routes.forgetPasswordScreen:

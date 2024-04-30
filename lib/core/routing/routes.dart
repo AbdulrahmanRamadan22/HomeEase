@@ -16,6 +16,9 @@ class Routes {
   static const String hourlyCleanScreen = "/hourlyCleanScreen";
   static const String companyscreen = "/companyscreen";
   static const String mywalletscreen = "/myWalletScreen";
+  static const String dashbordscreen = "/dashbordscreen";
+  static const String addcategoriesdashbordscreen =
+      "/addcategoriesdashbordscreen";
 
   static const String homeScreen = "/homeScreen";
 
