@@ -32,7 +32,11 @@ class HomeEase extends StatelessWidget {
           primarySwatch: mainGreen,
           fontFamily: 'Quicksand',
         ),
+
+        initialRoute: Routes.companyscreen,
+
         initialRoute: Routes.loginScreen,
+
       ),
     );
   }
