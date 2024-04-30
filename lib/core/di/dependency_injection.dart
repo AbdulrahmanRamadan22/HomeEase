@@ -6,8 +6,9 @@ import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/auth/login/repo/login_repo.dart';
 import 'package:home_ease/features/auth/register/data/repos/register_repo.dart';
 import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
-import 'package:home_ease/features/forgetpassword/data/forget_Password_repo.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
+import 'package:home_ease/features/auth/forgetpassword/data/forget_Password_repo.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
+import 'package:home_ease/features/profile/logic/profile_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -34,5 +35,12 @@ Future <void> setupGetIt() async{
 
     getIt.registerLazySingleton<ForGetPasswordRepo>(() => ForGetPasswordRepo(getIt()));
     getIt.registerFactory<ResetpasswordCubit>(() => ResetpasswordCubit(getIt()));
+
+
+    // getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
+
+
+
+    
 
 }

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/networking/remote/firestore_services.dart';
-import 'package:home_ease/features/forgetpassword/data/forget_Password_repo.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_state.dart';
+import 'package:home_ease/features/auth/forgetpassword/data/forget_Password_repo.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_state.dart';
 
 class ResetpasswordCubit extends Cubit<ResetPasswordState> {
   ResetpasswordCubit(this.forGetPasswordRepo)

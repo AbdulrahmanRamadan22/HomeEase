@@ -12,7 +12,7 @@ void showSnackBar(BuildContext context,
       textAlign: TextAlign.center,
     ),
     behavior: SnackBarBehavior.floating,
-    duration: const Duration(seconds: 5),
+    duration: const Duration(seconds: 3),
     backgroundColor: backgroundColor,
     shape: RoundedRectangleBorder(
       side: const BorderSide(color: ColorsApp.white, width: 1),

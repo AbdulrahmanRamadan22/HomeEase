@@ -6,10 +6,13 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
 import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
+import 'package:home_ease/features/categorie/logic/categorie_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
-import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
-import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
+import 'package:home_ease/features/home/logic/home_cubit.dart';
+import 'package:home_ease/features/home/ui/home_screen.dart';
+import 'package:home_ease/features/profile/ui/edit_profile_screen.dart';
+import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
+import 'package:home_ease/features/auth/forgetpassword/ui/forget_password_screen.dart';
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
@@ -32,6 +35,14 @@ class AppRouter {
     // ignore: non_constant_identifier_names
 
     switch (settings.name) {
+      case Routes.homeScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit(),
+            child: const HomeScreen(),
+          ),
+        );
+
       case Routes.onBoardingScreen:
         return MaterialPageRoute(
           builder: (context) => const OnBoardingScreen(),
@@ -104,7 +115,10 @@ class AppRouter {
         );
       case Routes.categoriesScreen:
         return MaterialPageRoute(
-          builder: (context) => const CategoriesScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => CategorieCubit(),
+            child: const CategoriesScreen(),
+          ),
         );
       case Routes.homeLayout:
         return MaterialPageRoute(

@@ -7,6 +7,9 @@ import 'package:home_ease/core/routing/app_router.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
+import 'package:home_ease/features/profile/logic/profile_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class HomeEase extends StatelessWidget {
   final String? initialRoute;
@@ -15,24 +18,31 @@ class HomeEase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(428, 926),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        onGenerateRoute: AppRouter().generateRoute,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          appBarTheme: AppBarTheme(titleTextStyle: TextStyles.font18Black700),
-          useMaterial3: true,
-          primarySwatch: mainGreen,
-          fontFamily: 'Quicksand',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ProfileCubit()..getUserData(),
+        )
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(428, 926),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          onGenerateRoute: AppRouter().generateRoute,
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(titleTextStyle: TextStyles.font18Black700),
+            useMaterial3: true,
+            primarySwatch: mainGreen,
+            fontFamily: 'Quicksand',
+          ),
+          initialRoute: Routes.homeLayout,
         ),
-        initialRoute: Routes.loginScreen,
       ),
     );
   }
