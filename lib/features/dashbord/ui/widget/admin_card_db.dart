@@ -22,8 +22,6 @@ class AdminCardDb extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
-        color: ColorsApp.lightGreen,
-        elevation: 1.1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

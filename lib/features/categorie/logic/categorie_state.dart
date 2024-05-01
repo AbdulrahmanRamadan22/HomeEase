@@ -26,6 +26,9 @@ class UpdateCategorieSuccessState  extends CategorieState {}
 class UpdateCategorieErrorState  extends CategorieState {}
 
 
+class UpdateCategorieLoadingState  extends CategorieState {}
+
+
 
 
 

@@ -37,9 +37,9 @@ class BuildCategoryItem extends StatelessWidget {
           children: [
             Image.network(
               category.imgUrl,
-              width: 140.w,
-              height: 140.h,
-              fit: BoxFit.cover,
+              width: 120.w,
+              height: 120.h,
+              fit: BoxFit.fill,
             ),
             SizedBox(
               height: 12.h,

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/app_router.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
@@ -22,8 +23,10 @@ class HomeEase extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ProfileCubit()..getUserData(),
+
         )
       ],
+
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
         minTextAdapt: true,
@@ -41,12 +44,8 @@ class HomeEase extends StatelessWidget {
             primarySwatch: mainGreen,
             fontFamily: 'Quicksand',
           ),
-          initialRoute: Routes.homeLayout,
+          initialRoute:  initialRoute,
         ),
-<<<<<<< HEAD
-        initialRoute: Routes.dashbordscreen,
-=======
->>>>>>> profile_logic
       ),
     );
   }

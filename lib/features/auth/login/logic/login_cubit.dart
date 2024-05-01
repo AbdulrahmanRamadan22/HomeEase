@@ -30,10 +30,17 @@ class LoginCubit extends Cubit<LoginState> {
       email: emailController.text,
       password: passwordController.text,
     );
+
     response.when(success: (value) {
       CacheHelper.saveData(key: 'uId', value: value!.user!.uid.toString());
-      CacheHelper.saveData(
-          key: 'fullName', value: value.user!.displayName.toString());
+
+
+      
+      CacheHelper.saveData(key: 'email', value: value.user!.email.toString());
+
+      // value.credential.
+      // CacheHelper.saveData(
+      //     key: 'fullName', value: value.user!.displayName.toString());
       emit(LoginState.loginSuccess(value));
     }, failure: (error) {
       emit(LoginState.error(error: error.toString()));
@@ -60,8 +67,8 @@ class LoginCubit extends Cubit<LoginState> {
           ).toJson(),
         );
         CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
-        CacheHelper.saveData(
-            key: 'fullName', value: value.user!.displayName.toString());
+        // CacheHelper.saveData(
+        //     key: 'fullName', value: value.user!.displayName.toString());
 
         emit(LoginState.loginSuccess(value));
         // ignore: argument_type_not_assignable_to_error_handler
@@ -92,8 +99,8 @@ class LoginCubit extends Cubit<LoginState> {
       );
 
       CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
-      CacheHelper.saveData(
-          key: 'fullName', value: value.user!.displayName.toString());
+      // CacheHelper.saveData(
+      //     key: 'fullName', value: value.user!.displayName.toString());
 
       emit(LoginState.loginSuccess(value));
     }).catchError((error) {

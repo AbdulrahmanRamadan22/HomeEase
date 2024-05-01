@@ -56,7 +56,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
 
       CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
-      CacheHelper.saveData(key: 'fullName', value: fullNameController.text);
+      // CacheHelper.saveData(key: 'fullName', value: fullNameController.text);
 
       emit(RegisterState.registerSuccess(value));
     }, failure: (error) {
@@ -84,8 +84,8 @@ class RegisterCubit extends Cubit<RegisterState> {
           ).toJson(),
         );
         CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
-        CacheHelper.saveData(
-            key: 'fullName', value: value.user!.displayName.toString());
+        // CacheHelper.saveData(
+        //     key: 'fullName', value: value.user!.displayName.toString());
 
         emit(RegisterState.createUser(value));
         // ignore: argument_type_not_assignable_to_error_handler
@@ -115,8 +115,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         ).toJson(),
       );
       CacheHelper.saveData(key: 'uId', value: value.user!.uid.toString());
-      CacheHelper.saveData(
-          key: 'fullName', value: value.user!.displayName.toString());
+      // CacheHelper.saveData(
+      //     key: 'fullName', value: value.user!.displayName.toString());
 
       emit(RegisterState.createUser(value));
     }).catchError((error) {

@@ -1,5 +1,5 @@
 class Category {
-  final String id;
+  late final String id;
   final String title;
   // final int price;
   final String imgUrl;

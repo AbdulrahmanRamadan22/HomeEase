@@ -8,20 +8,15 @@ import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
 import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/categorie/logic/categorie_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
-<<<<<<< HEAD
 import 'package:home_ease/features/company/ui/company_screen.dart';
-import 'package:home_ease/features/dashbord/ui/screens/Home_screen.dart';
+import 'package:home_ease/features/dashbord/ui/screens/admin_category_screen.dart';
+import 'package:home_ease/features/dashbord/ui/screens/dash_bord_screen.dart';
 import 'package:home_ease/features/dashbord/ui/screens/add_categories.dart';
-import 'package:home_ease/features/edit_profile/ui/edit_profile_screen.dart';
-import 'package:home_ease/features/forgetpassword/logic/resetpassword_cubit.dart';
-import 'package:home_ease/features/forgetpassword/ui/forget_password_screen.dart';
-=======
 import 'package:home_ease/features/home/logic/home_cubit.dart';
 import 'package:home_ease/features/home/ui/home_screen.dart';
 import 'package:home_ease/features/profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
 import 'package:home_ease/features/auth/forgetpassword/ui/forget_password_screen.dart';
->>>>>>> profile_logic
 import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
@@ -91,10 +86,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const PaymentScreen(),
         );
-      case Routes.addressScreenScreen:
-        return MaterialPageRoute(
-          builder: (context) => const AddressScreen(),
-        );
+     
       case Routes.selectAddressScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectAddress(),
@@ -150,6 +142,14 @@ class AppRouter {
             child: const CategoriesScreen(),
           ),
         );
+
+         case Routes.adminCategoriesScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => CategorieCubit(),
+            child: const AdminCategoriesScreen(),
+          ),
+        );
       case Routes.homeLayout:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
@@ -157,6 +157,7 @@ class AppRouter {
             child: const HomeLayoutScreen(),
           ),
         );
+        
 
       default:
         return MaterialPageRoute(

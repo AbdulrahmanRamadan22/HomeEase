@@ -4,6 +4,7 @@ import 'package:home_ease/core/widgets/card_contact.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 
 class LogicCardSocial extends StatelessWidget {
@@ -22,7 +23,7 @@ class LogicCardSocial extends StatelessWidget {
           text: 'Facebook',
           image: 'assets/images/facebook.png',
           onTap: () {
-            context.read<RegisterCubit>().emitSignInWithFacebookAuthStates();
+            context.read<LoginCubit>().emitSignInWithFacebookAuthStates();
           },
         ),
         SizedBox(
@@ -32,7 +33,7 @@ class LogicCardSocial extends StatelessWidget {
           text: 'Google',
           image: 'assets/images/Vector.png',
           onTap: () {
-            context.read<RegisterCubit>().emitSignInWithGoogleAuthStates();
+            context.read<LoginCubit>().emitSignInWithGoogleAuthStates();
           },
         ),
       ],

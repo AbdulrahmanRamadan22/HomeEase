@@ -47,81 +47,82 @@ class HomeScreen extends StatelessWidget {
             body: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: ListView(
-              
-                children: [ Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // AppTextFormField(
-                    //   hintText: "Search".tr(),
-                    //   validator: (p0) {},
-                    //   backgroundColor: ColorsApp.white,
-                    //   suffixIcon: const Icon(
-                    //     Icons.search,
-                    //     size: 30,
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 34.h,
-                    ),
-                    goodMorningName(),
-                    SizedBox(
-                      height: 12.h,
-                    ),
-                    Text(
-                      LocaleKeys.findYourHomeServiceNeedAHelpingHandToday.tr(),
-                      // LocaleKeys.FindYourHomeServiceNeedAHelpingHandToday.tr(),
-                      // "Find your home service \nNeed a helping hand today?".tr(),
-                      style: TextStyles.font24Black700,
-                    ),
-                    cardLocation(),
-                    Image.asset("assets/images/banner1.png"),
-                    SizedBox(
-                      height: 28.h,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          LocaleKeys.OurServices.tr(),
-                          // "Our services".tr(),
-                          style: TextStyles.font18Black700,
-                        ),
-                        const Spacer(),
-                        Text(
-                          LocaleKeys.SeeALL.tr(),
-                          // "See ALL".tr(),
-                          style: TextStyles.font12mainGreen700,
-                        ),
-                      ],
-                    ),
-                    StreamBuilder<List<Category>>(
-                      stream: Cubit.getCategories(),
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState ==
-                            ConnectionState.active) {
-                          final category = snapshot.data;
-                          if (category == null || category.isEmpty) {
-                            return const Center(
-                              child: Text('No Data Available!'),
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // AppTextFormField(
+                      //   hintText: "Search".tr(),
+                      //   validator: (p0) {},
+                      //   backgroundColor: ColorsApp.white,
+                      //   suffixIcon: const Icon(
+                      //     Icons.search,
+                      //     size: 30,
+                      //   ),
+                      // ),
+                      SizedBox(
+                        height: 34.h,
+                      ),
+                      // goodMorningName(),
+                      // SizedBox(
+                      //   height: 12.h,
+                      // ),
+                      Text(
+                        LocaleKeys.findYourHomeServiceNeedAHelpingHandToday
+                            .tr(),
+                        // LocaleKeys.FindYourHomeServiceNeedAHelpingHandToday.tr(),
+                        // "Find your home service \nNeed a helping hand today?".tr(),
+                        style: TextStyles.font24Black700,
+                      ),
+                      cardLocation(),
+                      Image.asset("assets/images/banner1.png"),
+                      SizedBox(
+                        height: 28.h,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            LocaleKeys.OurServices.tr(),
+                            // "Our services".tr(),
+                            style: TextStyles.font18Black700,
+                          ),
+                          const Spacer(),
+                          Text(
+                            LocaleKeys.SeeALL.tr(),
+                            // "See ALL".tr(),
+                            style: TextStyles.font12mainGreen700,
+                          ),
+                        ],
+                      ),
+                      StreamBuilder<List<Category>>(
+                        stream: Cubit.getCategories(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.active) {
+                            final category = snapshot.data;
+                            if (category == null || category.isEmpty) {
+                              return const Center(
+                                child: Text('No Data Available!'),
+                              );
+                            }
+                            return BuildGridView(
+                              itemCount: category.length,
+                              itemBuilder: (context, index) {
+                                return BuildCategoryItem(
+                                  category: category[index],
+                                );
+                              },
                             );
                           }
-                          return BuildGridView(
-                            itemCount: category.length,
-                            itemBuilder: (context, index) {
-                              return BuildCategoryItem(
-                                category: category[index],
-                              );
-                            },
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsApp.mainGreen,
+                            ),
                           );
-                        }
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: ColorsApp.mainGreen,
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

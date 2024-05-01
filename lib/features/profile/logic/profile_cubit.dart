@@ -45,6 +45,9 @@ class ProfileCubit extends Cubit<ProfileState> {
 
       fullNameController.text = userModel!.fullName;
       phoneController.text = userModel!.phone;
+
+ CacheHelper.saveData(key: 'fullName', value: value.data()!['fullName']);
+
       emit(ProfileState.getUserSuccess(userModel));
     }).catchError((error) {
       log(error.toString());
@@ -90,7 +93,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  
+
 
   void uploadProfileImage(BuildContext context) {
     emit(const ProfileState.profileUpdateLoadingState());
@@ -192,13 +195,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     if(await _googleSignIn.isSignedIn()){
     await _googleSignIn.signOut();
 
-
     }
 
-  
     await _firebaseAuth.signOut();
-
-
 // ignore: unnecessary_null_comparison
 if(FacebookAuth!=null){
       await FacebookAuth.instance.logOut();
