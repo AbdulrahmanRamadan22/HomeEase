@@ -32,12 +32,12 @@ class HomeLayoutScreen extends StatelessWidget {
             ),
             BottomNavigationBarItem(
               icon: const Icon(Icons.dashboard_outlined),
-              label:LocaleKeys.categories.tr(),
+              label: LocaleKeys.categories.tr(),
               //  "Categories".tr(),
             ),
             const BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: "Favorite",
+              icon: Icon(Icons.settings),
+              label: "Settings",
             ),
           ],
         ),

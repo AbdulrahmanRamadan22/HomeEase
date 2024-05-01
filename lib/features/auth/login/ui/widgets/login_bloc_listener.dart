@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_ease/core/helpers/constants.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/networking/local/cache_helper.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/show_progress_indicator.dart';
@@ -15,11 +17,9 @@ class LoginBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is Loading ||
-          current is LoginSuccess ||
-          current is Error ,
-       
+          current is Loading || current is LoginSuccess || current is Error,
       listener: (context, state) {
+        email = CacheHelper.getData(key: 'email');
         state.whenOrNull(
           loading: () {
             showProgressIndicator(context);
@@ -31,12 +31,16 @@ class LoginBlocListener extends StatelessWidget {
               content: "Login successfully go to home screen",
               backgroundColor: ColorsApp.mainGreen,
             );
-            context.pushReplacementNamed(Routes.homeLayout);
+
+            if (email == "admin@gmail.com") {
+              context.pushReplacementNamed(Routes.dashbordscreen);
+            } else {
+              context.pushReplacementNamed(Routes.homeLayout);
+            }
           },
-     
           error: (error) {
             context.pop();
-         
+
             showSnackBar(
               context,
               content: error.toString(),

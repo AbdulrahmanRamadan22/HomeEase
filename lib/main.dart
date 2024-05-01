@@ -52,9 +52,13 @@ void main() async {
 
   var onBoarding = CacheHelper.getData(key: 'onBoarding');
 
+// <<<<<<< HEAD
   //uId = CacheHelper.getData(key: 'uId');
 
-  log(uId);
+  uId != null ? uId = CacheHelper.getData(key: 'uId') : uId = null;
+
+  // log(uId!);
+  log(uId.toString());
 
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 
@@ -62,7 +66,16 @@ void main() async {
 
   if (selectLanguageScreen != null) {
     if (onBoarding != null) {
-      initialRoute = Routes.loginScreen;
+      if (uId != null) {
+        email = CacheHelper.getData(key: 'email');
+        if (email == "admin@gmail.com") {
+          initialRoute = Routes.dashbordscreen;
+        } else {
+          initialRoute = Routes.homeLayout;
+        }
+      } else {
+        initialRoute = Routes.loginScreen;
+      }
     } else {
       initialRoute = Routes.onBoardingScreen;
     }
