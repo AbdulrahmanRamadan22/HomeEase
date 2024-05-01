@@ -72,14 +72,15 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path:
-            'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: const Locale('ar', 'EG'),
-        // assetLoader: const CodegenLoader(),
-        // saveLocale: true,
-        child: const HomeEase(
-            // initialRoute: initialRoute,
-            )),
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path:
+          'assets/translations', // <-- change the path of the translation files
+      fallbackLocale: const Locale('ar', 'EG'),
+      // assetLoader: const CodegenLoader(),
+      // saveLocale: true,
+      child: const HomeEase(
+          // initialRoute: initialRoute,
+          ),
+    ),
   );
 }
