@@ -5,13 +5,16 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 
 class ButtonCard extends StatelessWidget {
-  const ButtonCard({
+  ButtonCard({
     Key? key,
     this.image,
+    required this.onPressed,
     required this.text,
   }) : super(key: key);
   final String? image;
   final String text;
+  void Function() onPressed;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,7 +22,7 @@ class ButtonCard extends StatelessWidget {
       height: 60,
       child: MaterialButton(
         elevation: 0,
-        onPressed: () {},
+        onPressed: onPressed,
         textColor: Colors.white,
         color: ColorsApp.white,
         padding: const EdgeInsets.all(16.0),
