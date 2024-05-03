@@ -54,7 +54,7 @@ class DashBordScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       child: AdminCardDb(
-                        image: 'assets/images/profile.png',
+                        image: 'assets/images/images.jpeg',
                         title: 'Categories',
                         onTap: () {
                           context.pushNamed(Routes.adminCategoriesScreen);
@@ -64,24 +64,24 @@ class DashBordScreen extends StatelessWidget {
                         },
                       ),
                     ),
-                    const SizedBox(
-                      child: AdminCardDb(
-                        image: 'assets/images/profile.png',
-                        title: 'VOVO',
-                      ),
-                    ),
-                    const SizedBox(
-                      child: AdminCardDb(
-                        image: 'assets/images/profile.png',
-                        title: 'VOVO',
-                      ),
-                    ),
-                    const SizedBox(
-                      child: AdminCardDb(
-                        image: 'assets/images/profile.png',
-                        title: 'VOVO',
-                      ),
-                    ),
+                    // const SizedBox(
+                    //   child: AdminCardDb(
+                    //     image: 'assetsi/mages/flat.png',
+                    //     title: 'Flats',
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   child: AdminCardDb(
+                    //     image: 'assets/images/splash.png',
+                    //     title: 'Category',
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   child: AdminCardDb(
+                    //     image: 'assets/images/images.jpeg',
+                    //     title: 'Category',
+                    //   ),
+                    // ),
                   ],
                 ),
               )

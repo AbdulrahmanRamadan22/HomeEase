@@ -57,15 +57,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Column(
                         children: [
-                          Card_profilescreen(
-                            title: Text('Payment Methods'.tr(),
-                                style: TextStyles.font16Black700),
-                            subtitle: Text('Add your credit & debit cards'.tr(),
-                                style: TextStyles.font14Black500),
-                            trailing: const Icon(Icons.chevron_right),
-                            leading: Icon(
-                              Icons.payment_rounded,
-                              color: ColorsApp.blackOpacity,
+                          GestureDetector(
+                            onTap: () =>
+                                context.pushNamed(Routes.paymentScreenScreen),
+                            child: Card_profilescreen(
+                              title: Text('Payment Methods'.tr(),
+                                  style: TextStyles.font16Black700),
+                              subtitle: Text(
+                                  'Add your credit & debit cards'.tr(),
+                                  style: TextStyles.font14Black500),
+                              trailing: const Icon(Icons.chevron_right),
+                              leading: Icon(
+                                Icons.payment_rounded,
+                                color: ColorsApp.blackOpacity,
+                              ),
                             ),
                           ),
                           Card_profilescreen(
@@ -99,22 +104,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           //     color: ColorsApp.blackOpacity,
                           //   ),
                           // ),
-                          Card_profilescreen(
-                            title: Text('Contact Us'.tr(),
-                                style: TextStyles.font16Black700),
-                            subtitle: Text('For more information '.tr(),
-                                style: TextStyles.font14Black500),
-                            trailing: const Icon(Icons.chevron_right),
-                            leading: Icon(
-                              Icons.call,
-                              color: ColorsApp.blackOpacity,
+                          GestureDetector(
+                            onTap: () {
+                              context.pushNamed(Routes.contactUsScreen);
+                            },
+                            child: Card_profilescreen(
+                              title: Text('Contact Us'.tr(),
+                                  style: TextStyles.font16Black700),
+                              subtitle: Text('For more information '.tr(),
+                                  style: TextStyles.font14Black500),
+                              trailing: const Icon(Icons.chevron_right),
+                              leading: Icon(
+                                Icons.call,
+                                color: ColorsApp.blackOpacity,
+                              ),
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
                               context.read<ProfileCubit>().logout();
                               // context.pop();
-                              context.pushNamedAndRemoveUntil(Routes.loginScreen, predicate: (_) => false);
+                              context.pushNamedAndRemoveUntil(
+                                  Routes.loginScreen,
+                                  predicate: (_) => false);
                             },
                             child: Card_profilescreen(
                               title: Text('Logout'.tr(),

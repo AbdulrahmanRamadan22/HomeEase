@@ -4,12 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
-import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/card_address_location.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
-import 'package:home_ease/features/hourlycleaning/ui/widget/button_card.dart';
+import 'package:home_ease/core/widgets/show_snack_bar.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/card_detils_step2.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/containet_step_1.dart';
 import 'package:time_picker_spinner/time_picker_spinner.dart';
@@ -31,6 +32,8 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
   String dropdownValue3 = '';
   int _currentStep = 0;
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,82 +41,86 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
       appBar: AppBar(
         backgroundColor: ColorsApp.white,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 24.w, right: 20),
-            child: Container(
-              color: ColorsApp.white,
-              child: Row(
-                children: [
-                  Text(
-                    'Hourly cleaning'.tr(),
-                    style: TextStyles.font24mainGreen700,
-                  ),
-                  const Spacer(),
-                  Image.asset(
-                    'assets/images/flat.png',
-                    width: 100,
-                  ),
-                ],
+      body: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 24.w, right: 20),
+              child: Container(
+                color: ColorsApp.white,
+                child: Row(
+                  children: [
+                    Text(
+                      'Hourly cleaning'.tr(),
+                      style: TextStyles.font24mainGreen700,
+                    ),
+                    const Spacer(),
+                    Image.asset(
+                      'assets/images/flat.png',
+                      width: 100,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Stepper(
-                elevation: 0,
-                type: StepperType.horizontal,
-                steps: _mySteps(),
-                currentStep: _currentStep,
-                onStepTapped: (step) {
-                  setState(() {
-                    _currentStep = step;
-                  });
-                },
-                onStepContinue: () {
-                  setState(() {
-                    if (_currentStep < _mySteps().length - 1) {
-                      _currentStep = _currentStep + 1;
-                    } else {
-                      //Logic to check if everything is completed
-                      print('Completed, check fields.'.tr());
-                    }
-                  });
-                },
-                onStepCancel: () {
-                  setState(
-                    () {
-                      if (_currentStep > 0) {
-                        _currentStep = _currentStep - 1;
+            Expanded(
+              flex: 3,
+              child: Stepper(
+                  elevation: 0,
+                  type: StepperType.horizontal,
+                  steps: _mySteps(),
+                  currentStep: _currentStep,
+                  onStepTapped: (step) {
+                    setState(() {
+                      _currentStep = step;
+                    });
+                  },
+                  onStepContinue: () {
+                    setState(() {
+                      if (_currentStep < _mySteps().length - 1) {
+                        _currentStep = _currentStep + 1;
                       } else {
-                        _currentStep = 0;
+                        //Logic to check if everything is completed
+                        print('Completed, check fields.'.tr());
                       }
-                    },
-                  );
-                },
-                controlsBuilder:
-                    (BuildContext context, ControlsDetails controlsDetails) {
-                  return Container(
-                    margin: EdgeInsets.only(top: 100.h),
-                    child: CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          if (_currentStep < _mySteps().length - 1) {
-                            _currentStep = _currentStep + 1;
-                          } else {
-                            //Logic to check if everything is completed
-                            print('Completed, check fields.'.tr());
-                          }
-                        });
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(
+                      () {
+                        if (_currentStep > 0) {
+                          _currentStep = _currentStep - 1;
+                        } else {
+                          _currentStep = 0;
+                        }
                       },
-                      text: 'Next',
-                    ),
-                  );
-                }),
-          ),
-        ],
+                    );
+                  },
+                  controlsBuilder:
+                      (BuildContext context, ControlsDetails controlsDetails) {
+                    return Container(
+                      margin: EdgeInsets.only(top: 100.h),
+                      child: CustomButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_currentStep < _mySteps().length - 1) {
+                              _currentStep = _currentStep + 1;
+                            } else {
+                              validateThenDoHome(context);
+                              //Logic to check if everything is completed
+                              // print('Completed, check fields.'.tr());
+                            }
+                          });
+                        },
+                        text: 'Next',
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -144,6 +151,12 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
                   color: ColorsApp.white,
                   width: 150.w,
                   child: DropdownButtonFormField<String>(
+                    validator: (value) {
+                      if (value == null) {
+                        return 'This field is required'.tr();
+                      }
+                      return null;
+                    },
                     decoration: const InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -180,6 +193,12 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
                   color: ColorsApp.white,
                   width: 150.w,
                   child: DropdownButtonFormField<String>(
+                    validator: (value) {
+                      if (value == null) {
+                        return 'This field is required'.tr();
+                      }
+                      return null;
+                    },
                     decoration: const InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -270,6 +289,12 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
               height: 8.h,
             ),
             DropdownButtonFormField<String>(
+              validator: (value) {
+                if (value == null) {
+                  return 'please choose rquired field'.tr();
+                }
+                return null;
+              },
               onTap: () {},
               decoration: const InputDecoration(
                 filled: true,
@@ -322,7 +347,10 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             SizedBox(
               height: 32.h,
             ),
-            Text('Choose Time'.tr(), style: TextStyles.font18Black700,),
+            Text(
+              'Choose Time'.tr(),
+              style: TextStyles.font18Black700,
+            ),
             SizedBox(
               height: 24.h,
             ),
@@ -349,5 +377,16 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
       ),
     ];
     return steps;
+  }
+
+  void validateThenDoHome(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      showSnackBar(
+        context,
+        content: "You successfully go to home screen",
+        backgroundColor: ColorsApp.mainGreen,
+      );
+      context.pushNamed(Routes.homeLayout);
+    }
   }
 }

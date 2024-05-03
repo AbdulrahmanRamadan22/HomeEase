@@ -9,6 +9,7 @@ import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/categorie/logic/categorie_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/company/ui/company_screen.dart';
+import 'package:home_ease/features/contact_us/ui/contact_us_screen.dart';
 import 'package:home_ease/features/dashbord/ui/screens/admin_category_screen.dart';
 import 'package:home_ease/features/dashbord/ui/screens/dash_bord_screen.dart';
 import 'package:home_ease/features/dashbord/ui/screens/add_categories.dart';
@@ -46,6 +47,11 @@ class AppRouter {
             create: (context) => HomeCubit(),
             child: const HomeScreen(),
           ),
+        );
+
+      case Routes.contactUsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ContactUS(),
         );
 
       case Routes.onBoardingScreen:
@@ -86,7 +92,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const PaymentScreen(),
         );
-     
+
       case Routes.selectAddressScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectAddress(),
@@ -113,7 +119,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const DashBordScreen(),
         );
-        
+
       case Routes.addcategoriesdashbordscreen:
         return MaterialPageRoute(
           builder: (context) => const AddCategores(),
@@ -143,7 +149,7 @@ class AppRouter {
           ),
         );
 
-         case Routes.adminCategoriesScreen:
+      case Routes.adminCategoriesScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => CategorieCubit(),
@@ -157,7 +163,6 @@ class AppRouter {
             child: const HomeLayoutScreen(),
           ),
         );
-        
 
       default:
         return MaterialPageRoute(

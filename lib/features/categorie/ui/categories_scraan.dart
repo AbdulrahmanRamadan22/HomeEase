@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -69,6 +71,11 @@ class CategoriesScreen extends StatelessWidget {
                             itemCount: category.length,
                             itemBuilder: (context, index) {
                               return BuildCategoryItem(
+                                onTap: () {
+                                    context.pushNamed(
+                                      Routes.hourlyCleanScreen,
+                                    );
+                                  },
                                 category: category[index],
                               );
                             },

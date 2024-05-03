@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
+import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:home_ease/core/widgets/show_snack_bar.dart';
 
 class ContactUS extends StatelessWidget {
   const ContactUS({super.key});
@@ -26,9 +30,14 @@ class ContactUS extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'We are pleased to contact you to hear your inquiries and opinions'.tr(),
-                style: TextStyles.font12black500,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'We are pleased to contact you to hear your inquiries and opinions'
+                      .tr(),
+                  textAlign: TextAlign.center,
+                  style: TextStyles.font14Black600,
+                ),
               ),
               const SizedBox(
                 height: 29,
@@ -84,7 +93,14 @@ class ContactUS extends StatelessWidget {
                 text: 'Send'.tr(),
                 style: TextStyles.font18Black700,
                 onPressed: () {
-                  //   context.pushNamed(Routes.);
+                  showSnackBar(
+                    context,
+                    content: "Message sent successfully go to home screen",
+                    backgroundColor: ColorsApp.mainGreen,
+                  );
+                  // context.pushNamedAndRemoveUntil(routeName: Routes.homeLayout,)
+                  context.pushReplacementNamed(Routes.homeLayout);
+                  
                 },
               ),
             ],

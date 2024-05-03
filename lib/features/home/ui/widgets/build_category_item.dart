@@ -1,6 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/features/home/data/models/categorie_model.dart';
@@ -14,7 +16,7 @@ class BuildCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap:onTap,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.r),

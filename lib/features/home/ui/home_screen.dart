@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_ease/core/helpers/navigation_extensions.dart';
+import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/build_grid_view.dart';
@@ -35,14 +37,14 @@ class HomeScreen extends StatelessWidget {
               ),
               centerTitle: true,
               title: logoAndText(),
-              actions: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      size: 30,
-                    )),
-              ],
+              // actions: [
+              //   IconButton(
+              //       onPressed: () {},
+              //       icon: const Icon(
+              //         Icons.search,
+              //         size: 30,
+              //       )),
+              // ],
             ),
             body: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -109,6 +111,11 @@ class HomeScreen extends StatelessWidget {
                               itemCount: category.length,
                               itemBuilder: (context, index) {
                                 return BuildCategoryItem(
+                                  onTap: () {
+                                    context.pushNamed(
+                                      Routes.hourlyCleanScreen,
+                                    );
+                                  },
                                   category: category[index],
                                 );
                               },
