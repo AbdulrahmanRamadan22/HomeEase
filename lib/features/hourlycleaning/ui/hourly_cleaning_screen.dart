@@ -11,6 +11,8 @@ import 'package:home_ease/core/widgets/card_address_location.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/button_card.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/card_detils_step2.dart';
+import 'package:home_ease/features/hourlycleaning/ui/widget/container_step.3.dart';
+import 'package:home_ease/features/hourlycleaning/ui/widget/container_step_2.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/containet_step_1.dart';
 import 'package:time_picker_spinner/time_picker_spinner.dart';
 
@@ -24,11 +26,8 @@ class HourlyCleaningScreen extends StatefulWidget {
 }
 
 class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
-  DateTime selectedDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
 
-  String dropdownValue1 = 'Price';
-  String dropdownValue2 = 'Evaluation';
-  String dropdownValue3 = '';
   int _currentStep = 0;
 
   @override
@@ -61,7 +60,6 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             ),
           ),
           Expanded(
-            flex: 3,
             child: Stepper(
                 elevation: 0,
                 type: StepperType.horizontal,
@@ -93,24 +91,10 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
                     },
                   );
                 },
+                //  زرار Next
                 controlsBuilder:
                     (BuildContext context, ControlsDetails controlsDetails) {
-                  return Container(
-                    margin: EdgeInsets.only(top: 100.h),
-                    child: CustomButton(
-                      onPressed: () {
-                        setState(() {
-                          if (_currentStep < _mySteps().length - 1) {
-                            _currentStep = _currentStep + 1;
-                          } else {
-                            //Logic to check if everything is completed
-                            print('Completed, check fields.'.tr());
-                          }
-                        });
-                      },
-                      text: 'Next',
-                    ),
-                  );
+                  return Container();
                 }),
           ),
         ],
@@ -133,119 +117,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
           'Step 2'.tr(),
           style: TextStyles.font12mainGreen700,
         ),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Fliter'.tr(), style: TextStyles.font16Black700),
-            SizedBox(height: 8.h),
-            Row(
-              children: [
-                Container(
-                  color: ColorsApp.white,
-                  width: 150.w,
-                  child: DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: ColorsApp.white,
-                        ),
-                      ),
-                    ),
-                    value: dropdownValue1,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue1 = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      'Price'.tr(),
-                      '\$100'.tr(),
-                      '\$200'.tr(),
-                      '\$300'.tr(),
-                      '\$500'.tr()
-                    ].map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
-                  ),
-                ),
-                SizedBox(
-                  width: 15.w,
-                ),
-                Container(
-                  color: ColorsApp.white,
-                  width: 150.w,
-                  child: DropdownButtonFormField<String>(
-                    decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: ColorsApp.white,
-                        ),
-                      ),
-                    ),
-                    value: dropdownValue2,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue2 = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      'Evaluation'.tr(),
-                      '20%'.tr(),
-                      '50%'.tr(),
-                      '70%'.tr(),
-                      '80%'.tr(),
-                      '100%'.tr(),
-                    ].map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 28.h,
-            ),
-            CardDetils(
-              imageIcon: 'assets/images/talg131.png',
-              textStar: '⭐',
-              cityName: 'Egypt'.tr(),
-              hour: '4 HOURS'.tr(),
-              priceName: 'Price'.tr(),
-              priceNumber: '1152'.tr(),
-              hourlycleanText: 'Hourly cleaning'.tr(),
-              subtitleText1: 'Sed ut perspiciatis unde omnis iste'.tr(),
-              subtitleText2: 'natus error sit voluptatem accusantium'.tr(),
-              imageHourlyclean: 'assets/images/hour_icon.png',
-              imagecity: 'assets/images/city.png',
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            CardDetils(
-              imageIcon: 'assets/images/talg131.png',
-              textStar: '⭐',
-              cityName: 'Egypt'.tr(),
-              hour: '4 HOURS'.tr(),
-              priceName: 'Price'.tr(),
-              priceNumber: '1152'.tr(),
-              hourlycleanText: 'Hourly cleaning'.tr(),
-              subtitleText1: 'Sed ut perspiciatis unde omnis iste'.tr(),
-              subtitleText2: 'natus error sit voluptatem accusantium'.tr(),
-              imageHourlyclean: 'assets/images/hour_icon.png',
-              imagecity: 'assets/images/city.png',
-            ),
-          ],
-        ),
+        content: const ContainerStep2(),
         isActive: _currentStep >= 1,
       ),
       Step(
@@ -253,98 +125,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
           'Step 3'.tr(),
           style: TextStyles.font12mainGreen700,
         ),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CardAddressLocation(
-              subtitle: 'Please add Your address'.tr(),
-              title: 'your location'.tr(),
-              imagebackground: 'assets/images/Ellipse 117.png',
-              foregroundImage: 'assets/images/Pin_duotone_line.png',
-            ),
-            SizedBox(
-              height: 8.h,
-            ),
-            Text('number of visits'.tr(), style: TextStyles.font16Black600),
-            SizedBox(
-              height: 8.h,
-            ),
-            DropdownButtonFormField<String>(
-              onTap: () {},
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: ColorsApp.white,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: ColorsApp.white,
-                  ),
-                ),
-              ),
-              value: dropdownValue3,
-              onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue3 = newValue!;
-                });
-              },
-              items: <String>[''.tr(), '1'.tr(), '2'.tr(), '3'.tr(), '4'.tr()]
-                  .map<DropdownMenuItem<String>>(
-                (String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                },
-              ).toList(),
-            ),
-            SizedBox(
-              height: 11.h,
-            ),
-            Text('Choose Date & Time'.tr(), style: TextStyles.font18Black700),
-            SizedBox(
-              height: 18.h,
-            ),
-            Container(
-              child: DatePicker(
-                DateTime.now(),
-                height: 100,
-                width: 80,
-                initialSelectedDate: DateTime.now(),
-                selectionColor: ColorsApp.mainGreen,
-                selectedTextColor: Colors.white,
-                dateTextStyle: TextStyles.font28Black700,
-                dayTextStyle: TextStyles.font10Bgray500,
-                monthTextStyle: TextStyles.font16Black700,
-                onDateChange: (date) {
-                  selectedDate = date;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 32.h,
-            ),
-            Text('Choose Time'.tr(), style: TextStyles.font18Black700,),
-            SizedBox(
-              height: 24.h,
-            ),
-            Container(
-              color: ColorsApp.white,
-              width: double.infinity,
-              height: 100,
-              child: TimePickerSpinner(
-                itemWidth: 50,
-                is24HourMode: false,
-                normalTextStyle: TextStyles.font16Black700,
-                highlightedTextStyle: TextStyles.font24mainGreen700,
-                spacing: 5,
-                itemHeight: 50,
-                isForce2Digits: true,
-                onTimeChange: (time) {
-                  print('Selected time: ${time.hour}:${time.minute}');
-                },
-              ),
-            ),
-          ],
-        ),
+        content: ContainerStep3(),
         isActive: _currentStep >= 2,
       ),
     ];
