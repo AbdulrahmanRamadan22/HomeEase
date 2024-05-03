@@ -12,8 +12,12 @@ class ContainerStep3 extends StatelessWidget {
   DateTime selectedDate = DateTime.now();
 
   ContainerStep3({
+
     super.key,
+    required this.numberOfVisits
   });
+
+  final numberOfVisits ;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +38,18 @@ class ContainerStep3 extends StatelessWidget {
           height: 8.h,
         ),
         AppTextFormField(
+            controller: numberOfVisits,
             keyboardType: TextInputType.number,
             hintText: 'Enter Number Of Visits',
-            backgroundColor: ColorsApp.white,
+            backgroundColor: ColorsApp.white, 
+            
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please Enter Number Of Visits';
               }
               return null;
-            }),
+            }
+            ),
         SizedBox(
           height: 11.h,
         ),
@@ -93,7 +100,6 @@ class ContainerStep3 extends StatelessWidget {
             },
           ),
         ),
-        Spacer(),
         
 
       ],

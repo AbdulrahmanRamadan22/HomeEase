@@ -11,7 +11,6 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/features/profile/logic/profile_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class HomeEase extends StatelessWidget {
   final String? initialRoute;
 
@@ -23,10 +22,8 @@ class HomeEase extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ProfileCubit()..getUserData(),
-
         )
       ],
-
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
         minTextAdapt: true,
@@ -38,17 +35,17 @@ class HomeEase extends StatelessWidget {
           locale: context.locale,
           onGenerateRoute: AppRouter().generateRoute,
           theme: ThemeData(
+            primaryColor: mainGreen,
+            primarySwatch: mainGreen,
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: AppBarTheme(titleTextStyle: TextStyles.font18Black700),
             useMaterial3: true,
-            primarySwatch: mainGreen,
+            // primarySwatch: mainGreen,
             fontFamily: 'Quicksand',
           ),
-          initialRoute:  initialRoute ?? Routes.hourlyCleanScreen,
+          initialRoute: Routes.hourlyCleanScreen,
         ),
-
       ),
     );
   }
 }
- 

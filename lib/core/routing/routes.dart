@@ -30,14 +30,14 @@ class Routes {
   static const String forgetPasswordScreen = "/forgetPasswordScreen";
 
   static const String adminCategoriesScreen = "/adminCategoriesScreen";
-<<<<<<< HEAD
 
 
   
 
   static const String contactUsScreen = "/contactUsScreen";
 
+
+  static const String testScreen = "/testScreen";
+
   
-=======
->>>>>>> 856050c987ccf882e221f8bf483e6b338b86fade
 }
