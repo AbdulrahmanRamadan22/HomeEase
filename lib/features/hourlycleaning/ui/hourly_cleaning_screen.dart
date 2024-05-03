@@ -12,6 +12,8 @@ import 'package:home_ease/core/widgets/card_address_location.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:home_ease/core/widgets/show_snack_bar.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/card_detils_step2.dart';
+import 'package:home_ease/features/hourlycleaning/ui/widget/container_step.3.dart';
+import 'package:home_ease/features/hourlycleaning/ui/widget/container_step_2.dart';
 import 'package:home_ease/features/hourlycleaning/ui/widget/containet_step_1.dart';
 import 'package:time_picker_spinner/time_picker_spinner.dart';
 
@@ -25,11 +27,8 @@ class HourlyCleaningScreen extends StatefulWidget {
 }
 
 class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
-  DateTime selectedDate = DateTime.now();
+  final _formKey = GlobalKey<FormState>();
 
-  String dropdownValue1 = 'Price';
-  String dropdownValue2 = 'Evaluation';
-  String dropdownValue3 = '';
   int _currentStep = 0;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -65,6 +64,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
                 ),
               ),
             ),
+<<<<<<< HEAD
             Expanded(
               flex: 3,
               child: Stepper(
@@ -81,10 +81,40 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
                     setState(() {
                       if (_currentStep < _mySteps().length - 1) {
                         _currentStep = _currentStep + 1;
+=======
+          ),
+          Expanded(
+            child: Stepper(
+                elevation: 0,
+                type: StepperType.horizontal,
+                steps: _mySteps(),
+                currentStep: _currentStep,
+                onStepTapped: (step) {
+                  setState(() {
+                    _currentStep = step;
+                  });
+                },
+                onStepContinue: () {
+                  setState(() {
+                    if (_currentStep < _mySteps().length - 1) {
+                      _currentStep = _currentStep + 1;
+                    } else {
+                      //Logic to check if everything is completed
+                      print('Completed, check fields.'.tr());
+                    }
+                  });
+                },
+                onStepCancel: () {
+                  setState(
+                    () {
+                      if (_currentStep > 0) {
+                        _currentStep = _currentStep - 1;
+>>>>>>> 856050c987ccf882e221f8bf483e6b338b86fade
                       } else {
                         //Logic to check if everything is completed
                         print('Completed, check fields.'.tr());
                       }
+<<<<<<< HEAD
                     });
                   },
                   onStepCancel: () {
@@ -121,6 +151,18 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             ),
           ],
         ),
+=======
+                    },
+                  );
+                },
+                //  زرار Next
+                controlsBuilder:
+                    (BuildContext context, ControlsDetails controlsDetails) {
+                  return Container();
+                }),
+          ),
+        ],
+>>>>>>> 856050c987ccf882e221f8bf483e6b338b86fade
       ),
     );
   }
@@ -140,6 +182,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
           'Step 2'.tr(),
           style: TextStyles.font12mainGreen700,
         ),
+<<<<<<< HEAD
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -265,6 +308,9 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             ),
           ],
         ),
+=======
+        content: const ContainerStep2(),
+>>>>>>> 856050c987ccf882e221f8bf483e6b338b86fade
         isActive: _currentStep >= 1,
       ),
       Step(
@@ -272,6 +318,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
           'Step 3'.tr(),
           style: TextStyles.font12mainGreen700,
         ),
+<<<<<<< HEAD
         content: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -373,6 +420,9 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
             ),
           ],
         ),
+=======
+        content: ContainerStep3(),
+>>>>>>> 856050c987ccf882e221f8bf483e6b338b86fade
         isActive: _currentStep >= 2,
       ),
     ];

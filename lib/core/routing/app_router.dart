@@ -15,6 +15,7 @@ import 'package:home_ease/features/dashbord/ui/screens/dash_bord_screen.dart';
 import 'package:home_ease/features/dashbord/ui/screens/add_categories.dart';
 import 'package:home_ease/features/home/logic/home_cubit.dart';
 import 'package:home_ease/features/home/ui/home_screen.dart';
+import 'package:home_ease/features/hourlycleaning/ui/widget/containet_step_1.dart';
 import 'package:home_ease/features/profile/ui/edit_profile_screen.dart';
 import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
 import 'package:home_ease/features/auth/forgetpassword/ui/forget_password_screen.dart';
@@ -33,6 +34,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
 import 'package:home_ease/features/select_address/ui/select_address_screen.dart';
 import 'package:home_ease/features/select_language/ui/select_language_screen.dart';
+
+import '../../features/hourlycleaning/ui/widget/container_step_2.dart';
 
 class AppRouter {
   AppRouter();

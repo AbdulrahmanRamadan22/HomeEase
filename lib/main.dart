@@ -55,11 +55,10 @@ void main() async {
 // <<<<<<< HEAD
   //uId = CacheHelper.getData(key: 'uId');
 
+  uId != null ? uId = CacheHelper.getData(key: 'uId') : uId = null;
 
-uId!=null?uId=CacheHelper.getData(key: 'uId'):uId=null;
-    
   // log(uId!);
-     log(uId.toString());
+  log(uId.toString());
 
   var selectLanguageScreen = CacheHelper.getData(key: 'selectLanguageScreen');
 
@@ -69,32 +68,32 @@ uId!=null?uId=CacheHelper.getData(key: 'uId'):uId=null;
     if (onBoarding != null) {
       if (uId != null) {
         email = CacheHelper.getData(key: 'email');
-        if(email=="admin@gmail.com"){
-        initialRoute = Routes.dashbordscreen;
-      }
-        else{
+        if (email == "admin@gmail.com") {
+          initialRoute = Routes.dashbordscreen;
+        } else {
           initialRoute = Routes.homeLayout;
         }
+      } else {
+        initialRoute = Routes.loginScreen;
+      }
     } else {
-      initialRoute = Routes.loginScreen;
+      initialRoute = Routes.onBoardingScreen;
     }
   } else {
-    initialRoute = Routes.onBoardingScreen;
-  }
-}else{
     initialRoute = Routes.selectLanguageScreen;
-}
+  }
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('en'), Locale('ar')],
-        path:
-            'assets/translations', // <-- change the path of the translation files
-        fallbackLocale: const Locale('ar', 'EG'),
-        // assetLoader: const CodegenLoader(),
-        // saveLocale: true,
-        child:  HomeEase(
-            initialRoute: initialRoute,
-            ),),
+      supportedLocales: const [Locale('en'), Locale('ar')],
+      path:
+          'assets/translations', // <-- change the path of the translation files
+      fallbackLocale: const Locale('ar', 'EG'),
+      // assetLoader: const CodegenLoader(),
+      // saveLocale: true,
+      child: const HomeEase(
+          // initialRoute: initialRoute,
+          ),
+    ),
   );
 }
