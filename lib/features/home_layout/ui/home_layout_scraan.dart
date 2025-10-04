@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/colors.dart';
-import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:home_ease/features/home_layout/logic/cubit.dart';
+import 'package:home_ease/features/home_layout/logic/state.dart';
 import 'package:home_ease/translations/locale_keys.g.dart';
 
 class HomeLayoutScreen extends StatelessWidget {

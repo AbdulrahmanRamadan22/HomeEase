@@ -105,6 +105,7 @@ class _HourlyCleaningScreen extends State<HourlyCleaningScreen> {
   List<Step> _mySteps() {
     List<Step> steps = [
       Step(
+        
         title: Text(
           'Step 1'.tr(),
           style: TextStyles.font12mainGreen700,

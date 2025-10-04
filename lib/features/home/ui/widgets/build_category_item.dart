@@ -3,18 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
-import 'package:home_ease/features/home/data/models/categorie_model.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildCategoryItem extends StatelessWidget {
-  final VoidCallback? onTap;
-  final Category category;
-  const BuildCategoryItem({super.key, required this.category, this.onTap});
+  const BuildCategoryItem({super.key});
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.r),
@@ -36,7 +34,8 @@ class BuildCategoryItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              category.imgUrl,
+              'https://img.freepik.com/free-vector/cleaning-service-concept-illustration_114360-6261.jpg?w=740&t=st=1696545603~exp=1696546203~hmac=5b1a7e2 ' ??
+                  ' Not Found',
               width: 120.w,
               height: 120.h,
               fit: BoxFit.fill,
@@ -45,7 +44,7 @@ class BuildCategoryItem extends StatelessWidget {
               height: 12.h,
             ),
             Text(
-              category.title,
+              'Hourly Cleaning',
               // LocaleKeys.hourlyCleaning.tr(),
               // "hourly cleaning".tr(),
               style: TextStyles.font18Black700,

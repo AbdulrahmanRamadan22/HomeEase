@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
-import 'package:home_ease/core/models/users/user_model.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
@@ -10,23 +9,20 @@ import 'package:home_ease/features/profile/ui/widget/image_and_cover_profile.dar
 
 // ignore: must_be_immutable
 class ProfileEditCard extends StatelessWidget {
-  ProfileEditCard({super.key, this.userModel});
-
-  UserModel? userModel;
+  const ProfileEditCard({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       // mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        imageAndCoverProfile(
-          userModel: userModel,
-        ),
         SizedBox(
           height: 12.h,
         ),
         Text(
-          userModel!.fullName,
+          'Edit Profile'.tr(),
           style: TextStyles.font16Black700,
         ),
         SizedBox(

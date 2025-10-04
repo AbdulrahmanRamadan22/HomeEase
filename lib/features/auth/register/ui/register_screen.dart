@@ -3,11 +3,8 @@ import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/auth/register/ui/widgets/register_card_social.dart';
-import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 import 'package:home_ease/features/auth/register/ui/widgets/already_have_account_text.dart';
-import 'package:home_ease/features/auth/register/ui/widgets/register_bloc_listener.dart';
 import 'package:home_ease/features/auth/register/ui/widgets/register_form.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -49,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
               CustomButton(
                 text: 'Register'.tr(),
                 onPressed: () {
-                  validateThenDoSignUp(context);
+                
                 },
               ),
               SizedBox(
@@ -57,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               const RegisterCardSocial(),
               const AlreadyHaveAccountText(),
-              const RegisterBlocListener(),
+
             ],
           ),
         ),
@@ -65,10 +62,5 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 
-  void validateThenDoSignUp(BuildContext context) {
-    if (context.read<RegisterCubit>().formKey.currentState!.validate()) {
-      context.read<RegisterCubit>().emitRegisterAuthStates();
-      // context.read<RegisterCubit>().saveUserInformation();
-    }
-  }
+
 }

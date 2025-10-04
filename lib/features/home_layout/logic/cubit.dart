@@ -2,11 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/home/ui/home_screen.dart';
-import 'package:home_ease/features/profile/logic/profile_cubit.dart';
-import 'package:home_ease/features/profile/ui/profile_screen.dart';
+import 'package:home_ease/features/home_layout/logic/state.dart';
 import 'package:meta/meta.dart';
 
-part 'home_layout_state.dart';
+
 
 class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   HomeLayoutCubit() : super(HomeLayoutInitial());
@@ -18,11 +17,12 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   List<Widget> screens = [
     const HomeScreen(),
     const CategoriesScreen(),
-    const ProfileScreen(),
+
+
+    // const ProfileScreen(),
   ];
   void changeBottomNav(int index) {
     currentIndex = index;
-
 
     emit(BottomNavigationBarChange());
 
@@ -30,7 +30,5 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
 
     //   profileCubit.getUser();
     // }
-
-
   }
 }

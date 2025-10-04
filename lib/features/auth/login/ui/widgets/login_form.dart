@@ -6,7 +6,6 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginForm extends StatefulWidget {
@@ -22,7 +21,6 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<LoginCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,7 +42,6 @@ class _LoginFormState extends State<LoginForm> {
                 return 'Please enter a valid email';
               }
             },
-            controller: context.read<LoginCubit>().emailController,
           ),
           SizedBox(
             height: 18.h,
@@ -66,7 +63,6 @@ class _LoginFormState extends State<LoginForm> {
                 color: ColorsApp.gray,
               ),
             ),
-            controller: context.read<LoginCubit>().passwordController,
 
             hintText: 'Enter Your Password',
             validator: (value) {

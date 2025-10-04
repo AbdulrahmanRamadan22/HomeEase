@@ -1,40 +1,27 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:home_ease/core/di/dependency_injection.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/features/Profile/ui/Profile_screen.dart';
 import 'package:home_ease/features/add_address/ui/add_address_screen.dart';
-import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
-import 'package:home_ease/features/categorie/logic/categorie_cubit.dart';
 import 'package:home_ease/features/categorie/ui/categories_scraan.dart';
 import 'package:home_ease/features/company/ui/company_screen.dart';
-import 'package:home_ease/features/dashbord/ui/screens/admin_category_screen.dart';
-import 'package:home_ease/features/dashbord/ui/screens/dash_bord_screen.dart';
-import 'package:home_ease/features/dashbord/ui/screens/add_categories.dart';
-import 'package:home_ease/features/home/logic/home_cubit.dart';
+
 import 'package:home_ease/features/home/ui/home_screen.dart';
-import 'package:home_ease/features/hourlycleaning/ui/widget/containet_step_1.dart';
 import 'package:home_ease/features/profile/ui/edit_profile_screen.dart';
-import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
 import 'package:home_ease/features/auth/forgetpassword/ui/forget_password_screen.dart';
-import 'package:home_ease/features/home_layout/logic/home_layout_cubit.dart';
+
 import 'package:home_ease/features/home_layout/ui/home_layout_scraan.dart';
 import 'package:home_ease/features/hourlycleaning/ui/hourly_cleaning_screen.dart';
 import 'package:home_ease/features/mywallet/ui/my_wallet_screen.dart';
 import 'package:home_ease/features/auth/login/ui/login_screen.dart';
 import 'package:home_ease/features/notification/ui/notification_screen.dart';
-import 'package:home_ease/features/on_boarding/ui/on_boarding_screen.dart';
+
 import 'package:home_ease/features/payment/ui/payment_screen.dart';
-import 'package:home_ease/features/auth/register/logic/register_cubit.dart';
 import 'package:home_ease/features/auth/register/ui/register_screen.dart';
-import 'package:home_ease/features/address/ui/address_screen.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_ease/features/resetpassword/ui/reset_password_screen.dart';
 import 'package:home_ease/features/select_address/ui/select_address_screen.dart';
-import 'package:home_ease/features/select_language/ui/select_language_screen.dart';
 
-import '../../features/hourlycleaning/ui/widget/container_step_2.dart';
 
 class AppRouter {
   AppRouter();
@@ -45,35 +32,19 @@ class AppRouter {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => HomeCubit(),
-            child: const HomeScreen(),
-          ),
+          builder: (context) => const HomeScreen(),
         );
 
-      case Routes.onBoardingScreen:
-        return MaterialPageRoute(
-          builder: (context) => const OnBoardingScreen(),
-        );
-
-      case Routes.selectLanguageScreen:
-        return MaterialPageRoute(
-          builder: (context) => const SelectLanguageScreen(),
-        );
+  
+  
 
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<LoginCubit>(),
-            child: const LoginScreen(),
-          ),
+          builder: (context) => const LoginScreen(),
         );
       case Routes.registerScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<RegisterCubit>(),
-            child: const RegisterScreen(),
-          ),
+          builder: (context) => const RegisterScreen(),
         );
 
       case Routes.resetPasswordScreen:
@@ -112,22 +83,13 @@ class AppRouter {
           builder: (context) => const MyWalletScreen(),
         );
 
-      case Routes.dashbordscreen:
-        return MaterialPageRoute(
-          builder: (context) => const DashBordScreen(),
-        );
+  
 
-      case Routes.addcategoriesdashbordscreen:
-        return MaterialPageRoute(
-          builder: (context) => const AddCategores(),
-        );
+  
 
       case Routes.forgetPasswordScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<ResetpasswordCubit>(),
-            child: const ForgetPasswordScreen(),
-          ),
+          builder: (context) => const ForgetPasswordScreen(),
         );
       case Routes.profileScreen:
         return MaterialPageRoute(
@@ -140,25 +102,13 @@ class AppRouter {
         );
       case Routes.categoriesScreen:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => CategorieCubit(),
-            child: const CategoriesScreen(),
-          ),
+          builder: (context) => const CategoriesScreen(),
         );
 
-      case Routes.adminCategoriesScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => CategorieCubit(),
-            child: const AdminCategoriesScreen(),
-          ),
-        );
+ 
       case Routes.homeLayout:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => HomeLayoutCubit(),
-            child: const HomeLayoutScreen(),
-          ),
+          builder: (context) => const HomeLayoutScreen(),
         );
 
       default:

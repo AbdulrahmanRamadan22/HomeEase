@@ -6,12 +6,9 @@ import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_ease/features/profile/logic/profile_cubit.dart';
-import 'package:home_ease/features/profile/logic/profile_state.dart';
+
 import 'package:home_ease/features/profile/ui/widget/card_profilescreen.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/features/profile/ui/widget/image_and_name_edit_card.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({
@@ -27,10 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool notfiy = false;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileCubit, ProfileState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        var userModel = context.read<ProfileCubit>().userModel;
+
 
         return Scaffold(
           backgroundColor: ColorsApp.lightGreen,
@@ -42,18 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyles.font18Black700,
             ),
           ),
-          body: BlocConsumer<ProfileCubit, ProfileState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                // var userModel =
-                //     context.select((ProfileCubit cubit) => cubit.userModel);
-
-                return ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    if (userModel != null)
-                      ProfileEditCard(userModel: userModel),
-                    Padding(
+          body:  Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: Column(
                         children: [
@@ -79,26 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: ColorsApp.blackOpacity,
                             ),
                           ),
-                          // Card_profilescreen(
-                          //   title: Text('Push Notification'.tr(),
-                          //       style: TextStyles.font16Black700),
-                          //   subtitle: Text(
-                          //       'For daily update and others '.tr(),
-                          //       style: TextStyles.font14Black500),
-                          //   trailing: Switch(
-                          //       activeColor: ColorsApp.mainGreen,
-                          //       inactiveTrackColor: ColorsApp.white,
-                          //       value: notfiy,
-                          //       onChanged: (value) {
-                          //         setState(() {
-                          //           notfiy = value;
-                          //         });
-                          //       }),
-                          //   leading: Icon(
-                          //     Icons.notifications,
-                          //     color: ColorsApp.blackOpacity,
-                          //   ),
-                          // ),
+             
                           Card_profilescreen(
                             title: Text('Contact Us'.tr(),
                                 style: TextStyles.font16Black700),
@@ -112,7 +76,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              context.read<ProfileCubit>().logout();
+                           
                               // context.pop();
                               context.pushNamedAndRemoveUntil(Routes.loginScreen, predicate: (_) => false);
                             },
@@ -130,14 +94,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     ),
-                  ],
-                );
-              }
-
-              // var userModel = context.read<ProfileCubit>().userModel;
-              ),
         );
-      },
-    );
+   
+ 
   }
 }

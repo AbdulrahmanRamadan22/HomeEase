@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:home_ease/core/helpers/app_regex.dart';
-import 'package:home_ease/core/helpers/navigation_extensions.dart';
-import 'package:home_ease/core/routing/routes.dart';
+
 import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/features/auth/forgetpassword/logic/resetpassword_cubit.dart';
-import 'package:home_ease/features/auth/forgetpassword/ui/widgets/for_get_password_bloc_listener.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -22,7 +17,6 @@ class ForgetPasswordScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.h),
         child: Form(
-          key: context.read<ResetpasswordCubit>().formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -51,7 +45,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                 style: TextStyles.font16Black600,
               ),
               AppTextFormField(
-                controller: context.read<ResetpasswordCubit>().emailController,
                 keyboardType: TextInputType.emailAddress,
                 suffixIcon: Icon(
                   Icons.email_outlined,
@@ -71,8 +64,6 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
               CustomButton(
                 onPressed: () {
-                  validateThenDoLogin(context);
-
                   // context.pushNamed(Routes.resetPasswordScreen,);
                   // Navigator.push(
                   //   context,
@@ -82,17 +73,10 @@ class ForgetPasswordScreen extends StatelessWidget {
                 },
                 text: "Submit",
               ),
-              const ForgetPasswordBlocListener(),
             ],
           ),
         ),
       ),
     );
-  }
-
-  void validateThenDoLogin(BuildContext context) {
-    if (context.read<ResetpasswordCubit>().formKey.currentState!.validate()) {
-      context.read<ResetpasswordCubit>().emitResetpasswordStates();
-    }
   }
 }

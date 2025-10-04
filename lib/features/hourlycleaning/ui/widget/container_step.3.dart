@@ -93,9 +93,6 @@ class ContainerStep3 extends StatelessWidget {
             },
           ),
         ),
-        Spacer(),
-        
-
       ],
     );
   }

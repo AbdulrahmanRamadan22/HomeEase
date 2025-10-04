@@ -6,13 +6,10 @@ import 'package:home_ease/core/helpers/navigation_extensions.dart';
 import 'package:home_ease/core/routing/routes.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/custom_button.dart';
-import 'package:home_ease/features/auth/login/logic/login_cubit.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/login_card_social.dart';
-import 'package:home_ease/features/auth/login/ui/widgets/login_bloc_listener.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/dont_have_account_text.dart';
 import 'package:home_ease/features/auth/login/ui/widgets/login_form.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -63,7 +60,6 @@ class LoginScreen extends StatelessWidget {
               CustomButton(
                 text: 'Login'.tr(),
                 onPressed: () {
-                  validateThenDoLogin(context);
                 },
               ),
               SizedBox(
@@ -71,7 +67,6 @@ class LoginScreen extends StatelessWidget {
               ),
               const LogicCardSocial(),
               const DontHaveAccountText(),
-              const LoginBlocListener(),
             ],
           ),
         ),
@@ -79,9 +74,5 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  void validateThenDoLogin(BuildContext context) {
-    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginAuthStates();
-    }
-  }
+
 }

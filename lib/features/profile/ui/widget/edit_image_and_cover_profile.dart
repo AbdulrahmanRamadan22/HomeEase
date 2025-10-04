@@ -1,25 +1,17 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:home_ease/core/models/users/user_model.dart';
 import 'package:home_ease/core/theming/colors.dart';
-import 'package:home_ease/features/profile/logic/profile_cubit.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditImageAndCoverProfile extends StatelessWidget {
-  EditImageAndCoverProfile({
+  const EditImageAndCoverProfile({
     super.key,
-    required this.userModel,
   });
-
-  UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
-    var profileImage = BlocProvider.of<ProfileCubit>(context).profileImage;
-    var coverImage = BlocProvider.of<ProfileCubit>(context).coverImage;
-
     return SizedBox(
       height: 210.0.h,
       child: Stack(
@@ -33,8 +25,8 @@ class EditImageAndCoverProfile extends StatelessWidget {
                 Container(
                   height: 150.0.h,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(
                         4.0,
                       ),
@@ -43,11 +35,10 @@ class EditImageAndCoverProfile extends StatelessWidget {
                       ),
                     ),
                     image: DecorationImage(
-                       image: coverImage == null
-                          ? NetworkImage("${userModel.cover}") as ImageProvider<Object>
-                          : FileImage(coverImage) as ImageProvider<Object>,
+                      image: NetworkImage(
+                        'Not working yet',
+                      ),
                       fit: BoxFit.cover,
-                    
                     ),
                   ),
                 ),
@@ -63,10 +54,7 @@ class EditImageAndCoverProfile extends StatelessWidget {
                       size: 16.0,
                     ),
                   ),
-                  onPressed: () {
-                     BlocProvider.of<ProfileCubit>(context)
-                      .getCoverImageGallery();
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -79,10 +67,10 @@ class EditImageAndCoverProfile extends StatelessWidget {
                 backgroundColor: ColorsApp.white,
                 child: CircleAvatar(
                   radius: 64.0,
-                  backgroundImage: profileImage == null
-                      ? NetworkImage('${userModel.profilePhotoURL}')
-                          as ImageProvider<Object>?
-                      : FileImage(profileImage) as ImageProvider<Object>?,
+                  backgroundImage: const NetworkImage(
+                    'Not working yet',
+                  ),
+                  backgroundColor: ColorsApp.black,
                 ),
               ),
               IconButton(
@@ -98,8 +86,7 @@ class EditImageAndCoverProfile extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  BlocProvider.of<ProfileCubit>(context)
-                      .getProfileImageGallery();
+               
                 },
               ),
             ],

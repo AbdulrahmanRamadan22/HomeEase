@@ -1,4 +1,4 @@
-import 'package:csc_picker/csc_picker.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:home_ease/core/helpers/navigation_extensions.dart';
@@ -21,7 +21,7 @@ class ContainerStepOne extends StatefulWidget {
 }
 
 class _ContainerStepOneState extends State<ContainerStepOne> {
-  int _currentStep = 0;
+  final int _currentStep = 0;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -112,9 +112,7 @@ class _ContainerStepOneState extends State<ContainerStepOne> {
           CustomButton(
             onPressed: () {
               setState(() {
-                if (_formKey.currentState!.validate()) {
-                  _currentStep +=1;
-                }
+                if (_formKey.currentState!.validate()) {}
               });
             },
             text: 'Next',

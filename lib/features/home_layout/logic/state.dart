@@ -1,4 +1,5 @@
-part of 'home_layout_cubit.dart';
+
+import 'package:flutter/material.dart';
 
 @immutable
 abstract class HomeLayoutState {}
@@ -6,7 +7,6 @@ abstract class HomeLayoutState {}
 class HomeLayoutInitial extends HomeLayoutState {}
 
 class BottomNavigationBarChange extends HomeLayoutState {}
-
 
 
 
