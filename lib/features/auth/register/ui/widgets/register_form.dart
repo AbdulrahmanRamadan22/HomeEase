@@ -4,8 +4,6 @@ import 'package:home_ease/core/theming/colors.dart';
 import 'package:home_ease/core/theming/text_styles%20.dart';
 import 'package:home_ease/core/widgets/app_text_form_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_ease/core/widgets/phone_text_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -50,9 +48,7 @@ class _RegisterFormState extends State<RegisterForm> {
             'Phone'.tr(),
             style: TextStyles.font16Black600,
           ),
-          PhoneTextFormField(
-         
-          ),
+   
           Text(
             'Email'.tr(),
             style: TextStyles.font16Black600,
